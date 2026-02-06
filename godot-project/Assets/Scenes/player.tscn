@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d2freeycoqqt7"]
+
+[ext_resource type="Script" uid="uid://b8uyhojun7wr7" path="res://Assets/Scripts/PlayerBrain.cs" id="1_7dd06"]
+[ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_egera"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6cd4h"]
+
+[node name="Player" type="CharacterBody3D" unique_id=22787355 node_paths=PackedStringArray("_moveInput")]
+script = ExtResource("1_7dd06")
+_moveInput = NodePath("MoveInput")
+
+[node name="MoveInput" type="Node" parent="." unique_id=2102010263]
+script = ExtResource("2_38rej")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1704159833]
+shape = SubResource("CapsuleShape3D_egera")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1126056220]
+mesh = SubResource("CapsuleMesh_6cd4h")
