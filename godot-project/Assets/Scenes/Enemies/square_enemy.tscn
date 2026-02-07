@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://3c7ruxt0oios"]
+[gd_scene format=3 uid="uid://cg0epg44d4qei"]
 
-[ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_8a6c7"]
-[ext_resource type="Texture2D" uid="uid://c63xyofnxge8t" path="res://icon.svg" id="2_fa6de"]
+[ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_mfbbc"]
+[ext_resource type="Texture2D" uid="uid://cawdneki37y4x" path="res://Assets/Sprites/square_temp.png" id="2_mfbbc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
 transparency = 1
@@ -12,14 +12,17 @@ material = SubResource("StandardMaterial3D_8a6c7")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r6sx"]
 
-[node name="Enemy1" type="CharacterBody3D" unique_id=1004741099]
-script = ExtResource("1_8a6c7")
+[node name="SquareEnemy" type="CharacterBody3D" unique_id=1004741099]
+script = ExtResource("1_mfbbc")
+_shape = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=825347395]
+pixel_size = 0.005
 billboard = 1
-texture = ExtResource("2_fa6de")
+texture = ExtResource("2_mfbbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572378390]
+visible = false
 mesh = SubResource("CapsuleMesh_fa6de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
