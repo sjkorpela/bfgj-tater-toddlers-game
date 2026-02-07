@@ -22,7 +22,7 @@ public partial class PlayerBrain : CharacterBody3D
 		}
 	}
 	
-	public override void _PhysicsProcess(double delta)
+	public void _BrainPhysicsProcess(double delta)
 	{
 		this.Velocity = new Vector3(
 			_moveInput.InputVector.X * _speed * (float)delta,

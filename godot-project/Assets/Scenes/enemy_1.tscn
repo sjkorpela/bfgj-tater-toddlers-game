@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://3c7ruxt0oios"]
+
+[ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_8a6c7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r6sx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
+albedo_color = Color(1, 0.22352941, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fa6de"]
+material = SubResource("StandardMaterial3D_8a6c7")
+
+[node name="Enemy1" type="CharacterBody3D" unique_id=1004741099]
+script = ExtResource("1_8a6c7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
+shape = SubResource("CapsuleShape3D_8r6sx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572378390]
+mesh = SubResource("CapsuleMesh_fa6de")
