@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cc04p0t0wp56k"]
 
-[ext_resource type="Script" uid="uid://cnfbj24wohedd" path="res://UI/Scripts/pause_menu.gd" id="1_jnqna"]
+[ext_resource type="Script" uid="uid://bjirq36g6o5sq" path="res://UI/Scripts/pause_menu.gd" id="1_o1lsb"]
 [ext_resource type="Texture2D" uid="uid://ds6yc8lpbhnxv" path="res://UI/Assets/PAUSEMENU_BACKGROUND.png" id="2_7yu7q"]
 [ext_resource type="Texture2D" uid="uid://buvy8awxoqg5k" path="res://UI/Assets/SETTINGS_BUTTON2.png" id="3_o1lsb"]
 [ext_resource type="Texture2D" uid="uid://dwx2ioj4mdlap" path="res://UI/Assets/CONTINUE_BUTTON.png" id="4_o1lsb"]
@@ -13,21 +13,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jnqna")
+script = ExtResource("1_o1lsb")
 
-[node name="PausemenuBackground" type="Sprite2D" parent="." unique_id=2140508991]
-position = Vector2(583, 320)
-scale = Vector2(0.428, 0.428)
+[node name="Pause Menu Background" type="Sprite2D" parent="." unique_id=2140508991]
+position = Vector2(582, 334)
+scale = Vector2(0.44666666, 0.44666666)
 texture = ExtResource("2_7yu7q")
 
-[node name="SettingsButton" type="TextureButton" parent="PausemenuBackground" unique_id=1551267269]
+[node name="Setting" type="TextureButton" parent="Pause Menu Background" unique_id=1551267269]
 offset_left = -1004.6729
 offset_top = -745.32715
 offset_right = 995.3271
 offset_bottom = 754.67285
 texture_normal = ExtResource("3_o1lsb")
 
-[node name="ExitButton" type="TextureButton" parent="PausemenuBackground" unique_id=384877721]
+[node name="Exit" type="TextureButton" parent="Pause Menu Background" unique_id=384877721]
 offset_left = -995.3271
 offset_top = -747.6636
 offset_right = 1004.6729
@@ -35,7 +35,7 @@ offset_bottom = 752.3364
 texture_normal = ExtResource("5_rseou")
 texture_pressed = ExtResource("5_rseou")
 
-[node name="ContinueButton" type="TextureButton" parent="PausemenuBackground" unique_id=687937057]
+[node name="Continue" type="TextureButton" parent="Pause Menu Background" unique_id=687937057]
 offset_left = -1016.35516
 offset_top = -745.3271
 offset_right = 983.64484
@@ -43,6 +43,6 @@ offset_bottom = 754.6729
 texture_normal = ExtResource("4_o1lsb")
 texture_pressed = ExtResource("4_o1lsb")
 
-[connection signal="pressed" from="PausemenuBackground/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PausemenuBackground/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="PausemenuBackground/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Pause Menu Background/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Pause Menu Background/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause Menu Background/Continue" to="." method="_on_continue_pressed"]
