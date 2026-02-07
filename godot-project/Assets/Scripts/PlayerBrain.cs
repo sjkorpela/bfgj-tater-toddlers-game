@@ -37,7 +37,12 @@ public partial class PlayerBrain : CharacterBody3D
 		if (!input.IsZeroApprox())
 		{
 			// very long line of text to not deal with string in middle of code :P
-			_animationPlayer.Play(AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Moving));
+			String moveAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Moving);
+			if (_animationPlayer.AssignedAnimation != moveAnimation)
+			{
+				_animationPlayer.Play(moveAnimation);
+			}
+			
 			this.LookAt(this.Position + -input);
 		}
 		else
