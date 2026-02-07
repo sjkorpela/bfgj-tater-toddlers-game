@@ -1,0 +1,54 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+<<<<<<< HEAD:godot-project/Environment/Assets/Environment_bookpage.jpg.import
+uid="uid://dh747gwa2dl3f"
+path.s3tc="res://.godot/imported/Environment_bookpage.jpg-6f33f4bbe25bd29daf8ba87aced24442.s3tc.ctex"
+=======
+uid="uid://b2dhimfkyk5o5"
+path.s3tc="res://.godot/imported/Environment_bookpage.jpg-df9189305d3c412118c6383d2f7ddc71.s3tc.ctex"
+>>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment_bookpage.jpg.import
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "950c6cb9d69e9d56e5a28c00b0fec954"
+}
+
+[deps]
+
+<<<<<<< HEAD:godot-project/Environment/Assets/Environment_bookpage.jpg.import
+source_file="res://Environment/Assets/Environment_bookpage.jpg"
+dest_files=["res://.godot/imported/Environment_bookpage.jpg-6f33f4bbe25bd29daf8ba87aced24442.s3tc.ctex"]
+=======
+source_file="res://Environment/Environment_bookpage.jpg"
+dest_files=["res://.godot/imported/Environment_bookpage.jpg-df9189305d3c412118c6383d2f7ddc71.s3tc.ctex"]
+>>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment_bookpage.jpg.import
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
