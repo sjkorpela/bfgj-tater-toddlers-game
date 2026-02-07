@@ -4,12 +4,21 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6q33hdfv6mkj"
+<<<<<<< HEAD:godot-project/Environment/Assets/Environment.glb.import
+path="res://.godot/imported/Environment.glb-51231c37b96fad81cf152a2217f137c5.scn"
+
+[deps]
+
+source_file="res://Environment/Assets/Environment.glb"
+dest_files=["res://.godot/imported/Environment.glb-51231c37b96fad81cf152a2217f137c5.scn"]
+=======
 path="res://.godot/imported/Environment.glb-e35661d428d69184a77eba61af0d2c86.scn"
 
 [deps]
 
 source_file="res://Environment/Environment.glb"
 dest_files=["res://.godot/imported/Environment.glb-e35661d428d69184a77eba61af0d2c86.scn"]
+>>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment.glb.import
 
 [params]
 
@@ -17,7 +26,11 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
+<<<<<<< HEAD:godot-project/Environment/Assets/Environment.glb.import
+nodes/root_scale=1.0
+=======
 nodes/root_scale=2.0
+>>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment.glb.import
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -37,6 +50,9 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
+<<<<<<< HEAD:godot-project/Environment/Assets/Environment.glb.import
+_subresources={}
+=======
 _subresources={
 "meshes": {
 "Environment_Circle_002": {
@@ -203,5 +219,6 @@ _subresources={
 }
 }
 }
+>>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment.glb.import
 gltf/naming_version=2
 gltf/embedded_image_handling=1
