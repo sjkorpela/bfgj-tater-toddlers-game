@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://cwg8tjd0wxkyc"]
 
-[ext_resource type="PackedScene" uid="uid://d2freeycoqqt7" path="res://Assets/Scenes/player.tscn" id="1_nxqqo"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_nxqqo"]
 [ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_dkjjc"]
 [ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/enemy_1.tscn" id="3_1umvv"]
-[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="4_pueb2"]
+[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManagerNode.cs" id="4_pueb2"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
-[node name="Player" parent="." unique_id=22787355 instance=ExtResource("1_nxqqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Player" parent="." unique_id=1596617950 instance=ExtResource("1_nxqqo")]
 
 [node name="TestFloor1" parent="." unique_id=212228710 instance=ExtResource("2_dkjjc")]
 
@@ -23,6 +22,6 @@ transform = Transform3D(0.1902968, 0.97983086, 0.06097972, -0.07284547, -0.04785
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.827406, 1, 0)
 _target = NodePath("../Player")
 
-[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player")]
+[node name="GameManagerNode" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player")]
 script = ExtResource("4_pueb2")
 _player = NodePath("../Player")

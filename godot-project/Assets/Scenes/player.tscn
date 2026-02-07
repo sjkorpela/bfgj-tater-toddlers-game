@@ -1,21 +1,36 @@
-[gd_scene format=3 uid="uid://d2freeycoqqt7"]
+[gd_scene format=3 uid="uid://ovr6j3n0nem5"]
 
+[ext_resource type="PackedScene" uid="uid://2dnpv45sixjt" path="res://wizard/wizard_Rig.tscn" id="1_6alcc"]
 [ext_resource type="Script" uid="uid://b8uyhojun7wr7" path="res://Assets/Scripts/PlayerBrain.cs" id="1_7dd06"]
 [ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_egera"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcsqd"]
+radius = 0.7104492
+height = 2.722168
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6cd4h"]
-
-[node name="Player" type="CharacterBody3D" unique_id=22787355 node_paths=PackedStringArray("_moveInput")]
+[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_animationPlayer")]
 script = ExtResource("1_7dd06")
 _moveInput = NodePath("MoveInput")
+_animationPlayer = NodePath("Wizard/AnimationPlayer")
 
-[node name="MoveInput" type="Node" parent="." unique_id=2102010263]
+[node name="MoveInput" type="Node" parent="." unique_id=2017234674]
 script = ExtResource("2_38rej")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1704159833]
-shape = SubResource("CapsuleShape3D_egera")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=594482678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4396973, 0)
+shape = SubResource("CapsuleShape3D_mcsqd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1126056220]
-mesh = SubResource("CapsuleMesh_6cd4h")
+[node name="Wizard" parent="." unique_id=1551048574 instance=ExtResource("1_6alcc")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011768341, 1.1920929e-07, 0.0022458434)
+
+[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 453040985) index="0" unique_id=43212243]
+bones/1/rotation = Quaternion(-1.0974448e-08, 1.1870303e-07, 0.09206034, 0.9957534)
+bones/2/rotation = Quaternion(-2.4427809e-08, -1.1667962e-07, 0.20491539, 0.9787797)
+bones/3/rotation = Quaternion(-1.6004868e-15, -1.3733963e-16, -0.10172676, 0.99481237)
+bones/4/rotation = Quaternion(1.9167935e-08, 1.0135276e-07, -0.18582691, 0.9825825)
+bones/5/rotation = Quaternion(-0.03921699, 0.032603122, -0.5865647, 0.8082951)
+bones/7/position = Vector3(-0.0055272235, 0.0012468478, -0.00713828)
+bones/7/rotation = Quaternion(-0.029580148, 0.0101806875, -0.36380452, 0.93094987)
+bones/9/position = Vector3(-0.005073577, 0.0017975998, 0.00713828)
+
+[editable path="Wizard"]

@@ -4,7 +4,7 @@ using Tater.Scripts;
 
 namespace Tater.Scripts;
 
-public partial class GameManager : Node
+public partial class GameManagerNode : Node
 {
 	[ExportCategory("Node References")]
 	[Export] private PlayerBrain _player;
@@ -15,11 +15,10 @@ public partial class GameManager : Node
 	{
 		if (_player == null)
 		{
-			throw new Exception("GameManager is missing node references!");
+			throw new Exception("GameManagerNode is missing node references!");
 		}
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+    
 	public override void _PhysicsProcess(double delta)
 	{
 		_player._BrainPhysicsProcess(delta);

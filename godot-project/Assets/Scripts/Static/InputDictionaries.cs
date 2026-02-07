@@ -9,5 +9,4 @@ public class InputDictionaries
     {
         { InputMap2D.Move, "move" }
     };
-
 }
