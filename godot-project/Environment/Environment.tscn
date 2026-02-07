@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bq3i3b1uuhtgf"]
 
 [ext_resource type="ArrayMesh" uid="uid://b1iwrmeoxe60k" path="res://Environment/BaseBook.res" id="1_dfkh4"]
-[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_xtomh"]
 [ext_resource type="ArrayMesh" uid="uid://cepvwf3ga8yl2" path="res://Environment/MiddleBook.res" id="2_xtomh"]
 [ext_resource type="ArrayMesh" uid="uid://b2elyf77dij1r" path="res://Environment/Page1.res" id="3_mg3ef"]
 [ext_resource type="ArrayMesh" uid="uid://b1p23m5fpwge4" path="res://Environment/Page2.res" id="4_i00sb"]
@@ -219,9 +218,6 @@ mesh = ExtResource("18_tfpt1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree10/StaticBody3D" unique_id=1098612578]
 shape = SubResource("ConcavePolygonShape3D_jv111")
-
-[node name="Player" parent="." unique_id=1596617950 instance=ExtResource("1_xtomh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9300404, 0.9402685)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1986476165]
 transform = Transform3D(0.0964078, -0.30257007, 0.94823885, 0.032423697, 0.9531255, 0.30083284, -0.9948137, 0.0017427765, 0.10169917, 33.80279, 20.06758, 18.53169)
