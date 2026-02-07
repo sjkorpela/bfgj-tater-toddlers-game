@@ -11,7 +11,7 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputVector2D _moveInput;
 	
 	[ExportCategory("Attributes")]
-	[Export] private float _speed = 5f;
+	[Export] private float _speed = 400f;
 	
 	
 	public override void _Ready()
@@ -22,13 +22,14 @@ public partial class PlayerBrain : CharacterBody3D
 		}
 	}
 	
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		this.Velocity = new Vector3(
-				_moveInput.InputVector.X * _speed,
-				0f,
-				_moveInput.InputVector.Y * _speed
-			);
+			_moveInput.InputVector.X * _speed * (float)delta,
+			0f,
+			_moveInput.InputVector.Y * _speed * (float)delta
+		);
+		
 		this.MoveAndSlide();
 	}
 }
