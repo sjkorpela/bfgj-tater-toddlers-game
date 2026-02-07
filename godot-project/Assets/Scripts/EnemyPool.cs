@@ -8,23 +8,24 @@ public partial class EnemyPool : Node
 {
 	[ExportCategory("Node References")]
 	[Export] private PackedScene _enemy;
-
 	[Export] private Node3D _target;
-
 	[Export] private Node3D _spawnLocation;
+	[Export] private Node3D _hideLocation;
 	
 	[ExportCategory("Attributes")]
 	[Export] private int _maxTotalAmount = 50;
-
-	[Export] private int _timeBetweenSpawns = 2;
-	
-
 	private int _totalAmount = 0;
+	[Export] private double _timeBetweenSpawns = 1f;
 	private double _timeSinceLastSpawn = 0f;
 	
 	private List<EnemyBrain> _pawns = [];
-	
-	
+	public List<EnemyBrain> Pawns
+	{
+		get => _pawns;
+		set => _pawns = value;
+	}
+
+
 	public override void _Ready()
 	{
 		if (_enemy == null || _target == null || _spawnLocation == null)
@@ -35,9 +36,14 @@ public partial class EnemyPool : Node
 	
 	public void _BrainProcess(double delta)
 	{
-		if (_totalAmount < _maxTotalAmount && _timeSinceLastSpawn >= _timeBetweenSpawns)
+		if (_totalAmount < _maxTotalAmount)
 		{
 			_instantiateNewPawn();
+		}
+
+		if (_timeSinceLastSpawn >= _timeBetweenSpawns)
+		{
+			ActivatePawn();
 			_timeSinceLastSpawn = 0f;
 		}
 
@@ -58,23 +64,43 @@ public partial class EnemyPool : Node
 		this.AddChild(temp);
 		_totalAmount++;
 		_pawns.Add(temp);
-		temp.Target = _target;
-		
-		// memory leak?
-		temp.OnDestroy += () =>
+		temp.Initialize(_target, _hideLocation.GlobalPosition);
+	}
+
+	public void ActivatePawn()
+	{
+		foreach (EnemyBrain pawn in _pawns)
 		{
-			_pawns.Remove(temp);
-			_totalAmount--;
-		};
-		
-		temp.GlobalPosition = _spawnLocation.GlobalPosition;
+			if (!pawn.Active)
+			{
+				pawn.Activate(_spawnLocation.GlobalPosition);
+				break;
+			}
+		}
+	}
+
+	public void DeactivatePawn(EnemyBrain pawn)
+	{
+		pawn.Deactivate(_hideLocation.GlobalPosition);
 	}
 
 	private void _destroyAllPawns()
 	{
 		foreach (EnemyBrain pawn in _pawns)
 		{
-			pawn.Destroy();
+			pawn.Deactivate(_hideLocation.GlobalPosition);
+		}
+	}
+
+	public void CleanList()
+	{
+		for (int i = 0; i < _pawns.Count; i++)
+		{
+			if (_pawns[i] == null)
+			{
+				_pawns.RemoveAt(i);
+				_totalAmount--;
+			}
 		}
 	}
 }

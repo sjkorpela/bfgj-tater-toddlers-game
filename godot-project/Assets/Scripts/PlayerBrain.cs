@@ -13,6 +13,7 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputVector2D _moveInput;
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
+	[Export] private Camera3D _camera;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
@@ -20,7 +21,7 @@ public partial class PlayerBrain : CharacterBody3D
 	
 	public override void _Ready()
 	{
-		if (_moveInput == null || _debugInput == null || _animationPlayer == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _camera == null)
 		{
 			throw new Exception("PlayerBrain is missing node references!");
 		}

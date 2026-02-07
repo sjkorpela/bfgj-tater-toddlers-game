@@ -2,25 +2,37 @@
 
 [ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_nxqqo"]
 [ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_dkjjc"]
-[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/enemy_1.tscn" id="3_1umvv"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="3_1umvv"]
 [ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="4_1umvv"]
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="4_pueb2"]
-[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/player_click_test_1.tscn" id="6_7j832"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/shape_drawing.tscn" id="6_7j832"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
-[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool")]
+[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw")]
 script = ExtResource("4_pueb2")
 _player = NodePath("../Player")
 _pool = NodePath("../EnemyPool")
+_camera = NodePath("../Camera3D")
+_draw = NodePath("../ShapeDrawing")
 
-[node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation") instance=ExtResource("4_1umvv")]
+[node name="ShapeDrawing" parent="." unique_id=342024680 instance=ExtResource("6_7j832")]
+
+[node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation", "_hideLocation") instance=ExtResource("4_1umvv")]
 _enemy = ExtResource("3_1umvv")
 _target = NodePath("../Player")
-_spawnLocation = NodePath("../EnemySpawnLocation")
-_maxTotalAmount = 1
+_spawnLocation = NodePath("EnemySpawnLocation")
+_hideLocation = NodePath("EnemyHideLocation")
+_maxTotalAmount = 10
 
-[node name="Player" parent="." unique_id=1596617950 instance=ExtResource("1_nxqqo")]
+[node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
+
+[node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="Player" parent="." unique_id=1596617950 node_paths=PackedStringArray("_camera") instance=ExtResource("1_nxqqo")]
+_camera = NodePath("../Camera3D")
 
 [node name="TestFloor1" parent="." unique_id=212228710 instance=ExtResource("2_dkjjc")]
 
@@ -30,11 +42,6 @@ fov = 60.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.1902968, 0.97983086, 0.06097972, -0.07284547, -0.04785052, 0.9961947, 0.97902024, -0.19401473, 0.06227044, 0, 14.430893, 0)
-
-[node name="EnemySpawnLocation" type="Node3D" parent="." unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
-
-[node name="PlayerClickTest" parent="." unique_id=1226416888 instance=ExtResource("6_7j832")]
 
 [node name="Enemy1" parent="." unique_id=1004741099 node_paths=PackedStringArray("_target") instance=ExtResource("3_1umvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.698782, -4.3343334, 0)

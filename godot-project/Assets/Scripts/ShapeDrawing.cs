@@ -6,8 +6,10 @@ using Tater.Scripts.Static;
 
 namespace Tater.Scripts;
 
-public partial class PlayerClickTest1 : Node
+public partial class ShapeDrawing : Node
 {
+	[Signal] public delegate void OnCastEventHandler(AttackShape shape);
+	
 	private float _timeBetweenDots = 0.01f;
 	private double _timeSinceLastDot = 0f;
 	
@@ -84,18 +86,6 @@ public partial class PlayerClickTest1 : Node
 
 	private void _createShape(List<Vector2> dots)
 	{
-		// foreach (Vector2 dot in dots) { GD.Print(dot);}
-
-		List<Vector2> rounded = [];
-
-		foreach (Vector2 dot in dots)
-		{
-			rounded.Add(new Vector2(
-				_snapPointToGrid(dot.X),
-				_snapPointToGrid(dot.Y)
-			));
-		}
-
 		int straights = 0;
 		int corners = 0;
 		int others = 0;
@@ -104,13 +94,9 @@ public partial class PlayerClickTest1 : Node
 		// MATH :[
 		for (int i = 0; i < dots.Count; i++)
 		{
-			float degAngle;
-			
-			if (i == 0) { degAngle = Maths.GetThreePointsAngle(dots.Last(), dots[i], dots[i + 1]); }
-			else if (i == dots.Count - 1) { degAngle = Maths.GetThreePointsAngle(dots[i - 1], dots[i], dots[0]); }
-			else
+			if (i != 0 && i != dots.Count - 1)
 			{
-				degAngle = Maths.GetThreePointsAngle(dots[i - 1], dots[i], dots[i + 1]);
+				float degAngle = Maths.GetThreePointsAngle(dots[i - 1], dots[i], dots[i + 1]);
 				if (degAngle >= 150 && last != "s")
 				{
 					straights++;
@@ -125,27 +111,29 @@ public partial class PlayerClickTest1 : Node
 					others++;
 				}
 			}
-
-			
 		}
 		
 		GD.Print("s: " + straights, "\nc: " + corners, "\no: " + others);
+		Shape shape;
 
 		if (straights + corners <= 2)
 		{
-			GD.Print("circle");
-		} else if (straights + corners >= 7)
+			shape = Shape.Circle;
+		} 
+		else if (straights + corners >= 7)
 		{
-			GD.Print("square");
+			shape = Shape.Square;
 		}
 		else
 		{
-			GD.Print("triangle");
+			shape = Shape.Triangle;
 		}
+		GD.Print(shape);
 
 		AttackShape temp = new AttackShape();
 		this.AddChild(temp);
-		temp.Points = dots.ToArray();
+		temp.Initialize(shape, dots);
+		EmitSignalOnCast(temp);
 	}
 
 	private float _snapPointToGrid(float value)
