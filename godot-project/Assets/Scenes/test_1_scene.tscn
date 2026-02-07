@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_nxqqo"]
 [ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_dkjjc"]
 [ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/enemy_1.tscn" id="3_1umvv"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="4_1umvv"]
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManagerNode.cs" id="4_pueb2"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
@@ -18,10 +19,14 @@ fov = 60.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.1902968, 0.97983086, 0.06097972, -0.07284547, -0.04785052, 0.9961947, 0.97902024, -0.19401473, 0.06227044, 0, 14.430893, 0)
 
-[node name="Enemy1" parent="." unique_id=1004741099 node_paths=PackedStringArray("_target") instance=ExtResource("3_1umvv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.827406, 1, 0)
-_target = NodePath("../Player")
-
 [node name="GameManagerNode" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player")]
 script = ExtResource("4_pueb2")
 _player = NodePath("../Player")
+
+[node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation") instance=ExtResource("4_1umvv")]
+_enemy = ExtResource("3_1umvv")
+_target = NodePath("../Player")
+_spawnLocation = NodePath("../EnemySpawnLocation")
+
+[node name="EnemySpawnLocation" type="Node3D" parent="." unique_id=1595727428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 0)

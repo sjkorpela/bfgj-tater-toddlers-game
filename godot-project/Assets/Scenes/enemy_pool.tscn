@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://doyyhowdp2ff"]
+
+[ext_resource type="Script" uid="uid://cxu5crothyuum" path="res://Assets/Scripts/EnemyPool.cs" id="1_ipus2"]
+
+[node name="EnemyPool" type="Node" unique_id=317054794]
+script = ExtResource("1_ipus2")

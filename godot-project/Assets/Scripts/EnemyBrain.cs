@@ -1,8 +1,12 @@
 using Godot;
 using System;
 
+namespace Tater.Scripts;
+
 public partial class EnemyBrain : CharacterBody3D
 {
+	public Action OnDestroy {get; set;}
+	
 	[ExportCategory("Node References")]
 	[Export] private Node3D _target;
 	
@@ -14,12 +18,7 @@ public partial class EnemyBrain : CharacterBody3D
 		get => _target;
 		set => _target = value;
 	}
-
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 toTarget = new Vector3(
@@ -30,5 +29,11 @@ public partial class EnemyBrain : CharacterBody3D
 		this.Velocity = toTarget * _speed * (float)delta;
 		
 		this.MoveAndSlide();
+	}
+
+	public void Destroy()
+	{
+		OnDestroy.Invoke();
+		this.QueueFree();
 	}
 }
