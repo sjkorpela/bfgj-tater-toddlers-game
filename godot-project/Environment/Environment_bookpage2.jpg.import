@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdoexiv0oewgk"
-path.s3tc="res://.godot/imported/Book_bookpage.jpg-70865928f1f30ac9177e8d6152f33e1b.s3tc.ctex"
+uid="uid://d2kejdxc868o1"
+path.s3tc="res://.godot/imported/Environment_bookpage2.jpg-e40c7694e76ff7b36914756f490a746c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "950c6cb9d69e9d56e5a28c00b0fec954"
+"md5": "984ca840e4b4b3cce8a86d8ee9c2e6e2"
 }
 
 [deps]
 
-source_file="res://Environment/Assets/Book_bookpage.jpg"
-dest_files=["res://.godot/imported/Book_bookpage.jpg-70865928f1f30ac9177e8d6152f33e1b.s3tc.ctex"]
+source_file="res://Environment/Environment_bookpage2.jpg"
+dest_files=["res://.godot/imported/Environment_bookpage2.jpg-e40c7694e76ff7b36914756f490a746c.s3tc.ctex"]
 
 [params]
 
