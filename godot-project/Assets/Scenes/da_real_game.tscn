@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bie5bhbv3141"]
+
+[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_jr5xw"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
+[ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_w4pps"]
+[ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
+[ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
+[ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_aw15j"]
+
+[sub_resource type="Environment" id="Environment_7sy2t"]
+background_color = Color(1, 0.49044794, 0.960975, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_c1rt1"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a6gqa"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jr5xw"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_472gt"]
+plane = Plane(0, 0, -1, 0)
+
+[node name="TestScene1" type="Node3D" unique_id=268760725]
+
+[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw")]
+script = ExtResource("1_jr5xw")
+_player = NodePath("../Player")
+_pool = NodePath("../EnemyPool")
+_camera = NodePath("../Camera3D")
+_draw = NodePath("../ShapeDrawing")
+
+[node name="ShapeDrawing" parent="." unique_id=342024680 instance=ExtResource("2_a6gqa")]
+
+[node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation", "_hideLocation") instance=ExtResource("3_472gt")]
+_enemyTypes = Array[PackedScene]([ExtResource("4_w4pps"), ExtResource("5_vo6bw"), ExtResource("6_m53as")])
+_target = NodePath("../Player")
+_spawnLocation = NodePath("EnemySpawnLocation")
+_hideLocation = NodePath("EnemyHideLocation")
+_maxTotalAmount = 10
+
+[node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 8.625157, 0)
+
+[node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 158)
+
+[node name="Player" parent="." unique_id=1596617950 instance=ExtResource("7_akbbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.775074, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
+transform = Transform3D(1, 0, 0, 0, 0.66875434, 0.7434835, 0, -0.7434835, 0.66875434, 0, 75.00041, 62.343124)
+fov = 8.7
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
+transform = Transform3D(0.19029678, 0.97983086, 0.0609797, -0.5892886, 0.06432672, 0.8053577, 0.78519166, -0.18919162, 0.58964443, 0, 14.430893, 7.056035)
+
+[node name="Environment" parent="." unique_id=1802728127 instance=ExtResource("9_aw15j")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11, 0, 10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=136842251]
+environment = SubResource("Environment_7sy2t")
+
+[node name="WorldEdge" type="StaticBody3D" parent="." unique_id=1334703101]
+
+[node name="Left" type="CollisionShape3D" parent="WorldEdge" unique_id=1534554202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_c1rt1")
+
+[node name="Right" type="CollisionShape3D" parent="WorldEdge" unique_id=13821617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_a6gqa")
+
+[node name="Up" type="CollisionShape3D" parent="WorldEdge" unique_id=666024771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+shape = SubResource("WorldBoundaryShape3D_jr5xw")
+
+[node name="Down" type="CollisionShape3D" parent="WorldEdge" unique_id=1991984397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+shape = SubResource("WorldBoundaryShape3D_472gt")

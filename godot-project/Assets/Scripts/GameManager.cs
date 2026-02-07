@@ -3,6 +3,13 @@ using System;
 
 namespace Tater.Scripts;
 
+public enum GameState
+{
+	Menu,
+	Game,
+	Paused,
+}
+
 public partial class GameManager : Node
 {
 	[ExportCategory("Node References")]
@@ -10,6 +17,13 @@ public partial class GameManager : Node
 	[Export] private EnemyPool _pool;
 	[Export] private Camera3D _camera;
 	[Export] private ShapeDrawing _draw;
+
+	private GameState _gameState = GameState.Game;
+	public GameState GameState
+	{
+		get => _gameState;
+		set => _gameState = value;
+	}
 
 	public PlayerBrain Player => _player;
 
@@ -19,15 +33,30 @@ public partial class GameManager : Node
 		{
 			throw new Exception("GameManagerNode is missing node references!");
 		}
+	}
 
+	public override void _EnterTree()
+	{
+		_draw.OnDrawingStart += OnDrawingStart;
 		_draw.OnCast += OnCast;
 	}
-    
+	
+	public override void _ExitTree()
+	{
+		_draw.OnDrawingStart -= OnDrawingStart;
+		_draw.OnCast -= OnCast;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		_player._BrainPhysicsProcess(delta);
 		_pool._BrainProcess(delta);
 		_pool._BrainPhysicsProcess(delta);
+	}
+
+	public void OnDrawingStart()
+	{
+		_player.Casting = true;
 	}
 
 	public void OnCast(AttackShape cast)
@@ -41,5 +70,7 @@ public partial class GameManager : Node
 				_pool.DeactivatePawn(pawn);
 			}
 		}
+
+		_player.Casting = false;
 	}
 }

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cjmhsf0ga7bpu"]
 
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_6r736"]
-[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/shape_drawing.tscn" id="2_lp7fg"]
-[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="3_oyd6y"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_lp7fg"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_oyd6y"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_gfp46"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_223m4"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_dj5m7"]
-[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="7_xs7ub"]
-[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="8_lj2c5"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/Objects/player.tscn" id="7_xs7ub"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Old/enemy_1.tscn" id="8_lj2c5"]
 [ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_ke4di"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]

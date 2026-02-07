@@ -3,14 +3,23 @@
 [ext_resource type="PackedScene" uid="uid://bhujucw50s8c8" path="res://wizard/Wizard.fbx" id="1_16guy"]
 [ext_resource type="Material" uid="uid://woryj83ny0of" path="res://wizard/Wizard_Material.tres" id="2_n22cc"]
 
-[node name="Wizard" unique_id=1551048574 instance=ExtResource("1_16guy")]
+[node name="Wizard" unique_id=1452123652 instance=ExtResource("1_16guy")]
 
-[node name="Skeleton3D" parent="Wizard_Armature" parent_id_path=PackedInt32Array(1832122199) index="0" unique_id=1596053664]
+[node name="Skeleton3D" parent="Wizard_Armature" parent_id_path=PackedInt32Array(1704747509) index="0" unique_id=72362703]
 bones/2/rotation = Quaternion(-1.1377258e-08, -1.1866511e-07, 0.09543935, 0.99543524)
+bones/3/position = Vector3(0, 0.007294188, 0)
 bones/3/rotation = Quaternion(0, 0, -0.07763264, 0.99698204)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(0, 0.0019404725, 0)
 bones/4/rotation = Quaternion(1.4633429e-09, 1.03139e-07, -0.0141866375, 0.9998994)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(9.1472774e-11, 0.0056872414, 2.3909892e-17)
 bones/5/rotation = Quaternion(1.4160648e-07, 6.6217844e-08, -0.5007337, 0.8656014)
+bones/5/scale = Vector3(0.99999994, 1, 1)
 bones/7/rotation = Quaternion(0.011942697, -0.0060394313, -0.030461097, 0.9994464)
+bones/7/scale = Vector3(1, 1.0000001, 0.99999994)
+bones/9/rotation = Quaternion(-0.05207952, -0.004084908, -0.03005862, 0.9981821)
+bones/9/scale = Vector3(1, 1, 1)
 
-[node name="Wizard" parent="Wizard_Armature/Skeleton3D" index="0" unique_id=1491421380]
+[node name="Wizard" parent="Wizard_Armature/Skeleton3D" index="0" unique_id=617825889]
 material_override = ExtResource("2_n22cc")

@@ -13,15 +13,21 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputVector2D _moveInput;
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
-	[Export] private Camera3D _camera;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
-	
-	
+
+	private bool _casting = false;
+	public bool Casting
+	{
+		get => _casting;
+		set => _casting = value;
+	}
+
+
 	public override void _Ready()
 	{
-		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _camera == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null)
 		{
 			throw new Exception("PlayerBrain is missing node references!");
 		}
@@ -29,17 +35,17 @@ public partial class PlayerBrain : CharacterBody3D
 
 	public override void _EnterTree()
 	{
-		_debugInput.OnPress += _cast;
+		_debugInput.OnPress += _debug_function;
 	}
 	
 	public override void _ExitTree()
 	{
-		_debugInput.OnPress -= _cast;
+		_debugInput.OnPress -= _debug_function;
 	}
 
-	private void _cast()
+	private void _debug_function()
 	{
-		GD.Print("cast!");
+		GD.Print("debug function!");
 	}
 
 	public void _BrainPhysicsProcess(double delta)
@@ -50,24 +56,33 @@ public partial class PlayerBrain : CharacterBody3D
 			_moveInput.InputVector.Y
 		);
 		this.Velocity = input.Normalized() * _speed * (float)delta;
-
-		if (!input.IsZeroApprox())
+		
+		this.MoveAndSlide();
+		
+		
+		// Animation logic
+		if (_casting)
 		{
-			// very long line of text to not deal with string in middle of code :P
+			String castAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Casting);
+			if (_animationPlayer.AssignedAnimation != castAnimation)
+			{
+				_animationPlayer.Play(castAnimation);
+			}
+		} else if (!input.IsZeroApprox())
+		{
 			String moveAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Moving);
 			if (_animationPlayer.AssignedAnimation != moveAnimation)
 			{
 				_animationPlayer.Play(moveAnimation);
 			}
-			
-			this.LookAt(this.Position + -input);
-		}
-		else
+		} else
 		{
 			_animationPlayer.Play(AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Idle));
 		}
-		
-		
-		this.MoveAndSlide();
+
+		if (!input.IsZeroApprox())
+		{
+			this.LookAt(this.Position + -input);
+		}
 	}
 }

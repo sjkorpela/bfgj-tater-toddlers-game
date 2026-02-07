@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://r717ia6rgr2v"]
 
-[ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="1_1j1ui"]
-[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_wvswx"]
-[ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_1j1ui"]
-[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="3_xqom8"]
+[ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="1_1j1ui"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/Objects/player.tscn" id="1_wvswx"]
+[ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/Old/test_floor_1.tscn" id="2_1j1ui"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Old/enemy_1.tscn" id="3_xqom8"]
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="4_gvlxl"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
