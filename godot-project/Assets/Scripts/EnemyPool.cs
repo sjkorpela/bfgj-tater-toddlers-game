@@ -37,7 +37,6 @@ public partial class EnemyPool : Node
 	{
 		if (_totalAmount < _maxTotalAmount && _timeSinceLastSpawn >= _timeBetweenSpawns)
 		{
-			GD.Print("make new pawn");
 			_instantiateNewPawn();
 			_timeSinceLastSpawn = 0f;
 		}
