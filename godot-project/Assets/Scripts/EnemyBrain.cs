@@ -52,7 +52,6 @@ public partial class EnemyBrain : CharacterBody3D
 	{
 		_target = target;
 		this.GlobalPosition = hidePosition;
-		_shape = Shape.Circle;
 	}
 
 	public void Activate(Vector3 startPosition)

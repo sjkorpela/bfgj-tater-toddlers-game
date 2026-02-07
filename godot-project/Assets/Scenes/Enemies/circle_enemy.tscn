@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blsr35wvf2n32"]
 
 [ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_ltl1l"]
-[ext_resource type="Texture2D" uid="uid://c63xyofnxge8t" path="res://icon.svg" id="2_p3agq"]
+[ext_resource type="Texture2D" uid="uid://1uvhgij8r8on" path="res://Assets/Sprites/circle_temp.png" id="2_ltl1l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
 transparency = 1
@@ -12,12 +12,13 @@ material = SubResource("StandardMaterial3D_8a6c7")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r6sx"]
 
-[node name="Enemy1" type="CharacterBody3D" unique_id=1004741099]
+[node name="CircleEnemy" type="CharacterBody3D" unique_id=1004741099]
 script = ExtResource("1_ltl1l")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=825347395]
+pixel_size = 0.004
 billboard = 1
-texture = ExtResource("2_p3agq")
+texture = ExtResource("2_ltl1l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572378390]
 visible = false

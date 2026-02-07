@@ -7,7 +7,7 @@ namespace Tater.Scripts;
 public partial class EnemyPool : Node
 {
 	[ExportCategory("Node References")]
-	[Export] private PackedScene _enemy;
+	[Export] private PackedScene[] _enemyTypes;
 	[Export] private Node3D _target;
 	[Export] private Node3D _spawnLocation;
 	[Export] private Node3D _hideLocation;
@@ -25,10 +25,12 @@ public partial class EnemyPool : Node
 		set => _pawns = value;
 	}
 
+	private Random _random = new Random();
+
 
 	public override void _Ready()
 	{
-		if (_enemy == null || _target == null || _spawnLocation == null)
+		if (_enemyTypes == null || _target == null || _spawnLocation == null)
 		{
 			throw new Exception("EnemyPool is missing node references!");
 		}
@@ -60,7 +62,7 @@ public partial class EnemyPool : Node
 
 	private void _instantiateNewPawn()
 	{
-		EnemyBrain temp = _enemy.Instantiate<EnemyBrain>();
+		EnemyBrain temp = _enemyTypes[_random.Next(0, 3)].Instantiate<EnemyBrain>();
 		this.AddChild(temp);
 		_totalAmount++;
 		_pawns.Add(temp);

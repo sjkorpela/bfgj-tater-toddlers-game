@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_dkjjc"]
 [ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="3_1umvv"]
 [ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="4_1umvv"]
+[ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_bs8fd"]
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="4_pueb2"]
+[ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_m831u"]
+[ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_4cb2y"]
 [ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/shape_drawing.tscn" id="6_7j832"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
@@ -19,7 +22,7 @@ _draw = NodePath("../ShapeDrawing")
 [node name="ShapeDrawing" parent="." unique_id=342024680 instance=ExtResource("6_7j832")]
 
 [node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation", "_hideLocation") instance=ExtResource("4_1umvv")]
-_enemy = ExtResource("3_1umvv")
+_enemyTypes = Array[PackedScene]([ExtResource("4_bs8fd"), ExtResource("5_m831u"), ExtResource("6_4cb2y")])
 _target = NodePath("../Player")
 _spawnLocation = NodePath("EnemySpawnLocation")
 _hideLocation = NodePath("EnemyHideLocation")
