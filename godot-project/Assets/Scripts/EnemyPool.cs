@@ -6,6 +6,8 @@ namespace Tater.Scripts;
 
 public partial class EnemyPool : Node
 {
+	[Signal] public delegate void OnPawnKillEventHandler(int value);
+	
 	[ExportCategory("Node References")]
 	[Export] private PackedScene[] _enemyTypes;
 	[Export] private Node3D _target;
@@ -70,6 +72,7 @@ public partial class EnemyPool : Node
 		_totalAmount++;
 		_pawns.Add(temp);
 		temp.Initialize(_target, _hideLocation.GlobalPosition);
+		temp.Health.OnLethalDamage += () => EmitSignalOnPawnKill(100);
 	}
 
 	public void ActivatePawn()

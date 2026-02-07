@@ -26,6 +26,12 @@ public partial class GameManager : Node
 		set => _gameState = value;
 	}
 
+	private int _score = 0;
+	public int Score => _score;
+
+	private int _scoreIncrement = 1;
+	private float _timeSinceLastScoreIncrement = 0f;
+
 	public override void _Ready()
 	{
 		if (_player == null || _pool == null || _camera == null || _draw == null)
@@ -38,12 +44,19 @@ public partial class GameManager : Node
 	{
 		_draw.OnDrawingStart += OnDrawingStart;
 		_draw.OnCast += OnCast;
+
+		_pool.OnPawnKill += value => _score += value;
 	}
 	
 	public override void _ExitTree()
 	{
 		_draw.OnDrawingStart -= OnDrawingStart;
 		_draw.OnCast -= OnCast;
+	}
+
+	public void ResetGame()
+	{
+		_score = 0;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -53,6 +66,14 @@ public partial class GameManager : Node
 			_player._BrainPhysicsProcess(delta);
 			_pool._BrainProcess(delta);
 			_pool._BrainPhysicsProcess(delta);
+
+			if (_timeSinceLastScoreIncrement > _scoreIncrement)
+			{
+				_score += (int)_timeSinceLastScoreIncrement * 10;
+				_timeSinceLastScoreIncrement = 0f;
+			}
+
+			_timeSinceLastScoreIncrement += (float)delta;
 		}
 	}
 

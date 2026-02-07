@@ -31,7 +31,7 @@ public partial class EnemyBrain : CharacterBody3D
 		set => _shape = value;
 	}
 	
-	private Vector3 _hidePosition;
+	private Vector3 _hidePosition = new Vector3(-100, -100, -100);
 
 	private bool _active = false;
 	public bool Active => _active;
@@ -70,6 +70,7 @@ public partial class EnemyBrain : CharacterBody3D
 		{
 			_isFlipped = _sprite.IsFlippedH();
 		}
+		Deactivate();
 	}
 
 	public void Activate(Vector3 startPosition)
