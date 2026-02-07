@@ -6,30 +6,29 @@ namespace Tater.Scripts;
 public enum GameState
 {
 	Menu,
-	Game,
-	Paused,
+	GameActive,
+	GamePaused,
 }
 
 public partial class GameManager : Node
 {
 	[ExportCategory("Node References")]
 	[Export] private PlayerBrain _player;
+	public PlayerBrain Player => _player;
 	[Export] private EnemyPool _pool;
 	[Export] private Camera3D _camera;
 	[Export] private ShapeDrawing _draw;
 
-	private GameState _gameState = GameState.Game;
+	private GameState _gameState = GameState.GameActive;
 	public GameState GameState
 	{
 		get => _gameState;
 		set => _gameState = value;
 	}
 
-	public PlayerBrain Player => _player;
-
 	public override void _Ready()
 	{
-		if (_player == null)
+		if (_player == null || _pool == null || _camera == null || _draw == null)
 		{
 			throw new Exception("GameManagerNode is missing node references!");
 		}
@@ -49,14 +48,17 @@ public partial class GameManager : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
-		_player._BrainPhysicsProcess(delta);
-		_pool._BrainProcess(delta);
-		_pool._BrainPhysicsProcess(delta);
+		if (_gameState == GameState.GameActive)
+		{
+			_player._BrainPhysicsProcess(delta);
+			_pool._BrainProcess(delta);
+			_pool._BrainPhysicsProcess(delta);
+		}
 	}
 
 	public void OnDrawingStart()
 	{
-		_player.Casting = true;
+		_player.StartCasting();
 	}
 
 	public void OnCast(AttackShape cast)
@@ -67,10 +69,10 @@ public partial class GameManager : Node
 			Vector2 onScreen = _camera.UnprojectPosition(pawn.GlobalPosition);
 			if (Geometry2D.IsPointInPolygon(onScreen, cast.Points) && pawn.Shape == cast.Shape)
 			{
-				_pool.DeactivatePawn(pawn);
+				_pool.DamagePawn(pawn, 1);
 			}
 		}
 
-		_player.Casting = false;
+		_player.StopCasting();
 	}
 }

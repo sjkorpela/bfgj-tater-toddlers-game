@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_ab6g3"]
 [ext_resource type="Texture2D" uid="uid://bjo6ujbxiktrb" path="res://Assets/Sprites/triangle_temp.png" id="2_ab6g3"]
+[ext_resource type="Script" uid="uid://brtmpvporynbo" path="res://Assets/Scripts/Components/HealthComponent.cs" id="3_kursv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
 transparency = 1
@@ -12,8 +13,10 @@ material = SubResource("StandardMaterial3D_8a6c7")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r6sx"]
 
-[node name="TriangleEnemy" type="CharacterBody3D" unique_id=1004741099]
+[node name="TriangleEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_collider")]
 script = ExtResource("1_ab6g3")
+_health = NodePath("HealthComponent")
+_collider = NodePath("CollisionShape3D")
 _shape = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=825347395]
@@ -27,3 +30,7 @@ mesh = SubResource("CapsuleMesh_fa6de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
 shape = SubResource("CapsuleShape3D_8r6sx")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=349663689]
+script = ExtResource("3_kursv")
+_maxHealth = 1

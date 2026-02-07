@@ -97,21 +97,21 @@ public partial class PlayerBrain : CharacterBody3D
 		// Animation
 		if (_casting)
 		{
-			String castAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Casting);
+			String castAnimation = AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Casting);
 			if (_animationPlayer.AssignedAnimation != castAnimation)
 			{
 				_animationPlayer.Play(castAnimation);
 			}
 		} else if (!input.IsZeroApprox())
 		{
-			String moveAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Moving);
+			String moveAnimation = AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Moving);
 			if (_animationPlayer.AssignedAnimation != moveAnimation)
 			{
 				_animationPlayer.Play(moveAnimation);
 			}
 		} else
 		{
-			_animationPlayer.Play(AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Idle));
+			_animationPlayer.Play(AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Idle));
 		}
 
 		// Facing direction

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
 [ext_resource type="PackedScene" uid="uid://bejuf8s01hfin" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
-[ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_aw15j"]
+[ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_aw15j"]
 
 [sub_resource type="Environment" id="Environment_7sy2t"]
 background_color = Color(1, 0.49044794, 0.960975, 1)
@@ -43,10 +43,10 @@ _hideLocation = NodePath("EnemyHideLocation")
 _maxTotalAmount = 10
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 11.6096, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 158)
 
 [node name="Player" parent="." unique_id=1596617950 instance=ExtResource("7_akbbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
