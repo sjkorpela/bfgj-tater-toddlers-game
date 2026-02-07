@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dpgtro5wpgyqb"]
+
+[ext_resource type="Script" uid="uid://oei78y7fhn8d" path="res://Assets/Scripts/PlayerClickTest1.cs" id="1_1htrl"]
+
+[node name="PlayerClickTest" type="Node3D" unique_id=1226416888]
+script = ExtResource("1_1htrl")
