@@ -4,10 +4,12 @@ using Tater.Scripts;
 
 namespace Tater.Scripts;
 
-public partial class GameManagerNode : Node
+public partial class GameManager : Node
 {
 	[ExportCategory("Node References")]
 	[Export] private PlayerBrain _player;
+
+	[Export] private EnemyPool _pool;
 
 	public PlayerBrain Player => _player;
 
@@ -22,5 +24,7 @@ public partial class GameManagerNode : Node
 	public override void _PhysicsProcess(double delta)
 	{
 		_player._BrainPhysicsProcess(delta);
+		_pool._BrainProcess(delta);
+		_pool._BrainPhysicsProcess(delta);
 	}
 }

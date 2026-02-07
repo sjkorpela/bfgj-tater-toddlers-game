@@ -11,6 +11,7 @@ public partial class PlayerBrain : CharacterBody3D
 	
 	[ExportCategory("Node References")]
 	[Export] private InputVector2D _moveInput;
+	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
 	
 	[ExportCategory("Attributes")]
@@ -19,12 +20,27 @@ public partial class PlayerBrain : CharacterBody3D
 	
 	public override void _Ready()
 	{
-		if (_moveInput == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null)
 		{
-			throw new Exception("PlayerBrain has no InputVector2D!");
+			throw new Exception("PlayerBrain is missing node references!");
 		}
 	}
+
+	public override void _EnterTree()
+	{
+		_debugInput.OnPress += _cast;
+	}
 	
+	public override void _ExitTree()
+	{
+		_debugInput.OnPress -= _cast;
+	}
+
+	private void _cast()
+	{
+		GD.Print("cast!");
+	}
+
 	public void _BrainPhysicsProcess(double delta)
 	{
 		Vector3 input = new Vector3(

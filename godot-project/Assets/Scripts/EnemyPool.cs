@@ -32,9 +32,8 @@ public partial class EnemyPool : Node
 			throw new Exception("EnemyPool is missing node references!");
 		}
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	
+	public void _BrainProcess(double delta)
 	{
 		if (_totalAmount < _maxTotalAmount && _timeSinceLastSpawn >= _timeBetweenSpawns)
 		{
@@ -46,6 +45,14 @@ public partial class EnemyPool : Node
 		_timeSinceLastSpawn += delta;
 	}
 
+	public void _BrainPhysicsProcess(double delta)
+	{
+		foreach (EnemyBrain pawn in _pawns)
+		{
+			pawn._BrainPhysicsProcess(delta);
+		}
+	}
+
 	private void _instantiateNewPawn()
 	{
 		EnemyBrain temp = _enemy.Instantiate<EnemyBrain>();
@@ -55,13 +62,13 @@ public partial class EnemyPool : Node
 		temp.Target = _target;
 		
 		// memory leak?
-		temp.Ready += () => { temp.Target = _target; };
-		temp.TreeEntered += () => { temp.GlobalPosition = _spawnLocation.GlobalPosition; };
 		temp.OnDestroy += () =>
 		{
 			_pawns.Remove(temp);
 			_totalAmount--;
 		};
+		
+		temp.GlobalPosition = _spawnLocation.GlobalPosition;
 	}
 
 	private void _destroyAllPawns()

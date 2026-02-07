@@ -19,7 +19,7 @@ public partial class EnemyBrain : CharacterBody3D
 		set => _target = value;
 	}
 	
-	public override void _PhysicsProcess(double delta)
+	public void _BrainPhysicsProcess(double delta)
 	{
 		Vector3 toTarget = new Vector3(
 			_target.GlobalPosition.X - this.GlobalPosition.X,
