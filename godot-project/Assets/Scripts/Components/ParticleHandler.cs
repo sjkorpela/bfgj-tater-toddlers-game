@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Tater.Scripts;
+namespace Tater.Scripts.Components;
 
 public partial class ParticleHandler : Node
 {

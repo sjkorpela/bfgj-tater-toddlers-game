@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cegqat2p84b6w"]
 
 [ext_resource type="Texture2D" uid="uid://dhnipkx6c0ih4" path="res://Assets/Effects/Texture_Particle/Star_P.png" id="1_6nklq"]
-[ext_resource type="Script" uid="uid://djheeoifm8n0q" path="res://Assets/Scripts/ParticleHandler.cs" id="1_tarb6"]
+[ext_resource type="Script" uid="uid://djheeoifm8n0q" path="res://Assets/Scripts/Components/ParticleHandler.cs" id="1_tarb6"]
 [ext_resource type="Material" uid="uid://bywrfrneni3us" path="res://Assets/Effects/Materials/Star_Particles.tres" id="3_6nklq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1hm5"]

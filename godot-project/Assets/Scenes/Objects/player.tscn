@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://2dnpv45sixjt" path="res://wizard/wizard_Rig.tscn" id="1_6alcc"]
 [ext_resource type="Script" uid="uid://b8uyhojun7wr7" path="res://Assets/Scripts/PlayerBrain.cs" id="1_7dd06"]
+[ext_resource type="Material" uid="uid://do6eacqvepity" path="res://Assets/Resources/red_50.tres" id="2_7r5b4"]
 [ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
 [ext_resource type="Script" uid="uid://cq2pgt1a25m14" path="res://Assets/Scripts/InputHandlers/InputButtonBasic.cs" id="3_t1xgp"]
 [ext_resource type="PackedScene" uid="uid://cegqat2p84b6w" path="res://Assets/Effects/Sparkles.tscn" id="5_1qwgk"]
@@ -10,12 +11,14 @@
 radius = 0.7104492
 height = 2.722168
 
-[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer", "_wandParticles")]
+[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh")]
 script = ExtResource("1_7dd06")
 _moveInput = NodePath("MoveInput")
 _debugInput = NodePath("SpaceInput")
 _animationPlayer = NodePath("Wizard/AnimationPlayer")
 _wandParticles = NodePath("Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D/Sparkles")
+_mesh = NodePath("Wizard/Wizard_Armature/Skeleton3D/Wizard")
+_hurtMaterial = ExtResource("2_7r5b4")
 
 [node name="MoveInput" type="Node" parent="." unique_id=2017234674]
 script = ExtResource("2_38rej")

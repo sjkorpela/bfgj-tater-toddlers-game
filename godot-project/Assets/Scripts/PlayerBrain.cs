@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using Tater.Scripts.Components;
 using Tater.Scripts.InputHandlers;
 using Tater.Scripts.Static;
 
@@ -14,21 +16,22 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
 	[Export] private ParticleHandler _wandParticles;
+	[Export] private MeshInstance3D _mesh;
+	[Export] private StandardMaterial3D _hurtMaterial;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
 
 	private bool _casting = false;
-	public bool Casting
-	{
-		get => _casting;
-		set => _casting = value;
-	}
+	public bool Casting => _casting;
+
+	private bool _hurting = false;
+	public bool Hurting => _hurting;
 
 
 	public override void _Ready()
 	{
-		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _wandParticles == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _wandParticles == null || _mesh == null || _hurtMaterial == null)
 		{
 			throw new Exception("PlayerBrain is missing node references!");
 		}
@@ -36,17 +39,45 @@ public partial class PlayerBrain : CharacterBody3D
 
 	public override void _EnterTree()
 	{
-		_debugInput.OnPress += _debug_function;
+		_debugInput.OnPress += _debugFunction;
 	}
 	
 	public override void _ExitTree()
 	{
-		_debugInput.OnPress -= _debug_function;
+		_debugInput.OnPress -= _debugFunction;
 	}
 
-	private void _debug_function()
+	public void StartCasting()
+	{
+		_casting = true;
+		_wandParticles.Emitting = true;
+	}
+	
+	public void StopCasting()
+	{
+		_casting = false;
+		_wandParticles.Emitting = false;
+	}
+
+	public void DoHurtVisuals()
+	{
+		Thread hurtThread = new Thread(_doHurtVisuals);
+		hurtThread.Start();
+	}
+
+	private void _doHurtVisuals()
+	{
+		_hurting = true;
+		_mesh.MaterialOverlay = _hurtMaterial;
+		Thread.Sleep(500);
+		_mesh.MaterialOverlay = null;
+		_hurting = false;
+	}
+
+	private void _debugFunction()
 	{
 		GD.Print("debug function!");
+		DoHurtVisuals();
 	}
 
 	public void _BrainPhysicsProcess(double delta)
@@ -56,7 +87,7 @@ public partial class PlayerBrain : CharacterBody3D
 			0f,
 			_moveInput.InputVector.Y
 		);
-		this.Velocity = input.Normalized() * _speed * (float)delta;
+		this.Velocity = input.Normalized() * _speed * (float)delta * (_casting ? 0.5f : 1f);
 		
 		this.MoveAndSlide();
 		
@@ -87,15 +118,6 @@ public partial class PlayerBrain : CharacterBody3D
 		if (!input.IsZeroApprox())
 		{
 			this.LookAt(this.Position + -input);
-		}
-		
-		// Wand Particles
-		if (_casting && !_wandParticles.Emitting)
-		{
-			_wandParticles.Emitting = true;
-		} else if (!_casting)
-		{
-			_wandParticles.Emitting = false;
 		}
 	}
 }
