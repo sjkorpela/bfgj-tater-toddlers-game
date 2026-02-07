@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bywrfrneni3us"]
+
+[ext_resource type="Texture2D" uid="uid://cuxog3jbbwq42" path="res://Assets/Effects/Texture_Particle/Ball_P.png" id="1_62ddw"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 0.8392157, 0.2901961, 0.15686275)
+albedo_texture = ExtResource("1_62ddw")
+emission_enabled = true
+emission = Color(0.99215686, 1, 0.6901961, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
