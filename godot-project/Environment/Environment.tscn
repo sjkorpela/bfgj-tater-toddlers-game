@@ -196,6 +196,7 @@ mesh = ExtResource("15_s5lkp")
 shape = SubResource("ConcavePolygonShape3D_ec3e7")
 
 [node name="Tree8" type="MeshInstance3D" parent="." unique_id=1294794414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.035925)
 mesh = ExtResource("16_6h5sw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tree8" unique_id=992109470]
@@ -204,6 +205,7 @@ mesh = ExtResource("16_6h5sw")
 shape = SubResource("ConcavePolygonShape3D_o3n3f")
 
 [node name="Tree9" type="MeshInstance3D" parent="." unique_id=772672905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.0445967)
 mesh = ExtResource("17_71e72")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tree9" unique_id=625701631]

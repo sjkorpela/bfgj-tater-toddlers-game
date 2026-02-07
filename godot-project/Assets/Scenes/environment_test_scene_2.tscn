@@ -9,22 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="7_xs7ub"]
 [ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="8_lj2c5"]
 [ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_ke4di"]
+[ext_resource type="Texture2D" uid="uid://c7hyvfaakflp7" path="res://Environment/SKY.jpg" id="10_lp7fg"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6r736"]
-sky_top_color = Color(0.7563343, 0.50457036, 0.37494397, 1)
-sky_horizon_color = Color(0.80871457, 0.5567249, 0.7738402, 1)
-sky_curve = 0.26116508
-ground_bottom_color = Color(0.37870714, 0.70789665, 0.79013354, 1)
-ground_horizon_color = Color(0.80784315, 0.5568628, 0.77254903, 1)
-ground_curve = 0.19698279
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oyd6y"]
+panorama = ExtResource("10_lp7fg")
 
 [sub_resource type="Sky" id="Sky_lp7fg"]
-sky_material = SubResource("ProceduralSkyMaterial_6r736")
+sky_material = SubResource("PanoramaSkyMaterial_oyd6y")
 
 [sub_resource type="Environment" id="Environment_oyd6y"]
 background_mode = 2
 sky = SubResource("Sky_lp7fg")
-sky_rotation = Vector3(-0.57072264, 0, 0)
+sky_custom_fov = 96.4
+sky_rotation = Vector3(-6.0458207, -2.4242623, -0.17453292)
 tonemap_mode = 2
 tonemap_exposure = 0.9
 
@@ -47,7 +44,7 @@ _hideLocation = NodePath("EnemyHideLocation")
 _maxTotalAmount = 10
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6.085086, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
@@ -59,7 +56,7 @@ _camera = NodePath("../Camera3D")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
 transform = Transform3D(0.99258715, -0.12152103, 0.0018587598, 0.09754439, 0.805682, 0.5842616, -0.072497636, -0.5797492, 0.8115633, -8.552953, 28.680283, 25.48586)
 keep_aspect = 0
-h_offset = -8.14
+h_offset = -8.18
 v_offset = -1.59
 fov = 86.1
 near = 0.011
