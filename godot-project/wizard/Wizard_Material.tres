@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://woryj83ny0of"]
+
+[ext_resource type="Texture2D" uid="uid://hbwjtcuyprb7" path="res://wizard/Wizardstexture/wizard_BaseColor.png" id="1_x6pk8"]
+[ext_resource type="Texture2D" uid="uid://edtr06nbauee" path="res://wizard/Wizardstexture/wizard_Roughness.png" id="3_46epe"]
+
+[resource]
+albedo_texture = ExtResource("1_x6pk8")
+roughness_texture = ExtResource("3_46epe")
+normal_enabled = true

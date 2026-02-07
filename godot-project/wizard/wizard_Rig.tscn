@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://2dnpv45sixjt"]
+
+[ext_resource type="PackedScene" uid="uid://bhujucw50s8c8" path="res://wizard/Wizard.fbx" id="1_16guy"]
+[ext_resource type="Material" uid="uid://woryj83ny0of" path="res://wizard/Wizard_Material.tres" id="2_n22cc"]
+
+[node name="Wizard" unique_id=1551048574 instance=ExtResource("1_16guy")]
+
+[node name="Skeleton3D" parent="Wizard_Armature" parent_id_path=PackedInt32Array(1832122199) index="0" unique_id=1596053664]
+bones/2/rotation = Quaternion(-1.1377258e-08, -1.1866511e-07, 0.09543935, 0.99543524)
+bones/3/rotation = Quaternion(0, 0, -0.07763264, 0.99698204)
+bones/4/rotation = Quaternion(1.4633429e-09, 1.03139e-07, -0.0141866375, 0.9998994)
+bones/5/rotation = Quaternion(1.4160648e-07, 6.6217844e-08, -0.5007337, 0.8656014)
+bones/7/rotation = Quaternion(0.011942697, -0.0060394313, -0.030461097, 0.9994464)
+
+[node name="Wizard" parent="Wizard_Armature/Skeleton3D" index="0" unique_id=1491421380]
+material_override = ExtResource("2_n22cc")
