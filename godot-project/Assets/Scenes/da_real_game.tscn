@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_w4pps"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
+[ext_resource type="PackedScene" uid="uid://bejuf8s01hfin" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
 [ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_aw15j"]
 
 [sub_resource type="Environment" id="Environment_7sy2t"]
@@ -43,17 +43,17 @@ _hideLocation = NodePath("EnemyHideLocation")
 _maxTotalAmount = 10
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 8.625157, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 158)
 
 [node name="Player" parent="." unique_id=1596617950 instance=ExtResource("7_akbbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.775074, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
 transform = Transform3D(1, 0, 0, 0, 0.66875434, 0.7434835, 0, -0.7434835, 0.66875434, 0, 75.00041, 62.343124)
-fov = 8.7
+fov = 34.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.19029678, 0.97983086, 0.0609797, -0.5892886, 0.06432672, 0.8053577, 0.78519166, -0.18919162, 0.58964443, 0, 14.430893, 7.056035)

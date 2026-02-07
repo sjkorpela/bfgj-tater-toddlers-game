@@ -13,6 +13,7 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputVector2D _moveInput;
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
+	[Export] private ParticleHandler _wandParticles;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
@@ -27,7 +28,7 @@ public partial class PlayerBrain : CharacterBody3D
 
 	public override void _Ready()
 	{
-		if (_moveInput == null || _debugInput == null || _animationPlayer == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _wandParticles == null)
 		{
 			throw new Exception("PlayerBrain is missing node references!");
 		}
@@ -60,7 +61,9 @@ public partial class PlayerBrain : CharacterBody3D
 		this.MoveAndSlide();
 		
 		
-		// Animation logic
+		// Animation/Visuals logic
+		
+		// Animation
 		if (_casting)
 		{
 			String castAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Casting);
@@ -80,9 +83,19 @@ public partial class PlayerBrain : CharacterBody3D
 			_animationPlayer.Play(AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Idle));
 		}
 
+		// Facing direction
 		if (!input.IsZeroApprox())
 		{
 			this.LookAt(this.Position + -input);
+		}
+		
+		// Wand Particles
+		if (_casting && !_wandParticles.Emitting)
+		{
+			_wandParticles.Emitting = true;
+		} else if (!_casting)
+		{
+			_wandParticles.Emitting = false;
 		}
 	}
 }
