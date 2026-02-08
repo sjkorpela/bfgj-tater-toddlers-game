@@ -5,20 +5,25 @@
 [ext_resource type="Material" uid="uid://do6eacqvepity" path="res://Assets/Resources/red_50.tres" id="2_7r5b4"]
 [ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
 [ext_resource type="Script" uid="uid://cq2pgt1a25m14" path="res://Assets/Scripts/InputHandlers/InputButtonBasic.cs" id="3_t1xgp"]
+[ext_resource type="Script" uid="uid://brtmpvporynbo" path="res://Assets/Scripts/Components/HealthComponent.cs" id="3_uum82"]
 [ext_resource type="PackedScene" uid="uid://cegqat2p84b6w" path="res://Assets/Effects/Sparkles.tscn" id="5_1qwgk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcsqd"]
 radius = 0.7104492
 height = 2.722168
 
-[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh")]
+[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_health", "_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh")]
 script = ExtResource("1_7dd06")
+_health = NodePath("HealthComponent")
 _moveInput = NodePath("MoveInput")
 _debugInput = NodePath("SpaceInput")
 _animationPlayer = NodePath("Wizard/AnimationPlayer")
 _wandParticles = NodePath("Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D/Sparkles")
 _mesh = NodePath("Wizard/Wizard_Armature/Skeleton3D/Wizard")
 _hurtMaterial = ExtResource("2_7r5b4")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1277947620]
+script = ExtResource("3_uum82")
 
 [node name="MoveInput" type="Node" parent="." unique_id=2017234674]
 script = ExtResource("2_38rej")
@@ -33,7 +38,7 @@ shape = SubResource("CapsuleShape3D_mcsqd")
 [node name="Wizard" parent="." unique_id=1551048574 instance=ExtResource("1_6alcc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011768341, 1.1920929e-07, 0.0022458434)
 
-[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1704747509) index="0" unique_id=72362703]
+[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1768882417) index="0" unique_id=788391151]
 bones/1/rotation = Quaternion(-1.0974448e-08, 1.1870303e-07, 0.09206034, 0.9957534)
 bones/2/rotation = Quaternion(-2.4427809e-08, -1.1667962e-07, 0.20491539, 0.9787797)
 bones/3/rotation = Quaternion(-1.6004868e-15, -1.3733963e-16, -0.10172676, 0.99481237)

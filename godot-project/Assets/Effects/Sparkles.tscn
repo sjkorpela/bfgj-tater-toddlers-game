@@ -42,6 +42,7 @@ _emitting = false
 [node name="Stars" type="CPUParticles3D" parent="." unique_id=665224898]
 transform = Transform3D(1.945, 0, 0, 0, 1.945, 0, 0, 0, 1.945, -0.001077652, 0.0025250316, 0.00019954145)
 cast_shadow = 0
+emitting = false
 amount = 5
 lifetime = 0.96
 randomness = 0.26
@@ -63,6 +64,7 @@ color = Color(1, 1, 0.93333334, 1)
 
 [node name="Ball" type="CPUParticles3D" parent="." unique_id=671027210]
 transform = Transform3D(2.605, 0, 0, 0, 2.605, 0, 0, 0, 2.605, 0.0025840998, 0.004324913, -0.0007455349)
+emitting = false
 amount = 11
 mesh = SubResource("QuadMesh_tarb6")
 emission_shape = 1
