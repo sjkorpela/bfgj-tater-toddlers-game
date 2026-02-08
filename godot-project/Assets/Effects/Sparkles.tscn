@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cegqat2p84b6w"]
 
 [ext_resource type="Texture2D" uid="uid://dhnipkx6c0ih4" path="res://Assets/Effects/Texture_Particle/Star_P.png" id="1_6nklq"]
+[ext_resource type="Script" uid="uid://djheeoifm8n0q" path="res://Assets/Scripts/Components/ParticleHandler.cs" id="1_tarb6"]
 [ext_resource type="Material" uid="uid://bywrfrneni3us" path="res://Assets/Effects/Materials/Star_Particles.tres" id="3_6nklq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1hm5"]
@@ -33,7 +34,10 @@ material = ExtResource("3_6nklq")
 _data = [Vector2(0.005730659, 0.508465), 0.0, 0.62279564, 0, 0, Vector2(0.34383953, 0.8972912), 0.85346097, 0.85346097, 0, 0, Vector2(0.9999999, 0), -5.413379, 0.0, 0, 0]
 point_count = 3
 
-[node name="Sparkles" type="Node3D" unique_id=2058537044]
+[node name="Sparkles" type="Node3D" unique_id=2058537044 node_paths=PackedStringArray("_cpuParticles")]
+script = ExtResource("1_tarb6")
+_cpuParticles = [NodePath("Stars"), NodePath("Ball")]
+_emitting = false
 
 [node name="Stars" type="CPUParticles3D" parent="." unique_id=665224898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001077652, 0.0025250316, 0.00019954145)

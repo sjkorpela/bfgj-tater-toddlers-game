@@ -6,6 +6,8 @@ namespace Tater.Scripts;
 
 public partial class EnemyPool : Node
 {
+	[Signal] public delegate void OnPawnKillEventHandler(int value);
+	
 	[ExportCategory("Node References")]
 	[Export] private PackedScene[] _enemyTypes;
 	[Export] private Node3D _target;
@@ -17,20 +19,22 @@ public partial class EnemyPool : Node
 	private int _totalAmount = 0;
 	[Export] private double _timeBetweenSpawns = 1f;
 	private double _timeSinceLastSpawn = 0f;
+
+	[ExportCategory("Settings")]
+	[Export] private int minX = -31;
+	[Export] private int maxX = 31;
+	[Export] private int minZ = -25;
+	[Export] private int maxZ = 25;
 	
 	private List<EnemyBrain> _pawns = [];
-	public List<EnemyBrain> Pawns
-	{
-		get => _pawns;
-		set => _pawns = value;
-	}
+	public List<EnemyBrain> Pawns => _pawns;
 
 	private Random _random = new Random();
 
 
 	public override void _Ready()
 	{
-		if (_enemyTypes == null || _target == null || _spawnLocation == null)
+		if (_enemyTypes == null || _target == null || _spawnLocation == null || _hideLocation == null)
 		{
 			throw new Exception("EnemyPool is missing node references!");
 		}
@@ -38,6 +42,7 @@ public partial class EnemyPool : Node
 	
 	public void _BrainProcess(double delta)
 	{
+		// Fill up 
 		if (_totalAmount < _maxTotalAmount)
 		{
 			_instantiateNewPawn();
@@ -67,13 +72,14 @@ public partial class EnemyPool : Node
 		_totalAmount++;
 		_pawns.Add(temp);
 		temp.Initialize(_target, _hideLocation.GlobalPosition);
+		temp.Health.OnLethalDamage += () => EmitSignalOnPawnKill(100);
 	}
 
 	public void ActivatePawn()
 	{
 		foreach (EnemyBrain pawn in _pawns)
 		{
-			if (!pawn.Active)
+			if (!pawn.Active && !pawn.StillDying)
 			{
 				pawn.Activate(_spawnLocation.GlobalPosition);
 				break;
@@ -81,28 +87,21 @@ public partial class EnemyPool : Node
 		}
 	}
 
-	public void DeactivatePawn(EnemyBrain pawn)
+	public void DamagePawn(EnemyBrain pawn, int damage)
 	{
-		pawn.Deactivate(_hideLocation.GlobalPosition);
+		pawn.Health.TakeDamage(damage);
 	}
 
-	private void _destroyAllPawns()
+	public void DeactivatePawn(EnemyBrain pawn)
+	{
+		pawn.Deactivate();
+	}
+
+	public void DeactivateAllPawns()
 	{
 		foreach (EnemyBrain pawn in _pawns)
 		{
-			pawn.Deactivate(_hideLocation.GlobalPosition);
-		}
-	}
-
-	public void CleanList()
-	{
-		for (int i = 0; i < _pawns.Count; i++)
-		{
-			if (_pawns[i] == null)
-			{
-				_pawns.RemoveAt(i);
-				_totalAmount--;
-			}
+			pawn.Deactivate();
 		}
 	}
 }

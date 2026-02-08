@@ -8,6 +8,7 @@ namespace Tater.Scripts;
 
 public partial class ShapeDrawing : Node
 {
+	[Signal] public delegate void OnDrawingStartEventHandler();
 	[Signal] public delegate void OnCastEventHandler(AttackShape shape);
 	
 	private float _timeBetweenDots = 0.01f;
@@ -43,6 +44,7 @@ public partial class ShapeDrawing : Node
 		if (!_shapeActive && Input.IsMouseButtonPressed(MouseButton.Left))
 		{
 			GD.Print("start drawing shape!");
+			EmitSignalOnDrawingStart();
 			_shapeActive = true;
 			_addNewDot();
 		}
@@ -113,7 +115,7 @@ public partial class ShapeDrawing : Node
 			}
 		}
 		
-		GD.Print("s: " + straights, "\nc: " + corners, "\no: " + others);
+		// GD.Print("s: " + straights, "\nc: " + corners, "\no: " + others);
 		Shape shape;
 
 		if (straights + corners <= 2)
@@ -128,7 +130,7 @@ public partial class ShapeDrawing : Node
 		{
 			shape = Shape.Triangle;
 		}
-		GD.Print(shape);
+		// GD.Print(shape);
 
 		AttackShape temp = new AttackShape();
 		this.AddChild(temp);

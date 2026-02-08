@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dp08yyg3155b5"]
+
+[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_7sy2t"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_7dhg6"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_lban4"]
+[ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_l0j2o"]
+[ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_gxkyt"]
+[ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_ooffd"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/Objects/player.tscn" id="7_62x7u"]
+[ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_7sy2t"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Old/enemy_1.tscn" id="9_bhp8c"]
+
+[sub_resource type="Environment" id="Environment_7sy2t"]
+
+[node name="TestScene1" type="Node3D" unique_id=268760725]
+
+[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw")]
+script = ExtResource("1_7sy2t")
+_player = NodePath("../Player")
+_pool = NodePath("../EnemyPool")
+_camera = NodePath("../Camera3D")
+_draw = NodePath("../ShapeDrawing")
+
+[node name="ShapeDrawing" parent="." unique_id=342024680 instance=ExtResource("2_7dhg6")]
+
+[node name="EnemyPool" parent="." unique_id=1310609059 node_paths=PackedStringArray("_target", "_spawnLocation", "_hideLocation") instance=ExtResource("3_lban4")]
+_enemyTypes = Array[PackedScene]([ExtResource("4_l0j2o"), ExtResource("5_gxkyt"), ExtResource("6_ooffd")])
+_target = NodePath("../Player")
+_spawnLocation = NodePath("EnemySpawnLocation")
+_hideLocation = NodePath("EnemyHideLocation")
+_maxTotalAmount = 10
+
+[node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
+
+[node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="Player" parent="." unique_id=1596617950 node_paths=PackedStringArray("_camera") instance=ExtResource("7_62x7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.775074, 0)
+_camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, -11, 27.284643, 19.870306)
+fov = 81.6
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
+transform = Transform3D(0.19029678, 0.97983086, 0.0609797, -0.5892886, 0.06432672, 0.8053577, 0.78519166, -0.18919162, 0.58964443, 0, 14.430893, 7.056035)
+
+[node name="Enemy1" parent="." unique_id=1004741099 node_paths=PackedStringArray("_target") instance=ExtResource("9_bhp8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.698782, -4.3343334, 0)
+_target = NodePath("../Player")
+
+[node name="Environment" parent="." unique_id=1802728127 instance=ExtResource("9_7sy2t")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=136842251]
+environment = SubResource("Environment_7sy2t")

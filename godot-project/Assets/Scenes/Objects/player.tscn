@@ -1,19 +1,24 @@
-[gd_scene format=3 uid="uid://ovr6j3n0nem5"]
+[gd_scene format=3 uid="uid://bejuf8s01hfin"]
 
 [ext_resource type="PackedScene" uid="uid://2dnpv45sixjt" path="res://wizard/wizard_Rig.tscn" id="1_6alcc"]
 [ext_resource type="Script" uid="uid://b8uyhojun7wr7" path="res://Assets/Scripts/PlayerBrain.cs" id="1_7dd06"]
+[ext_resource type="Material" uid="uid://do6eacqvepity" path="res://Assets/Resources/red_50.tres" id="2_7r5b4"]
 [ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
 [ext_resource type="Script" uid="uid://cq2pgt1a25m14" path="res://Assets/Scripts/InputHandlers/InputButtonBasic.cs" id="3_t1xgp"]
+[ext_resource type="PackedScene" uid="uid://cegqat2p84b6w" path="res://Assets/Effects/Sparkles.tscn" id="5_1qwgk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcsqd"]
 radius = 0.7104492
 height = 2.722168
 
-[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer")]
+[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh")]
 script = ExtResource("1_7dd06")
 _moveInput = NodePath("MoveInput")
 _debugInput = NodePath("SpaceInput")
 _animationPlayer = NodePath("Wizard/AnimationPlayer")
+_wandParticles = NodePath("Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D/Sparkles")
+_mesh = NodePath("Wizard/Wizard_Armature/Skeleton3D/Wizard")
+_hurtMaterial = ExtResource("2_7r5b4")
 
 [node name="MoveInput" type="Node" parent="." unique_id=2017234674]
 script = ExtResource("2_38rej")
@@ -28,7 +33,7 @@ shape = SubResource("CapsuleShape3D_mcsqd")
 [node name="Wizard" parent="." unique_id=1551048574 instance=ExtResource("1_6alcc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011768341, 1.1920929e-07, 0.0022458434)
 
-[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 453040985) index="0" unique_id=43212243]
+[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1704747509) index="0" unique_id=72362703]
 bones/1/rotation = Quaternion(-1.0974448e-08, 1.1870303e-07, 0.09206034, 0.9957534)
 bones/2/rotation = Quaternion(-2.4427809e-08, -1.1667962e-07, 0.20491539, 0.9787797)
 bones/3/rotation = Quaternion(-1.6004868e-15, -1.3733963e-16, -0.10172676, 0.99481237)
@@ -37,5 +42,13 @@ bones/5/rotation = Quaternion(-0.03921699, 0.032603122, -0.5865647, 0.8082951)
 bones/7/position = Vector3(-0.0055272235, 0.0012468478, -0.00713828)
 bones/7/rotation = Quaternion(-0.029580148, 0.0101806875, -0.36380452, 0.93094987)
 bones/9/position = Vector3(-0.005073577, 0.0017975998, 0.00713828)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Wizard/Wizard_Armature/Skeleton3D" index="0" unique_id=1542883623]
+transform = Transform3D(0.9890848, 0.14719668, 0.006670978, -0.0025673462, 0.06248271, -0.9980426, -0.14732528, 0.9871316, 0.062178586, -0.0064683286, 0.0072553325, 0.0096364105)
+bone_name = "R_end"
+bone_idx = 8
+
+[node name="Sparkles" parent="Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D" unique_id=2058537044 instance=ExtResource("5_1qwgk")]
+transform = Transform3D(2.5673131e-05, -0.0014732536, -0.009890842, -0.00062482845, 0.009871317, -0.0014719658, 0.009980429, 0.00062178716, -6.671027e-05, -0.0012370674, 0.008311602, 1.861807e-05)
 
 [editable path="Wizard"]

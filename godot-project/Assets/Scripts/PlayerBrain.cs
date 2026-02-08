@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using Tater.Scripts.Components;
 using Tater.Scripts.InputHandlers;
 using Tater.Scripts.Static;
 
@@ -13,15 +15,23 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private InputVector2D _moveInput;
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
-	[Export] private Camera3D _camera;
+	[Export] private ParticleHandler _wandParticles;
+	[Export] private MeshInstance3D _mesh;
+	[Export] private StandardMaterial3D _hurtMaterial;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
-	
-	
+
+	private bool _casting = false;
+	public bool Casting => _casting;
+
+	private bool _hurting = false;
+	public bool Hurting => _hurting;
+
+
 	public override void _Ready()
 	{
-		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _camera == null)
+		if (_moveInput == null || _debugInput == null || _animationPlayer == null || _wandParticles == null || _mesh == null || _hurtMaterial == null)
 		{
 			throw new Exception("PlayerBrain is missing node references!");
 		}
@@ -29,17 +39,45 @@ public partial class PlayerBrain : CharacterBody3D
 
 	public override void _EnterTree()
 	{
-		_debugInput.OnPress += _cast;
+		_debugInput.OnPress += _debugFunction;
 	}
 	
 	public override void _ExitTree()
 	{
-		_debugInput.OnPress -= _cast;
+		_debugInput.OnPress -= _debugFunction;
 	}
 
-	private void _cast()
+	public void StartCasting()
 	{
-		GD.Print("cast!");
+		_casting = true;
+		_wandParticles.Emitting = true;
+	}
+	
+	public void StopCasting()
+	{
+		_casting = false;
+		_wandParticles.Emitting = false;
+	}
+
+	public void DoHurtVisuals()
+	{
+		Thread hurtThread = new Thread(_doHurtVisuals);
+		hurtThread.Start();
+	}
+
+	private void _doHurtVisuals()
+	{
+		_hurting = true;
+		_mesh.MaterialOverlay = _hurtMaterial;
+		Thread.Sleep(500);
+		_mesh.MaterialOverlay = null;
+		_hurting = false;
+	}
+
+	private void _debugFunction()
+	{
+		GD.Print("debug function!");
+		DoHurtVisuals();
 	}
 
 	public void _BrainPhysicsProcess(double delta)
@@ -49,25 +87,37 @@ public partial class PlayerBrain : CharacterBody3D
 			0f,
 			_moveInput.InputVector.Y
 		);
-		this.Velocity = input.Normalized() * _speed * (float)delta;
-
-		if (!input.IsZeroApprox())
+		this.Velocity = input.Normalized() * _speed * (float)delta * (_casting ? 0.5f : 1f);
+		
+		this.MoveAndSlide();
+		
+		
+		// Animation/Visuals logic
+		
+		// Animation
+		if (_casting)
 		{
-			// very long line of text to not deal with string in middle of code :P
-			String moveAnimation = AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Moving);
+			String castAnimation = AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Casting);
+			if (_animationPlayer.AssignedAnimation != castAnimation)
+			{
+				_animationPlayer.Play(castAnimation);
+			}
+		} else if (!input.IsZeroApprox())
+		{
+			String moveAnimation = AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Moving);
 			if (_animationPlayer.AssignedAnimation != moveAnimation)
 			{
 				_animationPlayer.Play(moveAnimation);
 			}
-			
+		} else
+		{
+			_animationPlayer.Play(AnimationDictionaries.ParseWizardAnimation.GetValueOrDefault(WizardAnimation.Idle));
+		}
+
+		// Facing direction
+		if (!input.IsZeroApprox())
+		{
 			this.LookAt(this.Position + -input);
 		}
-		else
-		{
-			_animationPlayer.Play(AnimationDictionaries.ParseAnimation.GetValueOrDefault(WizardAnimation.Idle));
-		}
-		
-		
-		this.MoveAndSlide();
 	}
 }

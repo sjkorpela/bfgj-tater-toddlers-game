@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cwg8tjd0wxkyc"]
 
-[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="1_nxqqo"]
-[ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/test_floor_1.tscn" id="2_dkjjc"]
-[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="3_1umvv"]
-[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="4_1umvv"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/Objects/player.tscn" id="1_nxqqo"]
+[ext_resource type="PackedScene" uid="uid://dcu3xe7kn8874" path="res://Assets/Scenes/Old/test_floor_1.tscn" id="2_dkjjc"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Old/enemy_1.tscn" id="3_1umvv"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="4_1umvv"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_bs8fd"]
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="4_pueb2"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_m831u"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_4cb2y"]
-[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/shape_drawing.tscn" id="6_7j832"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="6_7j832"]
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
@@ -41,7 +41,7 @@ _camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 15.284643, 10.870306)
-fov = 60.0
+fov = 70.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.1902968, 0.97983086, 0.06097972, -0.07284547, -0.04785052, 0.9961947, 0.97902024, -0.19401473, 0.06227044, 0, 14.430893, 0)

@@ -6,3 +6,9 @@ public enum WizardAnimation
     Moving,
     Casting
 }
+
+public enum EnemyAnimation
+{
+    Walk,
+    Death,
+}
