@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://bqse6p7hpghlv"]
+[gd_scene format=3 uid="uid://dr3k1n8wdefiy"]
 
 [ext_resource type="Script" uid="uid://qm0bcw0w3wi6" path="res://Assets/Scripts/AttackShape.cs" id="1_37vdy"]
 
 [node name="DrawingLine" type="Line2D" unique_id=1067983576]
+points = PackedVector2Array(-33, 107)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("1_37vdy")
-_circleColor = Color(1, 0, 0, 1)
-_squareColor = Color(1, 1, 0, 1)
-_triangleColor = Color(0, 1, 0, 1)
+_circleColor = Color(0.96862745, 0.5568628, 0.5058824, 1)
+_squareColor = Color(1, 0.8627451, 0.5058824, 1)
+_triangleColor = Color(6.545782e-06, 0.82899797, 0.84692353, 1)
