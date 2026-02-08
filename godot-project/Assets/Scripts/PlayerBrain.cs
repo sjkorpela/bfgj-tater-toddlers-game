@@ -21,6 +21,11 @@ public partial class PlayerBrain : CharacterBody3D
 	[Export] private MeshInstance3D _mesh;
 	[Export] private StandardMaterial3D _hurtMaterial;
 	
+	[ExportCategory("Sounds")]
+	[Export] private RandomAudioStreamPlayer2D _hurtSound;
+	[Export] private RandomAudioStreamPlayer2D _castSound;
+	[Export] private AudioStreamPlayer2D _walkSound;
+	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
 
@@ -60,12 +65,14 @@ public partial class PlayerBrain : CharacterBody3D
 	
 	public void StopCasting()
 	{
+		_castSound.PlayRandomSound();
 		_casting = false;
 		_wandParticles.Emitting = false;
 	}
 
 	public void DoHurtVisuals()
 	{
+		_hurtSound.PlayRandomSound();
 		Thread hurtThread = new Thread(_hurtVisualsThread);
 		hurtThread.Start();
 	}
@@ -143,7 +150,16 @@ public partial class PlayerBrain : CharacterBody3D
 		// Facing direction
 		if (!input.IsZeroApprox())
 		{
+			if (!_walkSound.IsPlaying())
+			{
+				_walkSound.SetPlaying(true);
+			}
+			
 			this.LookAt(this.Position + -input);
+		}
+		else
+		{
+			_walkSound.SetPlaying(false);
 		}
 	}
 }

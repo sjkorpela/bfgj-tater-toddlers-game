@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://br5bu7d2apjqc"]
+
+[ext_resource type="AudioStream" uid="uid://setlfgy78dyo" path="res://Assets/Sounds/MX/TATER_TODS_melody_01.2_full_1.wav" id="1_21mq2"]
+[ext_resource type="AudioStream" uid="uid://dkb188uxbqy3e" path="res://Assets/Sounds/AMB/AMB_tater_tods_birds_insects_endless_loop.wav" id="2_bbfch"]
+
+[node name="AmbientAndMusic" type="Node" unique_id=2074840048]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=472734003]
+stream = ExtResource("1_21mq2")
+autoplay = true
+bus = &"Music"
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="." unique_id=1856804963]
+stream = ExtResource("2_bbfch")
+autoplay = true
+bus = &"Music"

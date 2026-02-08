@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://bie5bhbv3141"]
 
-[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_jr5xw"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
+[ext_resource type="PackedScene" uid="uid://bptnlv0mx4qk5" path="res://Assets/Scenes/Objects/game_manager.tscn" id="1_jr5xw"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_w4pps"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
 [ext_resource type="PackedScene" uid="uid://bejuf8s01hfin" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
 [ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_aw15j"]
 [ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="9_jr5xw"]
+[ext_resource type="PackedScene" uid="uid://br5bu7d2apjqc" path="res://Assets/Scenes/ambient_and_music.tscn" id="10_a6gqa"]
 
 [sub_resource type="Environment" id="Environment_7sy2t"]
 background_color = Color(1, 0.49044794, 0.960975, 1)
@@ -30,8 +31,7 @@ font_size = 48
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
-[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw")]
-script = ExtResource("1_jr5xw")
+[node name="GameManager" parent="." unique_id=1279497333 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw") instance=ExtResource("1_jr5xw")]
 _player = NodePath("../Player")
 _pool = NodePath("../EnemyPool")
 _camera = NodePath("../Camera3D")
@@ -100,3 +100,7 @@ text = "Score: ###"
 label_settings = SubResource("LabelSettings_jr5xw")
 script = ExtResource("9_jr5xw")
 _gameManager = NodePath("../../GameManager")
+
+[node name="AudioListener3D" type="AudioListener2D" parent="." unique_id=666184920]
+
+[node name="AmbientAndMusic" parent="." unique_id=2074840048 instance=ExtResource("10_a6gqa")]

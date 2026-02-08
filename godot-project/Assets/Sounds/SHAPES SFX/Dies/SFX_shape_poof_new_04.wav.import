@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmq0g161cpo1h"
+path="res://.godot/imported/SFX_shape_poof_new_04.wav-bc9b7a4633baec28a67f5aa9a3a03978.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SHAPES SFX/Dies/SFX_shape_poof_new_04.wav"
+dest_files=["res://.godot/imported/SFX_shape_poof_new_04.wav-bc9b7a4633baec28a67f5aa9a3a03978.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
