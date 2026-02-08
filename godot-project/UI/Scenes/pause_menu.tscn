@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cc04p0t0wp56k"]
 
-[ext_resource type="Script" uid="uid://cnfbj24wohedd" path="res://UI/Scripts/pause_menu.gd" id="1_jnqna"]
 [ext_resource type="Texture2D" uid="uid://ds6yc8lpbhnxv" path="res://UI/Assets/PAUSEMENU_BACKGROUND.png" id="2_7yu7q"]
 [ext_resource type="Texture2D" uid="uid://buvy8awxoqg5k" path="res://UI/Assets/SETTINGS_BUTTON2.png" id="3_o1lsb"]
 [ext_resource type="Texture2D" uid="uid://dwx2ioj4mdlap" path="res://UI/Assets/CONTINUE_BUTTON.png" id="4_o1lsb"]
 [ext_resource type="Texture2D" uid="uid://uuswoej1b27j" path="res://UI/Assets/EXIT_BUTTON.png" id="5_rseou"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="6_fcbiy"]
+[ext_resource type="Theme" uid="uid://ctqkpx2gdm730" path="res://Assets/Resources/invisible_theme.tres" id="6_rseou"]
 
 [node name="PauseMenu" type="Control" unique_id=2878765]
 layout_mode = 3
@@ -13,36 +14,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jnqna")
 
-[node name="PausemenuBackground" type="Sprite2D" parent="." unique_id=2140508991]
-position = Vector2(583, 320)
-scale = Vector2(0.428, 0.428)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=281076833]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -2.0
+offset_right = 996.6667
+offset_bottom = 645.0
 texture = ExtResource("2_7yu7q")
+expand_mode = 1
 
-[node name="SettingsButton" type="TextureButton" parent="PausemenuBackground" unique_id=1551267269]
-offset_left = -1004.6729
-offset_top = -745.32715
-offset_right = 995.3271
-offset_bottom = 754.67285
-texture_normal = ExtResource("3_o1lsb")
+[node name="SettingsButtonImage" type="TextureRect" parent="." unique_id=2093072519]
+layout_mode = 0
+offset_left = 131.0
+offset_top = -12.0
+offset_right = 1021.6667
+offset_bottom = 656.0
+texture = ExtResource("3_o1lsb")
+expand_mode = 1
 
-[node name="ExitButton" type="TextureButton" parent="PausemenuBackground" unique_id=384877721]
-offset_left = -995.3271
-offset_top = -747.6636
-offset_right = 1004.6729
-offset_bottom = 752.3364
-texture_normal = ExtResource("5_rseou")
-texture_pressed = ExtResource("5_rseou")
+[node name="ContinueButtonImage" type="TextureRect" parent="." unique_id=200527917]
+layout_mode = 0
+offset_left = 131.0
+offset_top = -12.0
+offset_right = 1021.6667
+offset_bottom = 656.0
+texture = ExtResource("4_o1lsb")
+expand_mode = 1
 
-[node name="ContinueButton" type="TextureButton" parent="PausemenuBackground" unique_id=687937057]
-offset_left = -1016.35516
-offset_top = -745.3271
-offset_right = 983.64484
-offset_bottom = 754.6729
-texture_normal = ExtResource("4_o1lsb")
-texture_pressed = ExtResource("4_o1lsb")
+[node name="ExitButtonImage" type="TextureRect" parent="." unique_id=611068986]
+layout_mode = 0
+offset_left = 131.0
+offset_top = -12.0
+offset_right = 1021.6667
+offset_bottom = 656.0
+texture = ExtResource("5_rseou")
+expand_mode = 1
 
-[connection signal="pressed" from="PausemenuBackground/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PausemenuBackground/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="PausemenuBackground/ContinueButton" to="." method="_on_continue_button_pressed"]
+[node name="ContinueButton" type="Button" parent="." unique_id=468505741]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 65.0
+offset_right = 764.0
+offset_bottom = 162.0
+theme = ExtResource("6_rseou")
+script = ExtResource("6_fcbiy")
+
+[node name="ExitButton" type="Button" parent="." unique_id=1546361697]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 65.0
+offset_right = 764.0
+offset_bottom = 162.0
+theme = ExtResource("6_rseou")
+script = ExtResource("6_fcbiy")
+
+[node name="SettingsButton" type="Button" parent="." unique_id=679909367]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 200.0
+offset_right = 765.0
+offset_bottom = 297.0
+theme = ExtResource("6_rseou")
+script = ExtResource("6_fcbiy")

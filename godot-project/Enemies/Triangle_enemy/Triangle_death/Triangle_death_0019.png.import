@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dog13avdr2gqq"
 path.s3tc="res://.godot/imported/Triangle_death_0019.png-d363bb53e4349dbf23c2a1e2664816ea.s3tc.ctex"
+path.etc2="res://.godot/imported/Triangle_death_0019.png-d363bb53e4349dbf23c2a1e2664816ea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0019.png"
-dest_files=["res://.godot/imported/Triangle_death_0019.png-d363bb53e4349dbf23c2a1e2664816ea.s3tc.ctex"]
+dest_files=["res://.godot/imported/Triangle_death_0019.png-d363bb53e4349dbf23c2a1e2664816ea.s3tc.ctex", "res://.godot/imported/Triangle_death_0019.png-d363bb53e4349dbf23c2a1e2664816ea.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1877uk670ohd"
 path.s3tc="res://.godot/imported/Triangle_walk_0003.png-996368ed28addc3b3327fb3725ca6e1e.s3tc.ctex"
+path.etc2="res://.godot/imported/Triangle_walk_0003.png-996368ed28addc3b3327fb3725ca6e1e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0003.png"
-dest_files=["res://.godot/imported/Triangle_walk_0003.png-996368ed28addc3b3327fb3725ca6e1e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Triangle_walk_0003.png-996368ed28addc3b3327fb3725ca6e1e.s3tc.ctex", "res://.godot/imported/Triangle_walk_0003.png-996368ed28addc3b3327fb3725ca6e1e.etc2.ctex"]
 
 [params]
 

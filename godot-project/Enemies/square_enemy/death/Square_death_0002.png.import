@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c014dvclo5kxt"
 path.s3tc="res://.godot/imported/Square_death_0002.png-9d69538fe2ab0ccf905f4bd66b3d97d2.s3tc.ctex"
+path.etc2="res://.godot/imported/Square_death_0002.png-9d69538fe2ab0ccf905f4bd66b3d97d2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/square_enemy/death/Square_death_0002.png"
-dest_files=["res://.godot/imported/Square_death_0002.png-9d69538fe2ab0ccf905f4bd66b3d97d2.s3tc.ctex"]
+dest_files=["res://.godot/imported/Square_death_0002.png-9d69538fe2ab0ccf905f4bd66b3d97d2.s3tc.ctex", "res://.godot/imported/Square_death_0002.png-9d69538fe2ab0ccf905f4bd66b3d97d2.etc2.ctex"]
 
 [params]
 

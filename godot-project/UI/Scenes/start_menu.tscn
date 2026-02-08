@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dxkryk432bxfq" path="res://UI/Scripts/start_menu.gd" id="1_wdcr8"]
 [ext_resource type="Texture2D" uid="uid://c50dyk0i1i7eg" path="res://UI/Assets/START_BUTTON.png" id="2_wdcr8"]
 [ext_resource type="Texture2D" uid="uid://bdncf4b5mfpwp" path="res://UI/Assets/SETTINGS_BUTTON.png" id="3_r7kp5"]
+[ext_resource type="Theme" uid="uid://ctqkpx2gdm730" path="res://Assets/Resources/invisible_theme.tres" id="5_r7kp5"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="6_icldb"]
 
 [node name="Start Menu" type="Control" unique_id=1157680677]
 layout_mode = 3
@@ -20,29 +22,40 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_wdcr8")
 
-[node name="StartBackground" type="Sprite2D" parent="." unique_id=1422716303]
-position = Vector2(586, 325)
-scale = Vector2(0.49, 0.49)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=856702808]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -2.0
+offset_right = 996.6667
+offset_bottom = 645.0
 texture = ExtResource("1_nw131")
-metadata/_edit_lock_ = true
+expand_mode = 1
 
-[node name="StartButton" type="TextureButton" parent="StartBackground" unique_id=1683864200]
-offset_left = -1008.16327
-offset_top = -742.8572
-offset_right = 991.83673
-offset_bottom = 757.1428
-texture_normal = ExtResource("2_wdcr8")
-texture_pressed = ExtResource("2_wdcr8")
-metadata/_edit_lock_ = true
+[node name="SettingsButtonImage" type="TextureRect" parent="." unique_id=1300174677]
+layout_mode = 0
+offset_left = 131.0
+offset_top = -12.0
+offset_right = 1021.6667
+offset_bottom = 656.0
+texture = ExtResource("2_wdcr8")
+expand_mode = 1
 
-[node name="SettingsButton" type="TextureButton" parent="StartBackground" unique_id=1942212529]
-offset_left = -985.7143
-offset_top = -746.9388
-offset_right = 1014.2857
-offset_bottom = 753.0612
-texture_normal = ExtResource("3_r7kp5")
-texture_pressed = ExtResource("3_r7kp5")
-metadata/_edit_lock_ = true
+[node name="ContinueButtonImage" type="TextureRect" parent="." unique_id=525588532]
+visible = false
+layout_mode = 0
+offset_left = 131.0
+offset_top = -12.0
+offset_right = 1021.6667
+offset_bottom = 656.0
+texture = ExtResource("3_r7kp5")
+expand_mode = 1
 
-[connection signal="pressed" from="StartBackground/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="StartBackground/SettingsButton" to="." method="_on_settings_button_pressed"]
+[node name="ExitButton" type="Button" parent="." unique_id=303572739]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 182.0
+offset_right = 749.0
+offset_bottom = 279.0
+theme = ExtResource("5_r7kp5")
+script = ExtResource("6_icldb")
+_targetState = 1

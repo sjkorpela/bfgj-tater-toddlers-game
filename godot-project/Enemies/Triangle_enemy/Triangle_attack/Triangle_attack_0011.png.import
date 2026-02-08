@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://gy2giogh4yqv"
 path.s3tc="res://.godot/imported/Triangle_attack_0011.png-a87df19443af444fcac5757036efdd86.s3tc.ctex"
+path.etc2="res://.godot/imported/Triangle_attack_0011.png-a87df19443af444fcac5757036efdd86.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0011.png"
-dest_files=["res://.godot/imported/Triangle_attack_0011.png-a87df19443af444fcac5757036efdd86.s3tc.ctex"]
+dest_files=["res://.godot/imported/Triangle_attack_0011.png-a87df19443af444fcac5757036efdd86.s3tc.ctex", "res://.godot/imported/Triangle_attack_0011.png-a87df19443af444fcac5757036efdd86.etc2.ctex"]
 
 [params]
 

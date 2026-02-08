@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuxog3jbbwq42"
 path.s3tc="res://.godot/imported/Ball_P.png-33e9312c70daaf30c53ee8264c46ad81.s3tc.ctex"
+path.etc2="res://.godot/imported/Ball_P.png-33e9312c70daaf30c53ee8264c46ad81.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Effects/Texture_Particle/Ball_P.png"
-dest_files=["res://.godot/imported/Ball_P.png-33e9312c70daaf30c53ee8264c46ad81.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ball_P.png-33e9312c70daaf30c53ee8264c46ad81.s3tc.ctex", "res://.godot/imported/Ball_P.png-33e9312c70daaf30c53ee8264c46ad81.etc2.ctex"]
 
 [params]
 

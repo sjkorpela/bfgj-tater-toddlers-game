@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://deghf7c5mrt3o"
 path.s3tc="res://.godot/imported/Circle_attack_0009.png-ea4c28eaf45d3084cae2ee3f4adb6c3a.s3tc.ctex"
+path.etc2="res://.godot/imported/Circle_attack_0009.png-ea4c28eaf45d3084cae2ee3f4adb6c3a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Circle_enemy/Circles_Textures/Attack/Circle_attack_0009.png"
-dest_files=["res://.godot/imported/Circle_attack_0009.png-ea4c28eaf45d3084cae2ee3f4adb6c3a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Circle_attack_0009.png-ea4c28eaf45d3084cae2ee3f4adb6c3a.s3tc.ctex", "res://.godot/imported/Circle_attack_0009.png-ea4c28eaf45d3084cae2ee3f4adb6c3a.etc2.ctex"]
 
 [params]
 

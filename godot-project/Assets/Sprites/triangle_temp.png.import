@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjo6ujbxiktrb"
 path.s3tc="res://.godot/imported/triangle_temp.png-d95b47a4d70b2017315bec7cb819e58e.s3tc.ctex"
+path.etc2="res://.godot/imported/triangle_temp.png-d95b47a4d70b2017315bec7cb819e58e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/triangle_temp.png"
-dest_files=["res://.godot/imported/triangle_temp.png-d95b47a4d70b2017315bec7cb819e58e.s3tc.ctex"]
+dest_files=["res://.godot/imported/triangle_temp.png-d95b47a4d70b2017315bec7cb819e58e.s3tc.ctex", "res://.godot/imported/triangle_temp.png-d95b47a4d70b2017315bec7cb819e58e.etc2.ctex"]
 
 [params]
 

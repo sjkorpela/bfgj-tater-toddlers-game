@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bie5bhbv3141"]
 
-[ext_resource type="PackedScene" uid="uid://bptnlv0mx4qk5" path="res://Assets/Scenes/Objects/game_manager.tscn" id="1_jr5xw"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/game_manager.tscn" id="1_jr5xw"]
 [ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
 [ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_w4pps"]
@@ -10,7 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c7hyvfaakflp7" path="res://Environment/SKY.jpg" id="9_a6gqa"]
 [ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_aw15j"]
 [ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="9_jr5xw"]
-[ext_resource type="PackedScene" uid="uid://br5bu7d2apjqc" path="res://Assets/Scenes/ambient_and_music.tscn" id="10_a6gqa"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/ambient_and_music.tscn" id="10_a6gqa"]
+[ext_resource type="Script" uid="uid://75236at6bwo4" path="res://Assets/Scripts/UI/UiController.cs" id="12_akbbg"]
+[ext_resource type="PackedScene" uid="uid://cc04p0t0wp56k" path="res://UI/Scenes/pause_menu.tscn" id="12_m53as"]
+[ext_resource type="PackedScene" uid="uid://uqd83dolkcri" path="res://UI/Scenes/start_menu.tscn" id="14_am2m2"]
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_472gt"]
 panorama = ExtResource("9_a6gqa")
 
@@ -39,6 +43,9 @@ plane = Plane(0, 0, -1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jr5xw"]
 font_size = 48
+font_color = Color(1, 0.5, 0.7249999, 1)
+outline_size = 4
+outline_color = Color(0.7532275, 0.25688702, 0.29827103, 1)
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
@@ -55,16 +62,17 @@ _enemyTypes = Array[PackedScene]([ExtResource("4_w4pps"), ExtResource("5_vo6bw")
 _target = NodePath("../Player")
 _spawnLocation = NodePath("EnemySpawnLocation")
 _hideLocation = NodePath("EnemyHideLocation")
-_timeBetweenSpawns = 1.2
+_maxTotalAmount = 100
+_timeBetweenSpawns = 0.5
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 11.6096, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 15, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 158)
 
 [node name="Player" parent="." unique_id=1596617950 instance=ExtResource("7_akbbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
 transform = Transform3D(1, 0, 0, 0, 0.9448861, 0.3273994, 0, -0.3273994, 0.9448861, 4.28, 79.47129, 62.343)
@@ -118,3 +126,39 @@ _gameManager = NodePath("../../GameManager")
 [node name="AudioListener3D" type="AudioListener2D" parent="." unique_id=666184920]
 
 [node name="AmbientAndMusic" parent="." unique_id=2074840048 instance=ExtResource("10_a6gqa")]
+
+[node name="UiController" type="Control" parent="." unique_id=507947375 node_paths=PackedStringArray("_pauseMenu", "_startMenu", "_gameManager")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("12_akbbg")
+_pauseMenu = NodePath("PauseMenu")
+_startMenu = NodePath("Start Menu")
+_gameManager = NodePath("../GameManager")
+
+[node name="PauseMenu" parent="UiController" unique_id=2878765 instance=ExtResource("12_m53as")]
+layout_mode = 1
+
+[node name="ContinueButton" parent="UiController/PauseMenu" index="4" unique_id=468505741 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+_targetState = 1
+
+[node name="ExitButton" parent="UiController/PauseMenu" index="5" unique_id=1546361697 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+
+[node name="SettingsButton" parent="UiController/PauseMenu" index="6" unique_id=679909367 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+_targetState = 4
+
+[node name="Start Menu" parent="UiController" unique_id=1157680677 instance=ExtResource("14_am2m2")]
+layout_mode = 1
+
+[node name="ExitButton" parent="UiController/Start Menu" index="3" unique_id=303572739 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+
+[editable path="UiController/PauseMenu"]
+[editable path="UiController/Start Menu"]

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c184n8rgmqj4l"
 path.s3tc="res://.godot/imported/wizard_Normal.png-a5ccbcbcbaf65c3d20e1487c9e51458f.s3tc.ctex"
+path.etc2="res://.godot/imported/wizard_Normal.png-a5ccbcbcbaf65c3d20e1487c9e51458f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wizard/Wizardstexture/wizard_Normal.png"
-dest_files=["res://.godot/imported/wizard_Normal.png-a5ccbcbcbaf65c3d20e1487c9e51458f.s3tc.ctex"]
+dest_files=["res://.godot/imported/wizard_Normal.png-a5ccbcbcbaf65c3d20e1487c9e51458f.s3tc.ctex", "res://.godot/imported/wizard_Normal.png-a5ccbcbcbaf65c3d20e1487c9e51458f.etc2.ctex"]
 
 [params]
 

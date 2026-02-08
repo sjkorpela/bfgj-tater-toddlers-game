@@ -103,6 +103,11 @@ public partial class EnemyPool : Node
 
 	public void ActivatePawn()
 	{
+		_spawnLocation.GlobalPosition = new Vector3(
+			_random.Next(minX, maxX),
+			_spawnLocation.GlobalPosition.Y,
+			_random.Next(minZ, maxZ)
+		);
 		foreach (EnemyBrain pawn in _pawns)
 		{
 			if (!pawn.Active && !pawn.StillDying)

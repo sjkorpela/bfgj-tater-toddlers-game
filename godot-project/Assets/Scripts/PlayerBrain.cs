@@ -96,7 +96,9 @@ public partial class PlayerBrain : CharacterBody3D
 	{
 		_mesh.MaterialOverlay = _hurtMaterial;
 		this.CallDeferred(nameof(_playDeathAnimation), 1);
-		Thread.Sleep(2000);
+		Thread.Sleep(1000);
+		this.Visible = false;
+		Thread.Sleep(1000);
 		this.CallDeferred(nameof(_playDeathAnimation), -1);
 		_mesh.MaterialOverlay = null;
 	}
@@ -110,7 +112,7 @@ public partial class PlayerBrain : CharacterBody3D
 	private void _debugFunction()
 	{
 		GD.Print("debug function!");
-		_health.TakeDamage(1);
+		// _health.TakeDamage(1);
 	}
 
 	public void _BrainPhysicsProcess(double delta)

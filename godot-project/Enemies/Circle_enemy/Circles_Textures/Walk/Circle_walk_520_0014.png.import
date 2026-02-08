@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwwfj2hu7ra3j"
 path.s3tc="res://.godot/imported/Circle_walk_520_0014.png-4c01551ff885c5d0924740e69ef0cb41.s3tc.ctex"
+path.etc2="res://.godot/imported/Circle_walk_520_0014.png-4c01551ff885c5d0924740e69ef0cb41.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Circle_enemy/Circles_Textures/Walk/Circle_walk_520_0014.png"
-dest_files=["res://.godot/imported/Circle_walk_520_0014.png-4c01551ff885c5d0924740e69ef0cb41.s3tc.ctex"]
+dest_files=["res://.godot/imported/Circle_walk_520_0014.png-4c01551ff885c5d0924740e69ef0cb41.s3tc.ctex", "res://.godot/imported/Circle_walk_520_0014.png-4c01551ff885c5d0924740e69ef0cb41.etc2.ctex"]
 
 [params]
 

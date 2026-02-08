@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://fa6m81jbmlhh"
 path.s3tc="res://.godot/imported/Square_attack_0003.png-3387a92c27129c66854cd0549b345cf1.s3tc.ctex"
+path.etc2="res://.godot/imported/Square_attack_0003.png-3387a92c27129c66854cd0549b345cf1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/square_enemy/Square_attack/Square_attack_0003.png"
-dest_files=["res://.godot/imported/Square_attack_0003.png-3387a92c27129c66854cd0549b345cf1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Square_attack_0003.png-3387a92c27129c66854cd0549b345cf1.s3tc.ctex", "res://.godot/imported/Square_attack_0003.png-3387a92c27129c66854cd0549b345cf1.etc2.ctex"]
 
 [params]
 
