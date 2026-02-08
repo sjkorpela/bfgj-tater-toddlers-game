@@ -2,30 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD:godot-project/Environment/Assets/Environment_bookpage2.jpg.import
-uid="uid://chh8n6yknxk8c"
-path.s3tc="res://.godot/imported/Environment_bookpage2.jpg-f8aa76d1b6b8df96cb870c7f0cc4add6.s3tc.ctex"
-=======
-uid="uid://d2kejdxc868o1"
+uid="uid://s36u11y3dvlb"
 path.s3tc="res://.godot/imported/Environment_bookpage2.jpg-e40c7694e76ff7b36914756f490a746c.s3tc.ctex"
->>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment_bookpage2.jpg.import
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "984ca840e4b4b3cce8a86d8ee9c2e6e2"
-}
 
 [deps]
 
-<<<<<<< HEAD:godot-project/Environment/Assets/Environment_bookpage2.jpg.import
-source_file="res://Environment/Assets/Environment_bookpage2.jpg"
-dest_files=["res://.godot/imported/Environment_bookpage2.jpg-f8aa76d1b6b8df96cb870c7f0cc4add6.s3tc.ctex"]
-=======
 source_file="res://Environment/Environment_bookpage2.jpg"
 dest_files=["res://.godot/imported/Environment_bookpage2.jpg-e40c7694e76ff7b36914756f490a746c.s3tc.ctex"]
->>>>>>> c7d850320ba878e00fd1a8868a8bbf9b037cf942:godot-project/Environment/Environment_bookpage2.jpg.import
 
 [params]
 
