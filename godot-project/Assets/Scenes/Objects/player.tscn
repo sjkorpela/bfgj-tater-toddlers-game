@@ -5,20 +5,37 @@
 [ext_resource type="Material" uid="uid://do6eacqvepity" path="res://Assets/Resources/red_50.tres" id="2_7r5b4"]
 [ext_resource type="Script" uid="uid://drjvrf1jy7utx" path="res://Assets/Scripts/InputHandlers/InputVector2D.cs" id="2_38rej"]
 [ext_resource type="Script" uid="uid://cq2pgt1a25m14" path="res://Assets/Scripts/InputHandlers/InputButtonBasic.cs" id="3_t1xgp"]
+[ext_resource type="Script" uid="uid://brtmpvporynbo" path="res://Assets/Scripts/Components/HealthComponent.cs" id="3_uum82"]
 [ext_resource type="PackedScene" uid="uid://cegqat2p84b6w" path="res://Assets/Effects/Sparkles.tscn" id="5_1qwgk"]
+[ext_resource type="Script" uid="uid://h8gl7ulwenbj" path="res://Assets/Scripts/Components/RandomAudioStreamPlayer2D.cs" id="8_13r6u"]
+[ext_resource type="AudioStream" uid="uid://dxayys6f2yoli" path="res://Assets/Sounds/WIZARD SFX/Hurt/SFX_wizard_hurt_voice_1.wav" id="8_x430s"]
+[ext_resource type="AudioStream" uid="uid://bv6s0ym5b1hkb" path="res://Assets/Sounds/WIZARD SFX/Hurt/SFX_wizard_hurt_voice_2.wav" id="10_4nyul"]
+[ext_resource type="AudioStream" uid="uid://bw2kpp0lydl24" path="res://Assets/Sounds/WIZARD SFX/Hurt/SFX_wizard_hurt_voice_3.wav" id="11_f0wt4"]
+[ext_resource type="AudioStream" uid="uid://dadhslk6qsj8f" path="res://Assets/Sounds/WIZARD SFX/Attack/SFX_Attack_magic_02_sparkle_end.wav" id="12_0wdi2"]
+[ext_resource type="AudioStream" uid="uid://bvombfb217erl" path="res://Assets/Sounds/WIZARD SFX/Attack/SFX_Attack_magic_02_sparkle_high.wav" id="13_0rh7v"]
+[ext_resource type="AudioStream" uid="uid://cw1yyc7uhyss" path="res://Assets/Sounds/WIZARD SFX/Attack/SFX_Attack_magic_02_sparkle_low.wav" id="14_nyiqp"]
+[ext_resource type="AudioStream" uid="uid://cfii2dysu0awx" path="res://Assets/Sounds/WIZARD SFX/Attack/SFX_Attack_magic_02_sparkle_mid.wav" id="15_v1x8t"]
+[ext_resource type="AudioStream" uid="uid://b8edxghx2f0de" path="res://Assets/Sounds/WIZARD SFX/FS/FOL_footsteps_wizard_running.wav" id="16_0rh7v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcsqd"]
 radius = 0.7104492
 height = 2.722168
 
-[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh")]
+[node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_health", "_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh", "_hurtSound", "_castSound", "_walkSound")]
 script = ExtResource("1_7dd06")
+_health = NodePath("HealthComponent")
 _moveInput = NodePath("MoveInput")
 _debugInput = NodePath("SpaceInput")
 _animationPlayer = NodePath("Wizard/AnimationPlayer")
 _wandParticles = NodePath("Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D/Sparkles")
 _mesh = NodePath("Wizard/Wizard_Armature/Skeleton3D/Wizard")
 _hurtMaterial = ExtResource("2_7r5b4")
+_hurtSound = NodePath("HurtSound")
+_castSound = NodePath("CastSound")
+_walkSound = NodePath("WalkSound")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1599101815]
+script = ExtResource("3_uum82")
 
 [node name="MoveInput" type="Node" parent="." unique_id=2017234674]
 script = ExtResource("2_38rej")
@@ -33,7 +50,7 @@ shape = SubResource("CapsuleShape3D_mcsqd")
 [node name="Wizard" parent="." unique_id=1551048574 instance=ExtResource("1_6alcc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011768341, 1.1920929e-07, 0.0022458434)
 
-[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1704747509) index="0" unique_id=72362703]
+[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1407866533) index="0" unique_id=426204050]
 bones/1/rotation = Quaternion(-1.0974448e-08, 1.1870303e-07, 0.09206034, 0.9957534)
 bones/2/rotation = Quaternion(-2.4427809e-08, -1.1667962e-07, 0.20491539, 0.9787797)
 bones/3/rotation = Quaternion(-1.6004868e-15, -1.3733963e-16, -0.10172676, 0.99481237)
@@ -50,5 +67,19 @@ bone_idx = 8
 
 [node name="Sparkles" parent="Wizard/Wizard_Armature/Skeleton3D/BoneAttachment3D" unique_id=2058537044 instance=ExtResource("5_1qwgk")]
 transform = Transform3D(2.5673131e-05, -0.0014732536, -0.009890842, -0.00062482845, 0.009871317, -0.0014719658, 0.009980429, 0.00062178716, -6.671027e-05, -0.0012370674, 0.008311602, 1.861807e-05)
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=93201978]
+bus = &"SFX"
+script = ExtResource("8_13r6u")
+_audioStreams = Array[AudioStream]([null, ExtResource("8_x430s"), ExtResource("10_4nyul"), ExtResource("11_f0wt4")])
+
+[node name="CastSound" type="AudioStreamPlayer2D" parent="." unique_id=1576229516]
+bus = &"SFX"
+script = ExtResource("8_13r6u")
+_audioStreams = Array[AudioStream]([ExtResource("12_0wdi2"), ExtResource("13_0rh7v"), ExtResource("14_nyiqp"), ExtResource("15_v1x8t")])
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="." unique_id=108004068]
+stream = ExtResource("16_0rh7v")
+bus = &"SFX"
 
 [editable path="Wizard"]
