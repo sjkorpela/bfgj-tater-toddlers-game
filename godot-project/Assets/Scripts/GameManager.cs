@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using Tater.Scripts.Components;
 
 namespace Tater.Scripts;
 
@@ -9,6 +8,7 @@ public enum GameState
 	Menu,
 	GameActive,
 	GamePaused,
+	GameOver,
 }
 
 public partial class GameManager : Node
@@ -86,7 +86,6 @@ public partial class GameManager : Node
 	public void OnCast(AttackShape cast)
 	{
 		GD.Print(cast.Shape);
-		bool shapeDied = false;
 		foreach (EnemyBrain pawn in _pool.Pawns)
 		{
 			Vector2 onScreen = _camera.UnprojectPosition(pawn.GlobalPosition);

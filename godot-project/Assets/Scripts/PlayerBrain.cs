@@ -12,19 +12,12 @@ public partial class PlayerBrain : CharacterBody3D
 {
 	
 	[ExportCategory("Node References")]
-	[Export] private HealthComponent _health;
-	public HealthComponent Health => _health;
 	[Export] private InputVector2D _moveInput;
 	[Export] private InputButtonBasic _debugInput;
 	[Export] private AnimationPlayer _animationPlayer;
 	[Export] private ParticleHandler _wandParticles;
 	[Export] private MeshInstance3D _mesh;
 	[Export] private StandardMaterial3D _hurtMaterial;
-	
-	[ExportCategory("Sounds")]
-	[Export] private RandomAudioStreamPlayer2D _hurtSound;
-	[Export] private RandomAudioStreamPlayer2D _castSound;
-	[Export] private AudioStreamPlayer2D _walkSound;
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 400f;
@@ -47,14 +40,11 @@ public partial class PlayerBrain : CharacterBody3D
 	public override void _EnterTree()
 	{
 		_debugInput.OnPress += _debugFunction;
-		_health.OnTakingDamage += DoHurtVisuals;
-		_health.OnLethalDamage += DoDeathVisuals;
 	}
 	
 	public override void _ExitTree()
 	{
 		_debugInput.OnPress -= _debugFunction;
-		_health.OnTakingDamage -= DoHurtVisuals;
 	}
 
 	public void StartCasting()
@@ -65,19 +55,17 @@ public partial class PlayerBrain : CharacterBody3D
 	
 	public void StopCasting()
 	{
-		_castSound.PlayRandomSound();
 		_casting = false;
 		_wandParticles.Emitting = false;
 	}
 
 	public void DoHurtVisuals()
 	{
-		_hurtSound.PlayRandomSound();
-		Thread hurtThread = new Thread(_hurtVisualsThread);
+		Thread hurtThread = new Thread(_doHurtVisuals);
 		hurtThread.Start();
 	}
 
-	private void _hurtVisualsThread()
+	private void _doHurtVisuals()
 	{
 		_hurting = true;
 		_mesh.MaterialOverlay = _hurtMaterial;
@@ -86,31 +74,10 @@ public partial class PlayerBrain : CharacterBody3D
 		_hurting = false;
 	}
 
-	public void DoDeathVisuals()
-	{
-		Thread deathThread = new Thread(_deathVisualsThread);
-		deathThread.Start();
-	}
-	
-	private void _deathVisualsThread()
-	{
-		_mesh.MaterialOverlay = _hurtMaterial;
-		this.CallDeferred(nameof(_playDeathAnimation), 1);
-		Thread.Sleep(2000);
-		this.CallDeferred(nameof(_playDeathAnimation), -1);
-		_mesh.MaterialOverlay = null;
-	}
-
-	private void _playDeathAnimation(int fuck)
-	{
-		this.Rotate(Vector3.Forward, 1.57f * fuck);
-	}
-	
-
 	private void _debugFunction()
 	{
 		GD.Print("debug function!");
-		_health.TakeDamage(1);
+		DoHurtVisuals();
 	}
 
 	public void _BrainPhysicsProcess(double delta)
@@ -150,16 +117,7 @@ public partial class PlayerBrain : CharacterBody3D
 		// Facing direction
 		if (!input.IsZeroApprox())
 		{
-			if (!_walkSound.IsPlaying())
-			{
-				_walkSound.SetPlaying(true);
-			}
-			
 			this.LookAt(this.Position + -input);
-		}
-		else
-		{
-			_walkSound.SetPlaying(false);
 		}
 	}
 }

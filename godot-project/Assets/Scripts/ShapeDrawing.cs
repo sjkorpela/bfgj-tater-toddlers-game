@@ -11,10 +11,6 @@ public partial class ShapeDrawing : Node
 	[Signal] public delegate void OnDrawingStartEventHandler();
 	[Signal] public delegate void OnCastEventHandler(AttackShape shape);
 	
-	[ExportCategory("Node References")]
-	[Export] private PackedScene _visualLineScene;
-	[Export] private PackedScene _finalLineScene;
-	
 	private float _timeBetweenDots = 0.01f;
 	private double _timeSinceLastDot = 0f;
 	
@@ -28,7 +24,7 @@ public partial class ShapeDrawing : Node
 
 	public override void _Ready()
 	{
-		_visualLine = _visualLineScene.Instantiate<Line2D>();
+		_visualLine = new Line2D();
 		this.AddChild(_visualLine);
 	}
 
@@ -136,7 +132,7 @@ public partial class ShapeDrawing : Node
 		}
 		// GD.Print(shape);
 
-		AttackShape temp = _finalLineScene.Instantiate<AttackShape>();
+		AttackShape temp = new AttackShape();
 		this.AddChild(temp);
 		temp.Initialize(shape, dots);
 		EmitSignalOnCast(temp);

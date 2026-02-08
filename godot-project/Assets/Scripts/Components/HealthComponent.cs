@@ -11,9 +11,6 @@ public partial class HealthComponent : Node
 	[ExportCategory("Attributes")]
 	[Export] private int _maxHealth = 3;
 
-	private bool _dead = false;
-	public bool Dead => _dead;
-
 
 	private int _health = 0;
 	public int Health => _health;

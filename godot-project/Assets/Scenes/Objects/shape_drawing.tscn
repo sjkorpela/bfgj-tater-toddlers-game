@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://dpgtro5wpgyqb"]
 
 [ext_resource type="Script" uid="uid://bn6y5y7koyd0p" path="res://Assets/Scripts/ShapeDrawing.cs" id="1_acqog"]
-[ext_resource type="PackedScene" uid="uid://ct1hu4xygxb32" path="res://Assets/Scenes/Objects/drawing_line.tscn" id="2_db4x6"]
-[ext_resource type="PackedScene" uid="uid://dr3k1n8wdefiy" path="res://Assets/Scenes/Objects/final_line.tscn" id="3_py7qb"]
 
 [node name="ShapeDrawing" type="Node" unique_id=342024680]
 script = ExtResource("1_acqog")
-_visualLineScene = ExtResource("2_db4x6")
-_finalLineScene = ExtResource("3_py7qb")

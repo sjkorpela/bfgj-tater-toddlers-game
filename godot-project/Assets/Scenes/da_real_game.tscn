@@ -7,12 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
 [ext_resource type="PackedScene" uid="uid://bejuf8s01hfin" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
+[ext_resource type="Texture2D" uid="uid://c7hyvfaakflp7" path="res://Environment/SKY.jpg" id="9_a6gqa"]
 [ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_aw15j"]
 [ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="9_jr5xw"]
 [ext_resource type="PackedScene" uid="uid://br5bu7d2apjqc" path="res://Assets/Scenes/ambient_and_music.tscn" id="10_a6gqa"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_472gt"]
+panorama = ExtResource("9_a6gqa")
 
-[sub_resource type="Environment" id="Environment_7sy2t"]
-background_color = Color(1, 0.49044794, 0.960975, 1)
+[sub_resource type="Sky" id="Sky_lp7fg"]
+sky_material = SubResource("PanoramaSkyMaterial_472gt")
+
+[sub_resource type="Environment" id="Environment_w4pps"]
+background_mode = 2
+sky = SubResource("Sky_lp7fg")
+sky_custom_fov = 96.4
+sky_rotation = Vector3(-5.3965583, -1.9530234, -0.17453292)
+tonemap_mode = 2
+tonemap_exposure = 0.9
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_c1rt1"]
 plane = Plane(1, 0, 0, 0)
@@ -56,17 +67,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 158)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
-transform = Transform3D(1, 0, 0, 0, 0.66875434, 0.7434835, 0, -0.7434835, 0.66875434, 0, 83.00041, 62.343124)
-fov = 34.0
+transform = Transform3D(1, 0, 0, 0, 0.9448861, 0.3273994, 0, -0.3273994, 0.9448861, 4.28, 79.47129, 62.343)
+h_offset = -4.76
+v_offset = -44.08
+fov = 36.0
+near = 0.078
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.19029678, 0.97983086, 0.0609797, -0.5892886, 0.06432672, 0.8053577, 0.78519166, -0.18919162, 0.58964443, 0, 14.430893, 7.056035)
 
 [node name="Environment" parent="." unique_id=1802728127 instance=ExtResource("9_aw15j")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11, 8, 10)
+transform = Transform3D(0.17598525, 0, -0.9843929, 0, 1, 0, 0.9843929, 0, 0.17598525, 11, 8, 10)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=136842251]
-environment = SubResource("Environment_7sy2t")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1586479553]
+environment = SubResource("Environment_w4pps")
 
 [node name="WorldEdge" type="StaticBody3D" parent="." unique_id=1334703101]
 

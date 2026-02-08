@@ -1,27 +1,6 @@
 [gd_scene format=3 uid="uid://doyyhowdp2ff"]
 
 [ext_resource type="Script" uid="uid://cxu5crothyuum" path="res://Assets/Scripts/EnemyPool.cs" id="1_ipus2"]
-[ext_resource type="Script" uid="uid://h8gl7ulwenbj" path="res://Assets/Scripts/Components/RandomAudioStreamPlayer2D.cs" id="2_5fdey"]
-[ext_resource type="AudioStream" uid="uid://b8q55bgisxdew" path="res://Assets/Sounds/SHAPES SFX/Dies/SFX_shape_poof_new_01.wav" id="3_dy2bo"]
-[ext_resource type="AudioStream" uid="uid://b7k1ajwuqi4c0" path="res://Assets/Sounds/SHAPES SFX/Dies/SFX_shape_poof_new_02.wav" id="4_bif04"]
-[ext_resource type="AudioStream" uid="uid://cx458n3axjk75" path="res://Assets/Sounds/SHAPES SFX/Dies/SFX_shape_poof_new_03.wav" id="5_4f7qq"]
-[ext_resource type="AudioStream" uid="uid://dmq0g161cpo1h" path="res://Assets/Sounds/SHAPES SFX/Dies/SFX_shape_poof_new_04.wav" id="6_klr34"]
-[ext_resource type="AudioStream" uid="uid://kjlgbt1q3lok" path="res://Assets/Sounds/SHAPES SFX/Pop up/SFX_Sticker_peel_01_end.wav" id="7_klr34"]
-[ext_resource type="AudioStream" uid="uid://x4ycpjme27wp" path="res://Assets/Sounds/SHAPES SFX/Pop up/SFX_Sticker_peel_01_high.wav" id="8_weh1u"]
-[ext_resource type="AudioStream" uid="uid://po8m2aeowlb1" path="res://Assets/Sounds/SHAPES SFX/Pop up/SFX_Sticker_peel_01_mid.wav" id="9_cpf47"]
-[ext_resource type="AudioStream" uid="uid://brpeu46qi47ig" path="res://Assets/Sounds/SHAPES SFX/Pop up/SFX_Sticker_peel_01_new_low.wav" id="10_m1kym"]
 
-[node name="EnemyPool" type="Node" unique_id=317054794 node_paths=PackedStringArray("_shapeDeathSound", "_shapeSpawnSound")]
+[node name="EnemyPool" type="Node" unique_id=317054794]
 script = ExtResource("1_ipus2")
-_shapeDeathSound = NodePath("ShapeDeathSound")
-_shapeSpawnSound = NodePath("ShapeSpawnSound")
-
-[node name="ShapeDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=477079157]
-bus = &"Enemy"
-script = ExtResource("2_5fdey")
-_audioStreams = Array[AudioStream]([ExtResource("3_dy2bo"), ExtResource("4_bif04"), ExtResource("5_4f7qq"), ExtResource("6_klr34")])
-
-[node name="ShapeSpawnSound" type="AudioStreamPlayer2D" parent="." unique_id=243764341]
-bus = &"Enemy"
-script = ExtResource("2_5fdey")
-_audioStreams = Array[AudioStream]([ExtResource("7_klr34"), ExtResource("8_weh1u"), ExtResource("9_cpf47"), ExtResource("10_m1kym")])
