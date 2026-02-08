@@ -7,6 +7,10 @@ namespace Tater.Scripts;
 
 public partial class AttackShape : Line2D
 {
+	[ExportCategory("Colors")]
+	[Export] private Color _circleColor;
+	[Export] private Color _squareColor;
+	[Export] private Color _triangleColor;
 
 	private double _age = 0f;
 	private Shape _shape;
@@ -28,6 +32,19 @@ public partial class AttackShape : Line2D
 		this._shape = shape;
 		this.Points = points.ToArray();
 		_area.Polygon = points.ToArray();
+
+		switch (_shape)
+		{
+			case Shape.Circle:
+				this.DefaultColor = _circleColor;
+				break;
+			case Shape.Square:
+				this.DefaultColor = _squareColor;
+				break;
+			case Shape.Triangle:
+				this.DefaultColor = _triangleColor;
+				break;
+		}
 	}
 	
 
