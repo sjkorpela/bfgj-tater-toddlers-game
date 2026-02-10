@@ -50,18 +50,8 @@ shape = SubResource("CapsuleShape3D_mcsqd")
 [node name="Wizard" parent="." unique_id=1551048574 instance=ExtResource("1_6alcc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011768341, 1.1920929e-07, 0.0022458434)
 
-[node name="Skeleton3D" parent="Wizard/Wizard_Armature" parent_id_path=PackedInt32Array(1551048574, 1407866533) index="0" unique_id=426204050]
-bones/1/rotation = Quaternion(-1.0974448e-08, 1.1870303e-07, 0.09206034, 0.9957534)
-bones/2/rotation = Quaternion(-2.4427809e-08, -1.1667962e-07, 0.20491539, 0.9787797)
-bones/3/rotation = Quaternion(-1.6004868e-15, -1.3733963e-16, -0.10172676, 0.99481237)
-bones/4/rotation = Quaternion(1.9167935e-08, 1.0135276e-07, -0.18582691, 0.9825825)
-bones/5/rotation = Quaternion(-0.03921699, 0.032603122, -0.5865647, 0.8082951)
-bones/7/position = Vector3(-0.0055272235, 0.0012468478, -0.00713828)
-bones/7/rotation = Quaternion(-0.029580148, 0.0101806875, -0.36380452, 0.93094987)
-bones/9/position = Vector3(-0.005073577, 0.0017975998, 0.00713828)
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Wizard/Wizard_Armature/Skeleton3D" index="0" unique_id=1542883623]
-transform = Transform3D(0.9890848, 0.14719668, 0.006670978, -0.0025673462, 0.06248271, -0.9980426, -0.14732528, 0.9871316, 0.062178586, -0.0064683286, 0.0072553325, 0.0096364105)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Wizard/Wizard_Armature/Skeleton3D" parent_id_path=PackedInt32Array(1551048574, 72362703) index="0" unique_id=1542883623]
+transform = Transform3D(0.9914858, -0.12996298, -0.008100593, -0.0113446135, -0.02424022, -0.9996416, 0.12972005, 0.99122244, -0.025508206, -0.005566183, 0.0070928666, 0.012657799)
 bone_name = "R_end"
 bone_idx = 8
 

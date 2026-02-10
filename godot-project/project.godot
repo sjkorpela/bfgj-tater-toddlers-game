@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://m8t3q5dkl4ux"
 
-[display]
-
-window/size/mode=3
-
 [dotnet]
 
 project/assembly_name="bfgj tater game"

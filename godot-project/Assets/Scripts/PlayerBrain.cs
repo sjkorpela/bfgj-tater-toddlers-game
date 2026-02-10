@@ -122,7 +122,8 @@ public partial class PlayerBrain : CharacterBody3D
 			0f,
 			_moveInput.InputVector.Y
 		);
-		this.Velocity = input.Normalized() * _speed * (float)delta * (_casting ? 0.5f : 1f);
+		
+		this.Velocity = (input.Normalized() * _speed * (float)delta * (_casting ? 0.5f : 1f)) + this.GetGravity();
 		
 		this.MoveAndSlide();
 		
