@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://cjfjnn3ixpsqe"]
+
+[ext_resource type="Texture2D" uid="uid://dl7s3wx4jyn24" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0002.png" id="1_qro2a"]
+[ext_resource type="Texture2D" uid="uid://bl0o662jkyqpk" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0003.png" id="2_ctu1h"]
+[ext_resource type="Texture2D" uid="uid://jjupc6ydmsy5" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0004.png" id="3_svoo8"]
+[ext_resource type="Texture2D" uid="uid://cvrjseb2ytai" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0005.png" id="4_b6j71"]
+[ext_resource type="Texture2D" uid="uid://dl63s2nnfly54" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0006.png" id="5_vyc6m"]
+[ext_resource type="Texture2D" uid="uid://bbkjht0tujfjm" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0007.png" id="6_o8pjn"]
+[ext_resource type="Texture2D" uid="uid://mnkde3ghgi3o" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0008.png" id="7_rektu"]
+[ext_resource type="Texture2D" uid="uid://nw0sm8s4v467" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0009.png" id="8_76aq2"]
+[ext_resource type="Texture2D" uid="uid://yq44bsaetmd5" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0010.png" id="9_57l3t"]
+[ext_resource type="Texture2D" uid="uid://gy2giogh4yqv" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0011.png" id="10_5nw5b"]
+[ext_resource type="Texture2D" uid="uid://ciecqijewkqoa" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0012.png" id="11_eatej"]
+[ext_resource type="Texture2D" uid="uid://xsfx1c6evdp5" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0013.png" id="12_uixsi"]
+[ext_resource type="Texture2D" uid="uid://db4iub804fypd" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0002.png" id="13_nxvm8"]
+[ext_resource type="Texture2D" uid="uid://c0q3yqiev3y8x" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0003.png" id="14_kf13u"]
+[ext_resource type="Texture2D" uid="uid://d2xdmjqajypma" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0004.png" id="15_pe8uo"]
+[ext_resource type="Texture2D" uid="uid://cvcjc54ptkudu" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0005.png" id="16_65fi5"]
+[ext_resource type="Texture2D" uid="uid://bcn6y11cdgcdd" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0006.png" id="17_bye4k"]
+[ext_resource type="Texture2D" uid="uid://dv74onl6cps41" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0007.png" id="18_ntqt0"]
+[ext_resource type="Texture2D" uid="uid://bb5cvpdb8b5s7" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0008.png" id="19_g13jk"]
+[ext_resource type="Texture2D" uid="uid://dhn5to72gvkl6" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0009.png" id="20_uvs1y"]
+[ext_resource type="Texture2D" uid="uid://by3p6p7rgjxch" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0010.png" id="21_5wcvl"]
+[ext_resource type="Texture2D" uid="uid://babqppahbl5y2" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0011.png" id="22_hnrk6"]
+[ext_resource type="Texture2D" uid="uid://c4vsrnoim0686" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0012.png" id="23_mxdoo"]
+[ext_resource type="Texture2D" uid="uid://13ld8xas383u" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0013.png" id="24_er6c6"]
+[ext_resource type="Texture2D" uid="uid://c5aur7cbjraar" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0014.png" id="25_wndxp"]
+[ext_resource type="Texture2D" uid="uid://7gawbir20dt4" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0015.png" id="26_1sksf"]
+[ext_resource type="Texture2D" uid="uid://cmkbveg7lcaqk" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0016.png" id="27_1bpcb"]
+[ext_resource type="Texture2D" uid="uid://3k2gvtlmpx6u" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0017.png" id="28_dw13e"]
+[ext_resource type="Texture2D" uid="uid://dycle18xxa4x2" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0018.png" id="29_p7uww"]
+[ext_resource type="Texture2D" uid="uid://dog13avdr2gqq" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0019.png" id="30_lswo6"]
+[ext_resource type="Texture2D" uid="uid://bjfk03j3p26fh" path="res://Enemies/Triangle_enemy/Triangle_death/Triangle_death_0020.png" id="31_hyxmg"]
+[ext_resource type="Texture2D" uid="uid://7qdnbvp0e8bp" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0002.png" id="32_f4q2j"]
+[ext_resource type="Texture2D" uid="uid://b1877uk670ohd" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0003.png" id="33_ivapm"]
+[ext_resource type="Texture2D" uid="uid://bpnopivbhcqeu" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0004.png" id="34_xtk1n"]
+[ext_resource type="Texture2D" uid="uid://dbddxkcm5wapm" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0005.png" id="35_tk8yg"]
+[ext_resource type="Texture2D" uid="uid://d1ceuhfmraniq" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0006.png" id="36_yrgpn"]
+[ext_resource type="Texture2D" uid="uid://cpkcawxu3ys60" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0007.png" id="37_hwq0f"]
+[ext_resource type="Texture2D" uid="uid://c74xtjct6hwh3" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0008.png" id="38_oilxk"]
+[ext_resource type="Texture2D" uid="uid://dv0houji6mif8" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0009.png" id="39_5ka04"]
+[ext_resource type="Texture2D" uid="uid://b711eqe71njab" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0010.png" id="40_5ypfh"]
+[ext_resource type="Texture2D" uid="uid://c2lq5vw3cfh0" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0011.png" id="41_0riia"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpao8"]
+radius = 2.0083008
+height = 5.8970947
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6jqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qro2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ctu1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_svoo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b6j71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vyc6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o8pjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rektu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_76aq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_57l3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5nw5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eatej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uixsi")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_nxvm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kf13u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pe8uo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_65fi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bye4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ntqt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_g13jk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_uvs1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_5wcvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hnrk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_mxdoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_er6c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wndxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1sksf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1bpcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_dw13e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_p7uww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lswo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hyxmg")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_f4q2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ivapm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_xtk1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_tk8yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_yrgpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_hwq0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_oilxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5ka04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_5ypfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_0riia")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="CircleEnemy" type="Node3D" unique_id=1796238909]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1776809425]
+transform = Transform3D(-1.8795896e-08, 0, -0.43, 0, 0.43, 0, 0.43, 0, -1.8795896e-08, 0, 1.549624, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1966087895]
+transform = Transform3D(1, 0, 1.7763568e-14, 0, 1, 0, -1.7763568e-14, 0, 1, 0, -0.6495383, 0)
+shape = SubResource("CapsuleShape3D_kpao8")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=306587542]
+transform = Transform3D(2.445, 0, 2.842171e-14, 0, 2.445, 0, -2.842171e-14, 0, 2.445, 0.0038823416, -1.4113803, 0.0014704325)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_x6jqu")
+animation = &"Walk"
+frame_progress = 0.32450047

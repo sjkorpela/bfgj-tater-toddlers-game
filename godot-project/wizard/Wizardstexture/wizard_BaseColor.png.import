@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hbwjtcuyprb7"
 path.s3tc="res://.godot/imported/wizard_BaseColor.png-a6f33f9f676fcbd9d86eacd3e3bd220c.s3tc.ctex"
+path.etc2="res://.godot/imported/wizard_BaseColor.png-a6f33f9f676fcbd9d86eacd3e3bd220c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wizard/Wizardstexture/wizard_BaseColor.png"
-dest_files=["res://.godot/imported/wizard_BaseColor.png-a6f33f9f676fcbd9d86eacd3e3bd220c.s3tc.ctex"]
+dest_files=["res://.godot/imported/wizard_BaseColor.png-a6f33f9f676fcbd9d86eacd3e3bd220c.s3tc.ctex", "res://.godot/imported/wizard_BaseColor.png-a6f33f9f676fcbd9d86eacd3e3bd220c.etc2.ctex"]
 
 [params]
 

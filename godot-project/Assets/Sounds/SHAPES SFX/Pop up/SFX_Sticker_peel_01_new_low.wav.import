@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brpeu46qi47ig"
+path="res://.godot/imported/SFX_Sticker_peel_01_new_low.wav-423e07e1cdc97697917bc4aae32fd345.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SHAPES SFX/Pop up/SFX_Sticker_peel_01_new_low.wav"
+dest_files=["res://.godot/imported/SFX_Sticker_peel_01_new_low.wav-423e07e1cdc97697917bc4aae32fd345.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2tf24066uxc4"
 path.s3tc="res://.godot/imported/Square_walk_0013.png-3d54cc0fb9a9452bdb11a76912617a66.s3tc.ctex"
+path.etc2="res://.godot/imported/Square_walk_0013.png-3d54cc0fb9a9452bdb11a76912617a66.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/square_enemy/walk/Square_walk_0013.png"
-dest_files=["res://.godot/imported/Square_walk_0013.png-3d54cc0fb9a9452bdb11a76912617a66.s3tc.ctex"]
+dest_files=["res://.godot/imported/Square_walk_0013.png-3d54cc0fb9a9452bdb11a76912617a66.s3tc.ctex", "res://.godot/imported/Square_walk_0013.png-3d54cc0fb9a9452bdb11a76912617a66.etc2.ctex"]
 
 [params]
 

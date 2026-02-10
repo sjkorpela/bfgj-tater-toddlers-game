@@ -5,13 +5,17 @@ namespace Tater.Scripts;
 
 public enum GameState
 {
-	Menu,
+	MainMenu,
 	GameActive,
 	GamePaused,
+	GameOver,
+	Settings,
 }
 
 public partial class GameManager : Node
 {
+	[Signal] public delegate void OnGameStateChangeEventHandler(GameState state);
+	
 	[ExportCategory("Node References")]
 	[Export] private PlayerBrain _player;
 	public PlayerBrain Player => _player;
@@ -23,7 +27,12 @@ public partial class GameManager : Node
 	public GameState GameState
 	{
 		get => _gameState;
-		set => _gameState = value;
+		set
+		{
+			_gameState = value;
+			EmitSignalOnGameStateChange(value);
+			GD.Print(value);
+		} 
 	}
 
 	private int _score = 0;
@@ -38,6 +47,9 @@ public partial class GameManager : Node
 		{
 			throw new Exception("GameManagerNode is missing node references!");
 		}
+
+		GameState = GameState.GameActive;
+		ResetGame();
 	}
 
 	public override void _EnterTree()
@@ -46,6 +58,8 @@ public partial class GameManager : Node
 		_draw.OnCast += OnCast;
 
 		_pool.OnPawnKill += value => _score += value;
+
+		_player.Health.OnLethalDamage += EndGame;
 	}
 	
 	public override void _ExitTree()
@@ -54,9 +68,15 @@ public partial class GameManager : Node
 		_draw.OnCast -= OnCast;
 	}
 
+	private void EndGame()
+	{
+		GD.Print("GAME ENDED!!!!! " + _score);
+	}
+
 	public void ResetGame()
 	{
 		_score = 0;
+		_player.Visible = true;
 	}
 
 	public override void _PhysicsProcess(double delta)

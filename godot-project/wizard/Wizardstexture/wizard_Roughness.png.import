@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://edtr06nbauee"
 path.s3tc="res://.godot/imported/wizard_Roughness.png-4e1e781a07391591edb5544a6e2a0d42.s3tc.ctex"
+path.etc2="res://.godot/imported/wizard_Roughness.png-4e1e781a07391591edb5544a6e2a0d42.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wizard/Wizardstexture/wizard_Roughness.png"
-dest_files=["res://.godot/imported/wizard_Roughness.png-4e1e781a07391591edb5544a6e2a0d42.s3tc.ctex"]
+dest_files=["res://.godot/imported/wizard_Roughness.png-4e1e781a07391591edb5544a6e2a0d42.s3tc.ctex", "res://.godot/imported/wizard_Roughness.png-4e1e781a07391591edb5544a6e2a0d42.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxgo3nwoqiwss"
 path.s3tc="res://.godot/imported/Circle_death_520_0008.png-b90806600b9ca5750eeaf767aadd55ec.s3tc.ctex"
+path.etc2="res://.godot/imported/Circle_death_520_0008.png-b90806600b9ca5750eeaf767aadd55ec.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Circle_enemy/Circles_Textures/Death/Circle_death_520_0008.png"
-dest_files=["res://.godot/imported/Circle_death_520_0008.png-b90806600b9ca5750eeaf767aadd55ec.s3tc.ctex"]
+dest_files=["res://.godot/imported/Circle_death_520_0008.png-b90806600b9ca5750eeaf767aadd55ec.s3tc.ctex", "res://.godot/imported/Circle_death_520_0008.png-b90806600b9ca5750eeaf767aadd55ec.etc2.ctex"]
 
 [params]
 

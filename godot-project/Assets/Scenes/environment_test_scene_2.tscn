@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://cjmhsf0ga7bpu"]
 
 [ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_6r736"]
-[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_lp7fg"]
-[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_oyd6y"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/shape_drawing.tscn" id="2_lp7fg"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/enemy_pool.tscn" id="3_oyd6y"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_gfp46"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_223m4"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_dj5m7"]
-[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/Objects/player.tscn" id="7_xs7ub"]
-[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Old/enemy_1.tscn" id="8_lj2c5"]
-[ext_resource type="PackedScene" uid="uid://bmkfk5ropxfa3" path="res://Environment/Environment.tscn" id="9_ke4di"]
+[ext_resource type="PackedScene" uid="uid://ovr6j3n0nem5" path="res://Assets/Scenes/player.tscn" id="7_xs7ub"]
+[ext_resource type="PackedScene" uid="uid://3c7ruxt0oios" path="res://Assets/Scenes/Enemies/enemy_1.tscn" id="8_lj2c5"]
+[ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_ke4di"]
+[ext_resource type="Texture2D" uid="uid://c7hyvfaakflp7" path="res://Environment/SKY.jpg" id="10_lp7fg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oyd6y"]
+panorama = ExtResource("10_lp7fg")
+
+[sub_resource type="Sky" id="Sky_lp7fg"]
+sky_material = SubResource("PanoramaSkyMaterial_oyd6y")
+
+[sub_resource type="Environment" id="Environment_oyd6y"]
+background_mode = 2
+sky = SubResource("Sky_lp7fg")
+sky_custom_fov = 96.4
+sky_rotation = Vector3(-6.0458207, -2.4242623, -0.17453292)
+tonemap_mode = 2
+tonemap_exposure = 0.9
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
@@ -29,25 +44,33 @@ _hideLocation = NodePath("EnemyHideLocation")
 _maxTotalAmount = 10
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6.085086, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
 
 [node name="Player" parent="." unique_id=1596617950 node_paths=PackedStringArray("_camera") instance=ExtResource("7_xs7ub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.775074, 0)
+transform = Transform3D(0.27774477, 0.06525436, -0.958436, 0.15682326, 0.9812267, 0.11225174, 0.947768, -0.18148242, 0.26229718, -3.937427, 4.443844, -5.2605915)
 _camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, -11, 27.284643, 19.870306)
-fov = 81.6
+transform = Transform3D(0.99258715, -0.12152103, 0.0018587598, 0.09754439, 0.805682, 0.5842616, -0.072497636, -0.5797492, 0.8115633, -8.552953, 28.680283, 25.48586)
+keep_aspect = 0
+h_offset = -8.18
+v_offset = -1.59
+fov = 86.1
+near = 0.011
+far = 778.08
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.1902968, 0.97983086, 0.06097972, -0.07284547, -0.04785052, 0.9961947, 0.97902024, -0.19401473, 0.06227044, 0, 14.430893, 0)
 
 [node name="Enemy1" parent="." unique_id=1004741099 node_paths=PackedStringArray("_target") instance=ExtResource("8_lj2c5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.698782, -4.3343334, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.599707, 4.0977755, -5.506384)
 _target = NodePath("../Player")
 
 [node name="Environment" parent="." unique_id=1802728127 instance=ExtResource("9_ke4di")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(0.35358623, -0.07751656, -0.93218446, 0.32195014, 0.9457579, 0.04347344, 0.8782512, -0.31548858, 0.35936335, -1.5355377, -3.2034798, -14.865429)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=649918515]
+environment = SubResource("Environment_oyd6y")

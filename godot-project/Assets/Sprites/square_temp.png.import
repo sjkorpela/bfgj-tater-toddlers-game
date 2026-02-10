@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cawdneki37y4x"
 path.s3tc="res://.godot/imported/square_temp.png-218be12dbc562d140bcbbb45d6f33c6e.s3tc.ctex"
+path.etc2="res://.godot/imported/square_temp.png-218be12dbc562d140bcbbb45d6f33c6e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/square_temp.png"
-dest_files=["res://.godot/imported/square_temp.png-218be12dbc562d140bcbbb45d6f33c6e.s3tc.ctex"]
+dest_files=["res://.godot/imported/square_temp.png-218be12dbc562d140bcbbb45d6f33c6e.s3tc.ctex", "res://.godot/imported/square_temp.png-218be12dbc562d140bcbbb45d6f33c6e.etc2.ctex"]
 
 [params]
 

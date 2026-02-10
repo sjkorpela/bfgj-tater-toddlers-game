@@ -1,17 +1,33 @@
 [gd_scene format=3 uid="uid://bie5bhbv3141"]
 
-[ext_resource type="Script" uid="uid://drkl8nnhl17as" path="res://Assets/Scripts/GameManager.cs" id="1_jr5xw"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Objects/game_manager.tscn" id="1_jr5xw"]
+[ext_resource type="PackedScene" uid="uid://dpgtro5wpgyqb" path="res://Assets/Scenes/Objects/shape_drawing.tscn" id="2_a6gqa"]
+[ext_resource type="PackedScene" uid="uid://doyyhowdp2ff" path="res://Assets/Scenes/Objects/enemy_pool.tscn" id="3_472gt"]
 [ext_resource type="PackedScene" uid="uid://blsr35wvf2n32" path="res://Assets/Scenes/Enemies/circle_enemy.tscn" id="4_w4pps"]
 [ext_resource type="PackedScene" uid="uid://cg0epg44d4qei" path="res://Assets/Scenes/Enemies/square_enemy.tscn" id="5_vo6bw"]
 [ext_resource type="PackedScene" uid="uid://c170by12cqli5" path="res://Assets/Scenes/Enemies/triangle_enemy.tscn" id="6_m53as"]
 [ext_resource type="PackedScene" uid="uid://bejuf8s01hfin" path="res://Assets/Scenes/Objects/player.tscn" id="7_akbbg"]
+[ext_resource type="Texture2D" uid="uid://c7hyvfaakflp7" path="res://Environment/SKY.jpg" id="9_a6gqa"]
 [ext_resource type="PackedScene" uid="uid://bq3i3b1uuhtgf" path="res://Environment/Environment.tscn" id="9_aw15j"]
 [ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="9_jr5xw"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/ambient_and_music.tscn" id="10_a6gqa"]
+[ext_resource type="Script" uid="uid://75236at6bwo4" path="res://Assets/Scripts/UI/UiController.cs" id="12_akbbg"]
+[ext_resource type="PackedScene" uid="uid://cc04p0t0wp56k" path="res://UI/Scenes/pause_menu.tscn" id="12_m53as"]
+[ext_resource type="PackedScene" uid="uid://uqd83dolkcri" path="res://UI/Scenes/start_menu.tscn" id="14_am2m2"]
 
-[sub_resource type="Environment" id="Environment_7sy2t"]
-background_color = Color(1, 0.49044794, 0.960975, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_472gt"]
+panorama = ExtResource("9_a6gqa")
+
+[sub_resource type="Sky" id="Sky_lp7fg"]
+sky_material = SubResource("PanoramaSkyMaterial_472gt")
+
+[sub_resource type="Environment" id="Environment_w4pps"]
+background_mode = 2
+sky = SubResource("Sky_lp7fg")
+sky_custom_fov = 96.4
+sky_rotation = Vector3(-5.3965583, -1.9530234, -0.17453292)
+tonemap_mode = 2
+tonemap_exposure = 0.9
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_c1rt1"]
 plane = Plane(1, 0, 0, 0)
@@ -27,11 +43,13 @@ plane = Plane(0, 0, -1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jr5xw"]
 font_size = 48
+font_color = Color(1, 0.5, 0.7249999, 1)
+outline_size = 4
+outline_color = Color(0.7532275, 0.25688702, 0.29827103, 1)
 
 [node name="TestScene1" type="Node3D" unique_id=268760725]
 
-[node name="GameManager" type="Node" parent="." unique_id=828766611 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw")]
-script = ExtResource("1_jr5xw")
+[node name="GameManager" parent="." unique_id=1279497333 node_paths=PackedStringArray("_player", "_pool", "_camera", "_draw") instance=ExtResource("1_jr5xw")]
 _player = NodePath("../Player")
 _pool = NodePath("../EnemyPool")
 _camera = NodePath("../Camera3D")
@@ -44,29 +62,33 @@ _enemyTypes = Array[PackedScene]([ExtResource("4_w4pps"), ExtResource("5_vo6bw")
 _target = NodePath("../Player")
 _spawnLocation = NodePath("EnemySpawnLocation")
 _hideLocation = NodePath("EnemyHideLocation")
-_timeBetweenSpawns = 1.2
+_maxTotalAmount = 100
+_timeBetweenSpawns = 0.5
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 11.6096, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 15, 0)
 
 [node name="EnemyHideLocation" type="Node3D" parent="EnemyPool" unique_id=721007993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 158)
 
 [node name="Player" parent="." unique_id=1596617950 instance=ExtResource("7_akbbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=231327900]
-transform = Transform3D(1, 0, 0, 0, 0.66875434, 0.7434835, 0, -0.7434835, 0.66875434, 0, 83.00041, 62.343124)
-fov = 34.0
+transform = Transform3D(1, 0, 0, 0, 0.9448861, 0.3273994, 0, -0.3273994, 0.9448861, 4.28, 79.47129, 62.343)
+h_offset = -4.76
+v_offset = -44.08
+fov = 36.0
+near = 0.078
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=992877675]
 transform = Transform3D(0.19029678, 0.97983086, 0.0609797, -0.5892886, 0.06432672, 0.8053577, 0.78519166, -0.18919162, 0.58964443, 0, 14.430893, 7.056035)
 
 [node name="Environment" parent="." unique_id=1802728127 instance=ExtResource("9_aw15j")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11, 8, 10)
+transform = Transform3D(0.17598525, 0, -0.9843929, 0, 1, 0, 0.9843929, 0, 0.17598525, 11, 8, 10)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=136842251]
-environment = SubResource("Environment_7sy2t")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1586479553]
+environment = SubResource("Environment_w4pps")
 
 [node name="WorldEdge" type="StaticBody3D" parent="." unique_id=1334703101]
 
@@ -100,3 +122,43 @@ text = "Score: ###"
 label_settings = SubResource("LabelSettings_jr5xw")
 script = ExtResource("9_jr5xw")
 _gameManager = NodePath("../../GameManager")
+
+[node name="AudioListener3D" type="AudioListener2D" parent="." unique_id=666184920]
+
+[node name="AmbientAndMusic" parent="." unique_id=2074840048 instance=ExtResource("10_a6gqa")]
+
+[node name="UiController" type="Control" parent="." unique_id=507947375 node_paths=PackedStringArray("_pauseMenu", "_startMenu", "_gameManager")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("12_akbbg")
+_pauseMenu = NodePath("PauseMenu")
+_startMenu = NodePath("Start Menu")
+_gameManager = NodePath("../GameManager")
+
+[node name="PauseMenu" parent="UiController" unique_id=2878765 instance=ExtResource("12_m53as")]
+layout_mode = 1
+
+[node name="ContinueButton" parent="UiController/PauseMenu" index="4" unique_id=468505741 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+_targetState = 1
+
+[node name="ExitButton" parent="UiController/PauseMenu" index="5" unique_id=1546361697 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+
+[node name="SettingsButton" parent="UiController/PauseMenu" index="6" unique_id=679909367 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+_targetState = 4
+
+[node name="Start Menu" parent="UiController" unique_id=1157680677 instance=ExtResource("14_am2m2")]
+layout_mode = 1
+
+[node name="ExitButton" parent="UiController/Start Menu" index="3" unique_id=303572739 node_paths=PackedStringArray("_gameManager")]
+_gameManager = NodePath("../../../GameManager")
+
+[editable path="UiController/PauseMenu"]
+[editable path="UiController/Start Menu"]
