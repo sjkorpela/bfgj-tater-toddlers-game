@@ -22,6 +22,9 @@ radius = 0.7104492
 height = 2.722168
 
 [node name="Player" type="CharacterBody3D" unique_id=1596617950 node_paths=PackedStringArray("_health", "_moveInput", "_debugInput", "_animationPlayer", "_wandParticles", "_mesh", "_hurtSound", "_castSound", "_walkSound")]
+wall_min_slide_angle = 0.0
+floor_constant_speed = true
+floor_max_angle = 1.7453293
 script = ExtResource("1_7dd06")
 _health = NodePath("HealthComponent")
 _moveInput = NodePath("MoveInput")

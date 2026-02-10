@@ -52,7 +52,9 @@ albedo_color = Color(1, 0.22352941, 0, 0.3764706)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fa6de"]
 material = SubResource("StandardMaterial3D_8a6c7")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r6sx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7l5g3"]
+radius = 0.7
+height = 2.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6t24g"]
 animations = [{
@@ -196,6 +198,8 @@ animations = [{
 }]
 
 [node name="TriangleEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_sprite", "_collider")]
+floor_constant_speed = true
+floor_max_angle = 1.7453293
 script = ExtResource("1_ab6g3")
 _health = NodePath("HealthComponent")
 _sprite = NodePath("AnimatedSprite3D")
@@ -214,14 +218,14 @@ visible = false
 mesh = SubResource("CapsuleMesh_fa6de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
-shape = SubResource("CapsuleShape3D_8r6sx")
+shape = SubResource("CapsuleShape3D_7l5g3")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=349663689]
 script = ExtResource("3_kursv")
 _maxHealth = 1
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=162267358]
-transform = Transform3D(2.445, 0, 2.842171e-14, 0, 2.445, 0, -2.842171e-14, 0, 2.445, 0.0038823416, -1.4113803, 0.0014704325)
+transform = Transform3D(2.445, 0, 2.842171e-14, 0, 2.445, 0, -2.842171e-14, 0, 2.445, 0, 0, 0)
 flip_h = true
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_6t24g")

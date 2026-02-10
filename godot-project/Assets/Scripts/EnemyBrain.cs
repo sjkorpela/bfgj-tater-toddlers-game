@@ -40,6 +40,8 @@ public partial class EnemyBrain : CharacterBody3D
 	public bool StillDying => _stillDying;
 
 	private bool _isFlipped;
+	
+	private Random _random = new Random();
 
 	public void _BrainPhysicsProcess(double delta)
 	{
@@ -50,7 +52,10 @@ public partial class EnemyBrain : CharacterBody3D
 				0f,
 				_target.GlobalPosition.Z - this.GlobalPosition.Z
 			).Normalized();
-			this.Velocity = toTarget * _speed * (float)delta;
+			
+			
+			
+			this.Velocity = (toTarget * _speed * (float)delta) + this.GetGravity();
 		
 			this.MoveAndSlide();
 		}

@@ -50,7 +50,7 @@ _enemyTypes = Array[PackedScene]([ExtResource("4_w4pps"), ExtResource("5_vo6bw")
 _target = NodePath("../Player")
 _spawnLocation = NodePath("EnemySpawnLocation")
 _hideLocation = NodePath("EnemyHideLocation")
-_maxTotalAmount = 0
+_maxTotalAmount = 100
 _timeBetweenSpawns = 0.5
 
 [node name="EnemySpawnLocation" type="Node3D" parent="EnemyPool" unique_id=1595727428]
