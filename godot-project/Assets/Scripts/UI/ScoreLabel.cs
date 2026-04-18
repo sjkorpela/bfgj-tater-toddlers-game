@@ -4,10 +4,14 @@ namespace Tater.Scripts.UI;
 
 public partial class ScoreLabel : Label
 {
-    [ExportCategory("Node References")]
-    [Export] private GameManager _gameManager;
+    private GameManager _gm;
+    public override void _Ready()
+    {
+        _gm = Global.Instance.GameManager;
+    }
+
     public override void _Process(double delta)
     {
-        this.Text = "Score: " + _gameManager.Score;
+        this.Text = "Score: " + _gm.Score;
     }
 }

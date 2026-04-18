@@ -43,6 +43,31 @@ public partial class EnemyBrain : CharacterBody3D
 	
 	private Random _random = new Random();
 
+	private GameManager _gm;
+
+	public override void _Ready()
+	{
+		_gm = Global.Instance.GameManager;
+		_gm.OnGameStateChange += _onStateChange;
+	}
+
+	public override void _ExitTree()
+	{
+		_gm.OnGameStateChange -= _onStateChange;
+	}
+
+	private void _onStateChange(GameState newState, GameState oldState)
+	{
+		if (newState != GameState.GameActive)
+		{
+			// freeze animation
+		}
+		else
+		{
+			// continue animation
+		}
+	}
+
 	public void _BrainPhysicsProcess(double delta)
 	{
 		if (_active)

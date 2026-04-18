@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bvxdbp1s5aaox"]
+
+[ext_resource type="Texture2D" uid="uid://dxt0p877up7w1" path="res://UI/Assets/START_BACKGROUND.png" id="1_fbqjm"]
+[ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="2_reko0"]
+[ext_resource type="Shortcut" uid="uid://c20ccluhiq835" path="res://Assets/Resources/esc_shortcut.tres" id="3_3ojpc"]
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="3_reko0"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="4_ta80g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_am2m2"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameUiNew" type="Control" unique_id=738203318]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreBackground" type="TextureRect" parent="." unique_id=716249700]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -526.065
+offset_top = -481.245
+offset_right = -526.065
+offset_bottom = -481.245
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.05235988
+texture = ExtResource("1_fbqjm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PauseButton" type="Button" parent="." unique_id=708823470]
+layout_mode = 0
+offset_right = 262.0
+offset_bottom = 70.0
+theme = ExtResource("3_reko0")
+shortcut = ExtResource("3_3ojpc")
+text = "PAUSE"
+script = ExtResource("4_ta80g")
+_targetState = 4
+
+[node name="Score" type="Label" parent="." unique_id=549148178]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 283.0
+offset_bottom = 45.0
+rotation = 0.05235988
+text = "Score: ###"
+label_settings = SubResource("LabelSettings_am2m2")
+vertical_alignment = 1
+script = ExtResource("2_reko0")

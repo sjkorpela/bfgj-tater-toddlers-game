@@ -33,7 +33,7 @@ public partial class ShapeDrawing : Node
 	}
 
 
-	public override void _Process(double delta)
+	public void _ShapeDrawingProcess(double delta)
 	{
 		if (_shapeActive && !Input.IsMouseButtonPressed(MouseButton.Left))
 		{

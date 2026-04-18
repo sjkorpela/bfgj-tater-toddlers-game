@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://d3cfiepsd5tt7"]
+
+[ext_resource type="Texture2D" uid="uid://ds6yc8lpbhnxv" path="res://UI/Assets/PAUSEMENU_BACKGROUND.png" id="1_jfvow"]
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="2_4gejb"]
+[ext_resource type="Shortcut" uid="uid://c20ccluhiq835" path="res://Assets/Resources/esc_shortcut.tres" id="3_8o0k7"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="4_uo5g6"]
+[ext_resource type="Texture2D" uid="uid://dwx2ioj4mdlap" path="res://UI/Assets/CONTINUE_BUTTON.png" id="5_lb4hd"]
+[ext_resource type="Texture2D" uid="uid://uuswoej1b27j" path="res://UI/Assets/EXIT_BUTTON.png" id="6_ucvxh"]
+[ext_resource type="Texture2D" uid="uid://buvy8awxoqg5k" path="res://UI/Assets/SETTINGS_BUTTON2.png" id="7_heo7l"]
+
+[node name="PauseMenuNew" type="TextureRect" unique_id=1748330498]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jfvow")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ContinueButton" type="Button" parent="." unique_id=168270183]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 67.0
+offset_right = -391.0
+offset_bottom = -489.99976
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4gejb")
+shortcut = ExtResource("3_8o0k7")
+text = "START"
+script = ExtResource("4_uo5g6")
+_targetState = 3
+
+[node name="ExitButton" type="Button" parent="." unique_id=73350720]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 202.0
+offset_right = -391.0
+offset_bottom = -355.0001
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4gejb")
+text = "MAINMENU"
+script = ExtResource("4_uo5g6")
+_targetState = 1
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1310054104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 352.0
+offset_right = -391.0
+offset_bottom = -205.00018
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4gejb")
+text = "SETTINGS"
+script = ExtResource("4_uo5g6")
+_targetState = 5
+
+[node name="ContinueButtonTex" type="TextureRect" parent="." unique_id=1452699080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_lb4hd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ExitButtonTex" type="TextureRect" parent="." unique_id=1382018215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_ucvxh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButtonTex" type="TextureRect" parent="." unique_id=920785479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_heo7l")
+expand_mode = 1
+stretch_mode = 5

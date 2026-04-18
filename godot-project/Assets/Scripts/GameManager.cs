@@ -5,16 +5,18 @@ namespace Tater.Scripts;
 
 public enum GameState
 {
+	Initializing,
 	MainMenu,
+	MainMenuSettings,
 	GameActive,
 	GamePaused,
+	GamePausedSettings,
 	GameOver,
-	Settings,
 }
 
 public partial class GameManager : Node
 {
-	[Signal] public delegate void OnGameStateChangeEventHandler(GameState state);
+	[Signal] public delegate void OnGameStateChangeEventHandler(GameState newState, GameState oldState);
 	
 	[ExportCategory("Node References")]
 	[Export] private PlayerBrain _player;
@@ -22,17 +24,32 @@ public partial class GameManager : Node
 	[Export] private EnemyPool _pool;
 	[Export] private Camera3D _camera;
 	[Export] private ShapeDrawing _draw;
+	
+	[ExportCategory("Settings")]
+	[Export] private float _cameraMenuHeight = 160f;
+	[Export] private float _cameraGameHeight = 80f;
 
-	private GameState _gameState = GameState.GameActive;
+	private GameState _gameState = GameState.Initializing;
 	public GameState GameState
 	{
 		get => _gameState;
 		set
 		{
+			GD.Print("GameManager: State switching from " + _gameState + " to " + value + "!");
+			EmitSignalOnGameStateChange(value, _gameState);
 			_gameState = value;
-			EmitSignalOnGameStateChange(value);
-			GD.Print(value);
+			switch (value)
+			{
+				case GameState.MainMenu:
+					_goToMainMenu();
+					break;
+			}
 		} 
+	}
+
+	private void _goToMainMenu()
+	{
+		ResetGame();
 	}
 
 	private int _score = 0;
@@ -48,17 +65,17 @@ public partial class GameManager : Node
 			throw new Exception("GameManagerNode is missing node references!");
 		}
 
-		GameState = GameState.GameActive;
+		GameState = GameState.MainMenu;
 		ResetGame();
 	}
 
 	public override void _EnterTree()
 	{
+		Global.Instance.SetGameManager(this);
+		
 		_draw.OnDrawingStart += OnDrawingStart;
 		_draw.OnCast += OnCast;
-
 		_pool.OnPawnKill += value => _score += value;
-
 		_player.Health.OnLethalDamage += EndGame;
 	}
 	
@@ -86,6 +103,7 @@ public partial class GameManager : Node
 			_player._BrainPhysicsProcess(delta);
 			_pool._BrainProcess(delta);
 			_pool._BrainPhysicsProcess(delta);
+			_draw._ShapeDrawingProcess(delta);
 
 			if (_timeSinceLastScoreIncrement > _scoreIncrement)
 			{
@@ -94,6 +112,29 @@ public partial class GameManager : Node
 			}
 
 			_timeSinceLastScoreIncrement += (float)delta;
+			
+			if (Math.Abs(_camera.Position.Y - _cameraGameHeight) > 0.5f)
+			{
+				Vector3 targetPos = new Vector3(
+					_camera.Position.X,
+					_cameraGameHeight,
+					_camera.Position.Z
+				);
+				_camera.Position = _camera.Position.Lerp(targetPos, (float)delta);
+			}
+		}
+
+		if (_gameState == GameState.MainMenu)
+		{
+			if (Math.Abs(_camera.Position.Y - _cameraMenuHeight) > 0.5f)
+			{
+				Vector3 targetPos = new Vector3(
+					_camera.Position.X,
+					_cameraMenuHeight,
+					_camera.Position.Z
+				);
+				_camera.Position = _camera.Position.Lerp(targetPos, (float)delta);
+			}
 		}
 	}
 

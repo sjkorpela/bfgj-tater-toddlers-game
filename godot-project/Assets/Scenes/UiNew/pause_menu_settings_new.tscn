@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://byoewteet8top"]
+
+[ext_resource type="Texture2D" uid="uid://d2yjmqv6lakbf" path="res://UI/Assets/SETTINGS_BACKGROUND.png" id="1_deiru"]
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="2_80ahs"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="3_tthkk"]
+[ext_resource type="Texture2D" uid="uid://be3jog62ply64" path="res://UI/Assets/BACK_BUTTON.png" id="4_lfiki"]
+[ext_resource type="Texture2D" uid="uid://c24filr466xws" path="res://UI/Assets/SOUNDBAR_BAR.png" id="5_n1c58"]
+[ext_resource type="Script" uid="uid://dorjsil86tepw" path="res://Assets/Scripts/UI/AudioBusSlider.cs" id="6_87ogd"]
+
+[node name="PauseMenuSettingsNew" type="TextureRect" unique_id=790810389]
+custom_minimum_size = Vector2(500, 0)
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_deiru")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="." unique_id=378514506]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 188.0
+offset_right = -391.0
+offset_bottom = -369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_80ahs")
+text = "START"
+script = ExtResource("3_tthkk")
+_targetState = 4
+
+[node name="BackButtonTex" type="TextureRect" parent="." unique_id=41286481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_lfiki")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoundSliderTex" type="TextureRect" parent="." unique_id=397441301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_n1c58")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoundSlider" type="HSlider" parent="." unique_id=739136362]
+layout_mode = 0
+offset_left = 430.2503
+offset_top = 360.16367
+offset_right = 646.9925
+offset_bottom = 385.61682
+rotation = -0.03178141
+max_value = 25.0
+value = 25.0
+script = ExtResource("6_87ogd")
