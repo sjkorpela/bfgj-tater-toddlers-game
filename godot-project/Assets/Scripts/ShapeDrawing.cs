@@ -37,7 +37,7 @@ public partial class ShapeDrawing : Node
 	{
 		if (_shapeActive && !Input.IsMouseButtonPressed(MouseButton.Left))
 		{
-			GD.Print("end drawing shape!");
+			// GD.Print("end drawing shape!");
 			_shapeActive = false;
 			_createShape(_dots);
 			_dots.Clear();
@@ -47,7 +47,7 @@ public partial class ShapeDrawing : Node
 
 		if (!_shapeActive && Input.IsMouseButtonPressed(MouseButton.Left))
 		{
-			GD.Print("start drawing shape!");
+			// GD.Print("start drawing shape!");
 			EmitSignalOnDrawingStart();
 			_shapeActive = true;
 			_addNewDot();

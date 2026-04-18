@@ -18,6 +18,7 @@ public partial class EnemyPool : Node
 	[ExportCategory("Attributes")]
 	[Export] private int _maxTotalAmount = 50;
 	private int _totalAmount = 0;
+	private int _lastType = 0;
 	[Export] private double _timeBetweenSpawns = 1f;
 	private double _timeSinceLastSpawn = 0f;
 
@@ -87,7 +88,10 @@ public partial class EnemyPool : Node
 
 	private void _instantiateNewPawn()
 	{
-		EnemyBrain temp = _enemyTypes[_random.Next(0, 3)].Instantiate<EnemyBrain>();
+		int type = _lastType + 1;
+		if (type == 3) type = 0;
+		_lastType = type;
+		EnemyBrain temp = _enemyTypes[type].Instantiate<EnemyBrain>();
 		this.AddChild(temp);
 		_totalAmount++;
 		_pawns.Add(temp);
