@@ -5,10 +5,12 @@
 [ext_resource type="Shortcut" uid="uid://c20ccluhiq835" path="res://Assets/Resources/esc_shortcut.tres" id="3_3ojpc"]
 [ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="3_reko0"]
 [ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="4_ta80g"]
+[ext_resource type="FontFile" uid="uid://brlyxxj8wao0r" path="res://Assets/Resources/Font/MoreSugar-Regular.ttf" id="5_5a1l3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_am2m2"]
+font = ExtResource("5_5a1l3")
 font_size = 24
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 
 [node name="GameUiNew" type="Control" unique_id=738203318]
 layout_mode = 3
@@ -52,7 +54,7 @@ offset_top = 5.0
 offset_right = 283.0
 offset_bottom = 45.0
 rotation = 0.05235988
-text = "Score: ###"
+text = "s c o r e : ###"
 label_settings = SubResource("LabelSettings_am2m2")
 vertical_alignment = 1
 script = ExtResource("2_reko0")
