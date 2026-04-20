@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,13 +9,9 @@ namespace Tater.Scripts;
 
 public partial class EnemyBrain : CharacterBody3D
 {
+	[Signal] public delegate void OnPawnDiedEventHandler(int score);
+	
 	[ExportCategory("Node References")]
-	[Export] private Node3D _target;
-	public Node3D Target
-	{
-		get => _target;
-		set => _target = value;
-	}
 	[Export] private HealthComponent _health;
 	public HealthComponent Health => _health;
 	[Export] private AnimatedSprite3D _sprite;
@@ -23,52 +19,97 @@ public partial class EnemyBrain : CharacterBody3D
 	
 	[ExportCategory("Attributes")]
 	[Export] private float _speed = 100f;
-	[Export] private bool _hasAnimations = false;
+	[Export] private int _score = 100;
 	[Export] private Shape _shape;
-	public Shape Shape
-	{
-		get => _shape;
-		set => _shape = value;
-	}
+	public Shape Shape => _shape;
 	
+	private Node3D _target;
 	private Vector3 _hidePosition = new Vector3(-100, -100, -100);
 
 	private bool _active = false;
 	public bool Active => _active;
 
-	private bool _stillDying = false;
-	public bool StillDying => _stillDying;
+	private bool _currentlyDying = false;
+	public bool CurrentlyDying => _currentlyDying;
 
 	private bool _isFlipped;
-	
-	private Random _random = new Random();
+
+	private StringName _walkAnimation;
+	private StringName _deathAnimation;
 
 	private GameManager _gm;
 
-	public override void _Ready()
+	public override void _EnterTree()
 	{
 		_gm = Global.Instance.GameManager;
-		_gm.OnGameStateChange += _onStateChange;
+		
+		if (_sprite == null)
+		{
+			throw new Exception("EnemyBrain is missing node references!");
+		}
+		
+		_walkAnimation = AnimationDictionaries.ParseEnemyAnimation.GetValueOrDefault(EnemyAnimation.Walk);
+		_deathAnimation = AnimationDictionaries.ParseEnemyAnimation.GetValueOrDefault(EnemyAnimation.Death);
+
+		_sprite.AnimationFinished += _onAnimationFinished;
+		_health.OnLethalDamage += StartDying;
+
+		_target = _gm.Player;
+		_isFlipped = _sprite.IsFlippedH();
+		Deactivate();
 	}
 
 	public override void _ExitTree()
 	{
-		_gm.OnGameStateChange -= _onStateChange;
+		_sprite.AnimationFinished -= _onAnimationFinished;
+		_health.OnLethalDamage -= StartDying;
 	}
-
-	private void _onStateChange(GameState newState, GameState oldState)
+	
+	private void _onAnimationFinished()
 	{
-		if (newState != GameState.GameActive)
+		StringName anim = _sprite.Animation;
+		if (anim == _deathAnimation)
 		{
-			// freeze animation
-		}
-		else
-		{
-			// continue animation
+			_currentlyDying = false;
+			Deactivate();
 		}
 	}
+	
+	public void StartDying()
+	{
+		_active = false;
+		_currentlyDying = true;
+		_collider.Disabled = true;
+		_sprite.Play(_deathAnimation);
+		
+		_gm.AddScore(_score);
+		EmitSignalOnPawnDied(_score);
+	}
 
-	public void _BrainPhysicsProcess(double delta)
+	
+	
+	public void Activate(Vector3 startPosition)
+	{
+		_active = true;
+		this.Visible = true;
+		this.GlobalPosition = startPosition;
+		_collider.Disabled = false;
+		
+		_health.ResetHealth();
+		_sprite.Play(_walkAnimation);
+	}
+
+	private void Deactivate()
+	{
+		_active = false;
+		this.Visible = false;
+		this.GlobalPosition = _hidePosition;
+		_collider.Disabled = true;
+	}
+	
+	
+	
+	public void _PawnPhysicsProcess(double delta)
 	{
 		if (_active)
 		{
@@ -77,85 +118,10 @@ public partial class EnemyBrain : CharacterBody3D
 				0f,
 				_target.GlobalPosition.Z - this.GlobalPosition.Z
 			).Normalized();
-			
-			
-			
 			this.Velocity = (toTarget * _speed * (float)delta) + this.GetGravity();
-		
 			this.MoveAndSlide();
-		}
-
-		if (_hasAnimations)
-		{
 			_sprite.FlipH = _target.GlobalPosition.X > this.GlobalPosition.X ? !_isFlipped : _isFlipped;
 		}
 	}
-
-	public void Initialize(Node3D target, Vector3 hidePosition)
-	{
-		_target = target;
-		_hidePosition = hidePosition;
-		_health.OnLethalDamage += () => Deactivate();
-		if (_hasAnimations)
-		{
-			_isFlipped = _sprite.IsFlippedH();
-		}
-		Deactivate();
-	}
-
-	public void Activate(Vector3 startPosition)
-	{
-		_active = true;
-		this.Visible = true;
-		this.GlobalPosition = startPosition;
-		_health.ResetHealth();
-		
-		if (_hasAnimations)
-		{
-			String walkAnimation = AnimationDictionaries.ParseEnemyAnimation.GetValueOrDefault(EnemyAnimation.Walk);
-			_sprite.Play(walkAnimation);
-		}
-	}
-
-	public void Deactivate()
-	{
-		_active = false;
-		_stillDying = true;
-		if (_hasAnimations)
-		{
-			_doDeathVisuals();
-		}
-		else
-		{
-			_hide();
-		}
-	}
 	
-	public void _doDeathVisuals()
-	{
-		Thread hurtThread = new Thread(_doDeathAnimationsAndThenHide);
-		hurtThread.Start();
-	}
-
-	private void _doDeathAnimationsAndThenHide()
-	{
-		this.CallDeferred(nameof(_playDeathAnimation), null);
-		// NTS: the death animation takes two seconds and the collider hangs around for all that time
-		// pls fix
-		Thread.Sleep(1000);
-		this.CallDeferred(nameof(_hide), null);
-	}
-
-	public void _playDeathAnimation()
-	{
-		String deathAnimation = AnimationDictionaries.ParseEnemyAnimation.GetValueOrDefault(EnemyAnimation.Death);
-		_sprite.Play(deathAnimation);
-	}
-
-	private void _hide()
-	{
-		this.Visible = false;
-		this.GlobalPosition = _hidePosition;
-		_stillDying = false;
-	}
 }

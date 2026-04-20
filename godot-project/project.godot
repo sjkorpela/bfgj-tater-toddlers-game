@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="bfgj tater game"
+config/name="Shapewizard"
+config/version="1.1"
 run/main_scene="uid://bie5bhbv3141"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="uid://cdgspse5mn7x0"
 
 [audio]
 
@@ -22,6 +24,10 @@ buses/default_bus_layout="uid://m8t3q5dkl4ux"
 [dotnet]
 
 project/assembly_name="bfgj tater game"
+
+[global_group]
+
+enemy=""
 
 [input]
 

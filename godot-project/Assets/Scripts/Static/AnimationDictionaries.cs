@@ -9,7 +9,8 @@ public class AnimationDictionaries
     {
         { WizardAnimation.Idle, "Wizard_Armature|Idle_001" },
         { WizardAnimation.Moving, "Wizard_Armature|moving" },
-        { WizardAnimation.Casting, "Wizard_Armature|casting" }
+        { WizardAnimation.Casting, "Wizard_Armature|casting" },
+        { WizardAnimation.Dying, "extra/Wizard_Armature_Death" }
     };
     
     public static readonly Dictionary<EnemyAnimation, string> ParseEnemyAnimation = new Dictionary<EnemyAnimation, string>()

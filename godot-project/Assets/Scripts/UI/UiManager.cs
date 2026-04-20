@@ -10,6 +10,7 @@ public partial class UiManager : Control
     [Export] private PackedScene _gameUiScene;
     [Export] private PackedScene _pauseMenuScene;
     [Export] private PackedScene _pauseMenuSettingsScene;
+    [Export] private PackedScene _gameOverScene;
     
     private GameManager _gm;
 
@@ -18,6 +19,7 @@ public partial class UiManager : Control
     private Control _gameUi;
     private Control _pauseMenu;
     private Control _pauseMenuSettings;
+    private Control _gameOver;
     
     public override void _EnterTree()
     {
@@ -49,6 +51,9 @@ public partial class UiManager : Control
             case GameState.GamePausedSettings:
                 _pauseMenuSettings.QueueFree();
                 break;
+            case GameState.GameOver:
+                _gameOver.QueueFree();
+                break;
         }
         
         switch (newState)
@@ -72,6 +77,10 @@ public partial class UiManager : Control
             case GameState.GamePausedSettings:
                 _pauseMenuSettings = _pauseMenuSettingsScene.Instantiate<Control>();
                 this.AddChild(_pauseMenuSettings);
+                break;
+            case GameState.GameOver:
+                _gameOver = _gameOverScene.Instantiate<Control>();
+                this.AddChild(_gameOver);
                 break;
         }
     }

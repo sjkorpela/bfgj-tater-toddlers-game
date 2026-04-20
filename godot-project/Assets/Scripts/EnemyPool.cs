@@ -7,8 +7,6 @@ namespace Tater.Scripts;
 
 public partial class EnemyPool : Node
 {
-	[Signal] public delegate void OnPawnKillEventHandler(int value);
-	
 	[ExportCategory("Node References")]
 	[Export] private PackedScene[] _enemyTypes;
 	[Export] private Node3D _target;
@@ -21,12 +19,13 @@ public partial class EnemyPool : Node
 	private int _lastType = 0;
 	[Export] private double _timeBetweenSpawns = 1f;
 	private double _timeSinceLastSpawn = 0f;
+	[Export] private float _playerSafeDistance = 10;
 
 	[ExportCategory("Settings")]
-	[Export] private int minX = -31;
-	[Export] private int maxX = 31;
-	[Export] private int minZ = -25;
-	[Export] private int maxZ = 25;
+	[Export] private int _minX = -31;
+	[Export] private int _maxX = 31;
+	[Export] private int _minZ = -25;
+	[Export] private int _maxZ = 25;
 	
 	[ExportCategory("Sound Nodes")]
 	[Export] private RandomAudioStreamPlayer2D _shapeDeathSound;
@@ -35,42 +34,72 @@ public partial class EnemyPool : Node
 	private int _deathSoundsToDo = 0;
 	private int _spawnSoundsToDo = 0;
 	
-	private List<EnemyBrain> _pawns = [];
+	private readonly List<EnemyBrain> _pawns = [];
 	public List<EnemyBrain> Pawns => _pawns;
 
-	private Random _random = new Random();
+	private readonly Random _random = new Random();
+
+	private GameManager _gm;
 
 
-	public override void _Ready()
+	public override void _EnterTree()
 	{
-		if (_enemyTypes == null || _target == null || _spawnLocation == null || _hideLocation == null)
+		_gm = Global.Instance.GameManager;
+		if (
+			_enemyTypes == null || 
+			_enemyTypes.Length == 0 ||
+			_target == null ||
+			_spawnLocation == null ||
+			_hideLocation == null ||
+			_shapeDeathSound == null ||
+			_shapeSpawnSound == null
+			)
 		{
-			throw new Exception("EnemyPool is missing node references!");
+			throw new Exception("EnemyPool is missing references!");
 		}
+		
+		_gm.OnGameReset += _onGameReset;
+		_gm.OnGameStateChange += _onStateChange;
 	}
-	
-	public void _BrainProcess(double delta)
+
+	public override void _ExitTree()
 	{
+		_gm.OnGameReset -= _onGameReset;
+		_gm.OnGameStateChange -= _onStateChange;
+	}
+
+	public void _PoolPhysicsProcess(double delta)
+	{
+		// Process pawns
+		foreach (EnemyBrain pawn in _pawns)
+		{
+			pawn._PawnPhysicsProcess(delta);
+		}
+		
 		// Fill up 
 		if (_totalAmount < _maxTotalAmount)
 		{
-			_instantiateNewPawn();
+			InstantiateNewPawn();
 		}
 
+		
+		
+		// Spawning
 		if (_timeSinceLastSpawn >= _timeBetweenSpawns)
 		{
 			ActivatePawn();
 			_timeSinceLastSpawn = 0f;
 		}
-
 		_timeSinceLastSpawn += delta;
 
+		
+		
+		// Spacing out sounds
 		if (_deathSoundsToDo > 0)
 		{
 			_shapeDeathSound.PlayRandomSound();
 			_deathSoundsToDo--;
 		}
-		
 		if (_spawnSoundsToDo > 0)
 		{
 			_shapeSpawnSound.PlayRandomSound();
@@ -78,43 +107,46 @@ public partial class EnemyPool : Node
 		}
 	}
 
-	public void _BrainPhysicsProcess(double delta)
-	{
-		foreach (EnemyBrain pawn in _pawns)
-		{
-			pawn._BrainPhysicsProcess(delta);
-		}
-	}
-
-	private void _instantiateNewPawn()
+	private void InstantiateNewPawn()
 	{
 		int type = _lastType + 1;
 		if (type == 3) type = 0;
 		_lastType = type;
 		EnemyBrain temp = _enemyTypes[type].Instantiate<EnemyBrain>();
+		
 		this.AddChild(temp);
 		_totalAmount++;
 		_pawns.Add(temp);
-		temp.Initialize(_target, _hideLocation.GlobalPosition);
-		temp.Health.OnLethalDamage += _pawnDied;
+		temp.OnPawnDied += _pawnDied;
 	}
 
-	private void _pawnDied()
+	private void _pawnDied(int _)
 	{
-		EmitSignalOnPawnKill(100);
 		_deathSoundsToDo++;
 	}
 
 	public void ActivatePawn()
 	{
-		_spawnLocation.GlobalPosition = new Vector3(
-			_random.Next(minX, maxX),
-			_spawnLocation.GlobalPosition.Y,
-			_random.Next(minZ, maxZ)
-		);
+		// bad
+		for (int i = 0; i < 10; i++)
+		{
+			Vector3 temp = new Vector3(
+				_random.Next(_minX, _maxX),
+				_spawnLocation.GlobalPosition.Y,
+				_random.Next(_minZ, _maxZ)
+			);
+
+			if (_target.GlobalPosition.DistanceTo(temp) > _playerSafeDistance)
+			{
+				_spawnLocation.GlobalPosition = temp;
+				break;
+			}
+		}
+		
+		
 		foreach (EnemyBrain pawn in _pawns)
 		{
-			if (!pawn.Active && !pawn.StillDying)
+			if (!pawn.Active && !pawn.CurrentlyDying)
 			{
 				pawn.Activate(_spawnLocation.GlobalPosition);
 				_spawnSoundsToDo++;
@@ -123,21 +155,27 @@ public partial class EnemyPool : Node
 		}
 	}
 
-	public void DamagePawn(EnemyBrain pawn, int damage)
-	{
-		pawn.Health.TakeDamage(damage);
-	}
-
-	public void DeactivatePawn(EnemyBrain pawn)
-	{
-		pawn.Deactivate();
-	}
-
-	public void DeactivateAllPawns()
+	private void _onGameReset()
 	{
 		foreach (EnemyBrain pawn in _pawns)
 		{
-			pawn.Deactivate();
+			pawn.StartDying();
+		}
+		_deathSoundsToDo = 0;
+		_spawnSoundsToDo = 0;
+	}
+
+	private void _onStateChange(GameState newState, GameState oldsState)
+	{
+		if (newState is GameState.GameActive or GameState.GameOver)
+		{
+			_shapeDeathSound.StreamPaused = false;
+			_shapeSpawnSound.StreamPaused = false;
+		}
+		else
+		{
+			_shapeDeathSound.StreamPaused = true;
+			_shapeSpawnSound.StreamPaused = true;
 		}
 	}
 }

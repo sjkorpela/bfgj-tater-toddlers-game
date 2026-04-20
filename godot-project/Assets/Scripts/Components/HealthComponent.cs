@@ -14,6 +14,7 @@ public partial class HealthComponent : Node
 
 	private int _health = 0;
 	public int Health => _health;
+	public int MaxHealth => _maxHealth;
 
 	public override void _Ready()
 	{

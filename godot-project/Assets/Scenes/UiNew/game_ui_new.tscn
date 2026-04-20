@@ -6,6 +6,10 @@
 [ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="3_reko0"]
 [ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="4_ta80g"]
 [ext_resource type="FontFile" uid="uid://brlyxxj8wao0r" path="res://Assets/Resources/Font/MoreSugar-Regular.ttf" id="5_5a1l3"]
+[ext_resource type="Texture2D" uid="uid://b3035lg1h30nm" path="res://UI/Assets/HEART_RED.png" id="7_5a1l3"]
+[ext_resource type="Script" uid="uid://dsvxm1qi3laoa" path="res://Assets/Scripts/UI/HeartsManager.cs" id="7_lr0ki"]
+[ext_resource type="Script" uid="uid://dhpt8noeeyigi" path="res://Assets/Scripts/UI/Heart.cs" id="9_mdray"]
+[ext_resource type="Texture2D" uid="uid://cpb0glheupdes" path="res://UI/Assets/HEART_GREY.png" id="10_hm84g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_am2m2"]
 font = ExtResource("5_5a1l3")
@@ -20,41 +24,125 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScoreBackground" type="TextureRect" parent="." unique_id=716249700]
+[node name="ScoreBackgroundCropper" type="Control" parent="." unique_id=1323959601]
+clip_contents = true
+anchors_preset = 0
+offset_left = -49.0
+offset_top = 85.0
+offset_right = 327.0
+offset_bottom = 190.0
+
+[node name="HeartsBackground" type="TextureRect" parent="ScoreBackgroundCropper" unique_id=1599423129]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -526.065
-offset_top = -481.245
-offset_right = -526.065
-offset_bottom = -481.245
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.05235988
+layout_mode = 0
+offset_left = -409.0
+offset_top = -452.00003
+offset_right = 743.0
+offset_bottom = 195.99997
+rotation = 0.034906585
 texture = ExtResource("1_fbqjm")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="HeartsBackgroundCropper" type="Control" parent="." unique_id=838306390]
+clip_contents = true
+anchors_preset = 0
+offset_left = -194.0
+offset_top = -8.0
+offset_right = 615.0
+offset_bottom = 113.0
+
+[node name="HeartsBackground" type="TextureRect" parent="HeartsBackgroundCropper" unique_id=638718941]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -566.5
+offset_top = -356.5
+offset_right = 585.5
+offset_bottom = 291.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.034906585
+scale = Vector2(0.89, 0.89)
+texture = ExtResource("1_fbqjm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score" type="Label" parent="." unique_id=549148178]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 108.0
+offset_right = 294.0
+offset_bottom = 148.0
+rotation = 0.034906585
+text = "s c o r e : ###"
+label_settings = SubResource("LabelSettings_am2m2")
+vertical_alignment = 1
+script = ExtResource("2_reko0")
+
+[node name="Hearts" type="Control" parent="." unique_id=536316843 node_paths=PackedStringArray("_hearts")]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 269.0
+offset_bottom = 81.0
+script = ExtResource("7_lr0ki")
+_hearts = [NodePath("Heart1"), NodePath("Heart2"), NodePath("Heart3")]
+
+[node name="Heart1" type="TextureRect" parent="Hearts" unique_id=1807530611]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 73.0
+offset_bottom = 65.0
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("7_5a1l3")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("9_mdray")
+_heartRed = ExtResource("7_5a1l3")
+_heartGrey = ExtResource("10_hm84g")
+
+[node name="Heart2" type="TextureRect" parent="Hearts" unique_id=634477691]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 65.0
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("7_5a1l3")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("9_mdray")
+_heartRed = ExtResource("7_5a1l3")
+_heartGrey = ExtResource("10_hm84g")
+
+[node name="Heart3" type="TextureRect" parent="Hearts" unique_id=2075020936]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 5.0
+offset_right = 237.0
+offset_bottom = 65.0
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("7_5a1l3")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("9_mdray")
+_heartRed = ExtResource("7_5a1l3")
+_heartGrey = ExtResource("10_hm84g")
+
 [node name="PauseButton" type="Button" parent="." unique_id=708823470]
 layout_mode = 0
-offset_right = 262.0
-offset_bottom = 70.0
+offset_left = 11.978699
+offset_top = 10.0
+offset_right = 273.9787
+offset_bottom = 170.245
 theme = ExtResource("3_reko0")
 shortcut = ExtResource("3_3ojpc")
 text = "PAUSE"
 script = ExtResource("4_ta80g")
 _targetState = 4
-
-[node name="Score" type="Label" parent="." unique_id=549148178]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 5.0
-offset_right = 283.0
-offset_bottom = 45.0
-rotation = 0.05235988
-text = "s c o r e : ###"
-label_settings = SubResource("LabelSettings_am2m2")
-vertical_alignment = 1
-script = ExtResource("2_reko0")

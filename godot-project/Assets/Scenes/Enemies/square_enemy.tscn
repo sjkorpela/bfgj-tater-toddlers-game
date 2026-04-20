@@ -32,13 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://cy7dwcfrloyf6" path="res://Enemies/square_enemy/walk/Square_walk_0012.png" id="31_aiv6t"]
 [ext_resource type="Texture2D" uid="uid://d2tf24066uxc4" path="res://Enemies/square_enemy/walk/Square_walk_0013.png" id="32_yd2as"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
-transparency = 1
-albedo_color = Color(1, 0.22352941, 0, 0.3764706)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fa6de"]
-material = SubResource("StandardMaterial3D_8a6c7")
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7l5g3"]
 radius = 0.7
 height = 2.5
@@ -97,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_456b2")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 15.0
 }, {
@@ -143,19 +136,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="SquareEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_sprite", "_collider")]
+[node name="SquareEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_sprite", "_collider") groups=["enemy"]]
 floor_constant_speed = true
-floor_max_angle = 1.7453293
+floor_snap_length = 0.3
 script = ExtResource("1_mfbbc")
 _health = NodePath("HealthComponent")
 _sprite = NodePath("AnimatedSprite3D")
 _collider = NodePath("CollisionShape3D")
-_hasAnimations = true
 _shape = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572378390]
-visible = false
-mesh = SubResource("CapsuleMesh_fa6de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
 shape = SubResource("CapsuleShape3D_7l5g3")
@@ -169,4 +157,4 @@ transform = Transform3D(1.5, 0, 8.718315e-15, 0, 1.5, 0, -8.718315e-15, 0, 1.5, 
 flip_h = true
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_egmdq")
-animation = &"Walk"
+animation = &"Death"

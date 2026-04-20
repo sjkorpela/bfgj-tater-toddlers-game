@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://wsa15rfgvlos"]
+
+[ext_resource type="Texture2D" uid="uid://dxt0p877up7w1" path="res://UI/Assets/START_BACKGROUND.png" id="1_5ry14"]
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="2_pak6t"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="3_i36q5"]
+[ext_resource type="Texture2D" uid="uid://uuswoej1b27j" path="res://UI/Assets/EXIT_BUTTON.png" id="4_p1ebw"]
+[ext_resource type="FontFile" uid="uid://brlyxxj8wao0r" path="res://Assets/Resources/Font/MoreSugar-Regular.ttf" id="5_i36q5"]
+[ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="5_pak6t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1ebw"]
+font = ExtResource("5_i36q5")
+font_size = 24
+font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+
+[node name="GameOverNew" type="TextureRect" unique_id=845734243]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5ry14")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="Button" parent="." unique_id=709410648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 327.15
+offset_right = -391.0
+offset_bottom = -229.85007
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pak6t")
+text = "SETTINGS"
+script = ExtResource("3_i36q5")
+_targetState = 1
+
+[node name="SettingsButtonTex" type="TextureRect" parent="." unique_id=732446392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_p1ebw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score2" type="Label" parent="." unique_id=199613178]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 213.0
+offset_right = 700.0
+offset_bottom = 253.0
+text = "s c o r e : ###"
+label_settings = SubResource("LabelSettings_p1ebw")
+vertical_alignment = 1
+script = ExtResource("5_pak6t")

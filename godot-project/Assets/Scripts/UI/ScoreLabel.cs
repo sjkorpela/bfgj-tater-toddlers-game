@@ -7,7 +7,8 @@ public partial class ScoreLabel : Label
     private GameManager _gm;
     private int _score;
     private int _displayScore;
-    public override void _Ready()
+    
+    public override void _EnterTree()
     {
         _gm = Global.Instance.GameManager;
         _displayScore = _gm.Score;

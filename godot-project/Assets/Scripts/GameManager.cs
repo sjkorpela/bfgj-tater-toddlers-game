@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace Tater.Scripts;
 
@@ -16,18 +17,34 @@ public enum GameState
 
 public partial class GameManager : Node
 {
-	[Signal] public delegate void OnGameStateChangeEventHandler(GameState newState, GameState oldState);
-	
 	[ExportCategory("Node References")]
-	[Export] private PlayerBrain _player;
-	public PlayerBrain Player => _player;
 	[Export] private EnemyPool _pool;
 	[Export] private Camera3D _camera;
 	[Export] private ShapeDrawing _draw;
+	[Export] private PlayerBrain _player;
+	[Export] private AudioStreamPlayer2D _uiClick;
+	public PlayerBrain Player => _player;
+	private Vector3 _playerStartPos;
 	
-	[ExportCategory("Settings")]
-	[Export] private float _cameraMenuHeight = 160f;
-	[Export] private float _cameraGameHeight = 80f;
+	public override void _PhysicsProcess(double delta)
+	{
+		CameraLerpProcess(delta);
+		
+		if (_gameState == GameState.GameActive)
+		{
+			_player._PlayerPhysicsProcess(delta);
+			_pool._PoolPhysicsProcess(delta);
+			_draw._DrawingPhysicsProcess(delta);
+			
+			SuriveScoreProcess(delta);
+		}
+	}
+	
+	
+	#region GameState
+	
+	[Signal] public delegate void OnGameStateChangeEventHandler(GameState newState, GameState oldState);
+	[Signal] public delegate void OnGameResetEventHandler();
 
 	private GameState _gameState = GameState.Initializing;
 	public GameState GameState
@@ -38,92 +55,83 @@ public partial class GameManager : Node
 			GD.Print("GameManager: State switching from " + _gameState + " to " + value + "!");
 			EmitSignalOnGameStateChange(value, _gameState);
 			_gameState = value;
+			
+			
 			switch (value)
 			{
 				case GameState.MainMenu:
-					_goToMainMenu();
+					ResetGame();
 					break;
 			}
 		} 
 	}
 
-	private void _goToMainMenu()
+	public void GameEnd()
 	{
-		ResetGame();
+		GameState = GameState.GameOver;
 	}
+	
+	public void ResetGame()
+	{
+		EmitSignalOnGameReset();
+		_player.Position = _playerStartPos;
+		_score = 0;
+		_timeSinceLastSurviveScore = 0f;
+	}
+
+	public void PlayUiClickSound()
+	{
+		_uiClick.Play();
+	}
+
+	#endregion
+
+	
+
+	#region Score
 
 	private int _score = 0;
 	public int Score => _score;
 
-	private int _scoreIncrement = 1;
-	private float _timeSinceLastScoreIncrement = 0f;
+	private int _timeBetweenSurviveScore = 1;
+	private float _timeSinceLastSurviveScore = 0f;
 
-	public override void _Ready()
+	private void SuriveScoreProcess(double delta)
 	{
-		if (_player == null || _pool == null || _camera == null || _draw == null)
+		if (_timeSinceLastSurviveScore > _timeBetweenSurviveScore)
 		{
-			throw new Exception("GameManagerNode is missing node references!");
+			_score += (int)_timeSinceLastSurviveScore * 10;
+			_timeSinceLastSurviveScore = 0f;
 		}
-
-		GameState = GameState.MainMenu;
-		ResetGame();
+		_timeSinceLastSurviveScore += (float)delta;
 	}
 
-	public override void _EnterTree()
+	public void AddScore(int add)
 	{
-		Global.Instance.SetGameManager(this);
-		
-		_draw.OnDrawingStart += OnDrawingStart;
-		_draw.OnCast += OnCast;
-		_pool.OnPawnKill += value => _score += value;
-		_player.Health.OnLethalDamage += EndGame;
+		_score += add;
 	}
+
+	#endregion
+
 	
-	public override void _ExitTree()
+
+	# region CameraLerp
+	
+	[ExportCategory("Camera Lerp Settings")]
+	[Export] private float _cameraMenuHeight = 160f;
+	[Export] private float _cameraGameHeight = 80f;
+
+	private bool _cameraInPosition = false;
+
+	private void _setCameraInPositionToFalseOnStateChange(GameState newState, GameState oldState)
 	{
-		_draw.OnDrawingStart -= OnDrawingStart;
-		_draw.OnCast -= OnCast;
+		_cameraInPosition = false;
 	}
 
-	private void EndGame()
+	private void CameraLerpProcess(double delta)
 	{
-		GD.Print("GAME ENDED!!!!! " + _score);
-	}
-
-	public void ResetGame()
-	{
-		_score = 0;
-		_player.Visible = true;
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		if (_gameState == GameState.GameActive)
-		{
-			_player._BrainPhysicsProcess(delta);
-			_pool._BrainProcess(delta);
-			_pool._BrainPhysicsProcess(delta);
-			_draw._ShapeDrawingProcess(delta);
-
-			if (_timeSinceLastScoreIncrement > _scoreIncrement)
-			{
-				_score += (int)_timeSinceLastScoreIncrement * 10;
-				_timeSinceLastScoreIncrement = 0f;
-			}
-
-			_timeSinceLastScoreIncrement += (float)delta;
-			
-			if (Math.Abs(_camera.Position.Y - _cameraGameHeight) > 0.5f)
-			{
-				Vector3 targetPos = new Vector3(
-					_camera.Position.X,
-					_cameraGameHeight,
-					_camera.Position.Z
-				);
-				_camera.Position = _camera.Position.Lerp(targetPos, (float)delta);
-			}
-		}
-
+		if (_cameraInPosition) return;
+		
 		if (_gameState == GameState.MainMenu)
 		{
 			if (Math.Abs(_camera.Position.Y - _cameraMenuHeight) > 0.5f)
@@ -135,25 +143,81 @@ public partial class GameManager : Node
 				);
 				_camera.Position = _camera.Position.Lerp(targetPos, (float)delta);
 			}
+			else _cameraInPosition = true;
+		} else if (_gameState is GameState.GameActive or GameState.GamePaused or GameState.GamePausedSettings)
+		{
+			if (Math.Abs(_camera.Position.Y - _cameraGameHeight) > 0.5f)
+			{
+				Vector3 targetPos = new Vector3(
+					_camera.Position.X,
+					_cameraGameHeight,
+					_camera.Position.Z
+				);
+				_camera.Position = _camera.Position.Lerp(targetPos, (float)delta);
+			}
+			else _cameraInPosition = true;
 		}
 	}
+	
+	#endregion
+	
+	
 
-	public void OnDrawingStart()
+	#region EnterAndExitTree
+
+	public override void _EnterTree()
+	{
+		if (_player == null || _pool == null || _camera == null || _draw == null)
+		{
+			throw new Exception("GameManagerNode is missing node references!");
+		}
+		
+		Global.Instance.SetGameManager(this);
+		_playerStartPos = _player.Position;
+
+		this.OnGameStateChange += _setCameraInPositionToFalseOnStateChange;
+		
+		_draw.OnDrawingStart += _onDrawingStart;
+		_draw.OnCast += _onDrawingEnd;
+	}
+	
+	public override void _ExitTree()
+	{
+		this.OnGameStateChange -= _setCameraInPositionToFalseOnStateChange;
+		
+		_draw.OnDrawingStart -= _onDrawingStart;
+		_draw.OnCast -= _onDrawingEnd;
+	}
+
+	public override void _Ready()
+	{
+		GameState = GameState.MainMenu;
+	}
+
+	#endregion
+
+	
+	
+	#region ShapeDrawing
+
+	public void _onDrawingStart()
 	{
 		_player.StartCasting();
 	}
 
-	public void OnCast(AttackShape cast)
+	public void _onDrawingEnd(AttackShape cast)
 	{
 		foreach (EnemyBrain pawn in _pool.Pawns)
 		{
 			Vector2 onScreen = _camera.UnprojectPosition(pawn.GlobalPosition);
 			if (Geometry2D.IsPointInPolygon(onScreen, cast.Points) && pawn.Shape == cast.Shape)
 			{
-				_pool.DamagePawn(pawn, 1);
+				pawn.Health.TakeDamage(1);
 			}
 		}
 
 		_player.StopCasting();
 	}
+
+	#endregion
 }

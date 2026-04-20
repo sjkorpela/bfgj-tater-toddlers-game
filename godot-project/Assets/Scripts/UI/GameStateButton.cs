@@ -8,9 +8,10 @@ public partial class GameStateButton : Button
     [Export] private GameState _targetState;
 
     private GameManager _gm;
-    public override void _Ready()
+    public override void _EnterTree()
     {
         _gm = Global.Instance.GameManager;
+        
         this.Pressed += _setGameState;
     }
 
@@ -22,5 +23,6 @@ public partial class GameStateButton : Button
     private void _setGameState()
     {
         _gm.GameState = _targetState;
+        _gm.PlayUiClickSound();
     }
 }

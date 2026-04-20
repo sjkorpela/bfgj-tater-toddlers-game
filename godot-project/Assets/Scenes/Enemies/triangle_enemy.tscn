@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c170by12cqli5"]
 
 [ext_resource type="Script" uid="uid://k8ur1i2vnksl" path="res://Assets/Scripts/EnemyBrain.cs" id="1_ab6g3"]
-[ext_resource type="Texture2D" uid="uid://bjo6ujbxiktrb" path="res://Assets/Sprites/triangle_temp.png" id="2_ab6g3"]
 [ext_resource type="Script" uid="uid://brtmpvporynbo" path="res://Assets/Scripts/Components/HealthComponent.cs" id="3_kursv"]
 [ext_resource type="Texture2D" uid="uid://dl7s3wx4jyn24" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0002.png" id="4_bv237"]
 [ext_resource type="Texture2D" uid="uid://bl0o662jkyqpk" path="res://Enemies/Triangle_enemy/Triangle_attack/Triangle_attack_0003.png" id="5_vjadc"]
@@ -44,13 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://dv0houji6mif8" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0009.png" id="42_ekkt2"]
 [ext_resource type="Texture2D" uid="uid://b711eqe71njab" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0010.png" id="43_t13ra"]
 [ext_resource type="Texture2D" uid="uid://c2lq5vw3cfh0" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0011.png" id="44_qf8ca"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a6c7"]
-transparency = 1
-albedo_color = Color(1, 0.22352941, 0, 0.3764706)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fa6de"]
-material = SubResource("StandardMaterial3D_8a6c7")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7l5g3"]
 radius = 0.7
@@ -157,7 +149,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("34_myvln")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 15.0
 }, {
@@ -197,25 +189,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="TriangleEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_sprite", "_collider")]
+[node name="TriangleEnemy" type="CharacterBody3D" unique_id=1004741099 node_paths=PackedStringArray("_health", "_sprite", "_collider") groups=["enemy"]]
 floor_constant_speed = true
-floor_max_angle = 1.7453293
+floor_snap_length = 0.3
 script = ExtResource("1_ab6g3")
 _health = NodePath("HealthComponent")
 _sprite = NodePath("AnimatedSprite3D")
 _collider = NodePath("CollisionShape3D")
-_hasAnimations = true
 _shape = 2
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=825347395]
-visible = false
-pixel_size = 0.005
-billboard = 1
-texture = ExtResource("2_ab6g3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572378390]
-visible = false
-mesh = SubResource("CapsuleMesh_fa6de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150546017]
 shape = SubResource("CapsuleShape3D_7l5g3")

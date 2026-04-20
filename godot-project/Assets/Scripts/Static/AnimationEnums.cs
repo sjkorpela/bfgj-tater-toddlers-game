@@ -4,7 +4,8 @@ public enum WizardAnimation
 {
     Idle,
     Moving,
-    Casting
+    Casting,
+    Dying
 }
 
 public enum EnemyAnimation
