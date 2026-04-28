@@ -44,7 +44,7 @@ _pool = NodePath("EnemyPool")
 _camera = NodePath("Camera3D")
 _draw = NodePath("ShapeDrawing")
 _player = NodePath("Player")
-_uiClick = NodePath("EnvEtc/UiClickSound")
+_uiClick = NodePath("Player/AudioListener3D/UiClickSound")
 
 [node name="ShapeDrawing" parent="GameManager" unique_id=342024680 instance=ExtResource("2_a6gqa")]
 
@@ -79,16 +79,17 @@ environment = SubResource("Environment_w4pps")
 [node name="Environment" parent="GameManager/EnvEtc" unique_id=1802728127 instance=ExtResource("9_aw15j")]
 transform = Transform3D(0.17598525, 0, -0.9843929, 0, 1, 0, 0.9843929, 0, 0.17598525, 11, 8, 10)
 
-[node name="AudioListener3D" type="AudioListener2D" parent="GameManager/EnvEtc" unique_id=666184920]
+[node name="Player" parent="GameManager" unique_id=1596617950 instance=ExtResource("7_akbbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
-[node name="UiClickSound" type="AudioStreamPlayer2D" parent="GameManager/EnvEtc" unique_id=1806948779]
+[node name="AudioListener3D" type="AudioListener2D" parent="GameManager/Player" unique_id=666184920]
+
+[node name="UiClickSound" type="AudioStreamPlayer2D" parent="GameManager/Player/AudioListener3D" unique_id=1806948779]
+position = Vector2(-590, -333)
 stream = ExtResource("10_qfpor")
 bus = &"UI"
 
-[node name="AmbientAndMusic" parent="GameManager" unique_id=2074840048 instance=ExtResource("10_a6gqa")]
-
-[node name="Player" parent="GameManager" unique_id=1596617950 instance=ExtResource("7_akbbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+[node name="AmbientAndMusic" parent="GameManager/Player/AudioListener3D" unique_id=2074840048 instance=ExtResource("10_a6gqa")]
 
 [node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=231327900]
 transform = Transform3D(1, 0, 0, 0, 0.9448861, 0.3273994, 0, -0.3273994, 0.9448861, 4, 160, 60)

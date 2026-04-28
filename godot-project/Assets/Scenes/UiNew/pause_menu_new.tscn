@@ -66,7 +66,7 @@ grow_vertical = 2
 theme = ExtResource("2_4gejb")
 text = "SETTINGS"
 script = ExtResource("4_uo5g6")
-_targetState = 2
+_targetState = 6
 
 [node name="ContinueButtonTex" type="TextureRect" parent="." unique_id=1452699080]
 layout_mode = 1
