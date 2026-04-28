@@ -9,6 +9,7 @@
 
 [node name="PauseMenuSettingsNew" type="TextureRect" unique_id=790810389]
 custom_minimum_size = Vector2(500, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -31,7 +32,7 @@ grow_vertical = 2
 theme = ExtResource("2_80ahs")
 text = "START"
 script = ExtResource("3_tthkk")
-_targetState = 4
+_targetState = 5
 
 [node name="BackButtonTex" type="TextureRect" parent="." unique_id=41286481]
 layout_mode = 1

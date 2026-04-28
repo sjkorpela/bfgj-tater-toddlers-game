@@ -145,4 +145,4 @@ theme = ExtResource("3_reko0")
 shortcut = ExtResource("3_3ojpc")
 text = "PAUSE"
 script = ExtResource("4_ta80g")
-_targetState = 4
+_targetState = 5
