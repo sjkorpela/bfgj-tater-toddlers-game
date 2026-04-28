@@ -71,6 +71,7 @@ public partial class GameManager : Node
 	public void GameEnd()
 	{
 		GameState = GameState.GameOver;
+		WriteHighScore();
 	}
 	
 	public void ResetGame()
@@ -91,6 +92,8 @@ public partial class GameManager : Node
 	
 
 	#region Score
+
+	private string _scoreFile = "user://score.save";
 
 	private int _score = 0;
 	public int Score => _score;
@@ -118,6 +121,18 @@ public partial class GameManager : Node
 		{
 			_highScore = _score;
 		}
+	}
+
+	private void WriteHighScore()
+	{
+		using var file = FileAccess.Open(_scoreFile, FileAccess.ModeFlags.Write);
+		file.Store32((uint)_highScore);
+	}
+	
+	public int ReadHighScore()
+	{
+		using var file = FileAccess.Open(_scoreFile, FileAccess.ModeFlags.Read);
+		return (int)file.Get32();
 	}
 
 	#endregion
@@ -188,6 +203,16 @@ public partial class GameManager : Node
 		
 		_draw.OnDrawingStart += _onDrawingStart;
 		_draw.OnCast += _onDrawingEnd;
+
+		try
+		{
+			_highScore = ReadHighScore();
+		}
+		catch (Exception _)
+		{
+			WriteHighScore();
+		}
+		
 	}
 	
 	public override void _ExitTree()
