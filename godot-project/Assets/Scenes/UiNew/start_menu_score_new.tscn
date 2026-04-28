@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dv3c583djnsd2"]
+
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="1_6qlop"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="2_msrsq"]
+[ext_resource type="Texture2D" uid="uid://b18iiq4g8swgw" path="res://UI/Assets/best_score_with_close.png" id="3_6qlop"]
+[ext_resource type="FontFile" uid="uid://brlyxxj8wao0r" path="res://Assets/Resources/Font/MoreSugar-Regular.ttf" id="4_84ekj"]
+[ext_resource type="Script" uid="uid://ft2q4v80ai2a" path="res://Assets/Scripts/UI/HighScoreLabel.cs" id="5_kmdo1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojxh0"]
+font = ExtResource("4_84ekj")
+font_size = 24
+font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+
+[node name="StartMenuSettingsNew" type="TextureRect" unique_id=329676491]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="." unique_id=1300675010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 841.0
+offset_top = 42.0
+offset_right = -252.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6qlop")
+script = ExtResource("2_msrsq")
+_targetState = 1
+
+[node name="Tex" type="TextureRect" parent="." unique_id=912283699]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 31.0
+offset_right = -48.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_6qlop")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score2" type="Label" parent="." unique_id=1788051157]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 325.0
+offset_right = 907.0
+offset_bottom = 365.0
+text = "###"
+label_settings = SubResource("LabelSettings_ojxh0")
+vertical_alignment = 1
+script = ExtResource("5_kmdo1")

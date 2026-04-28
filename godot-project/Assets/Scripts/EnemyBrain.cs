@@ -82,7 +82,8 @@ public partial class EnemyBrain : CharacterBody3D
 		_collider.Disabled = true;
 		_sprite.Play(_deathAnimation);
 		
-		_gm.AddScore(_score);
+		if (_gm.GameState == GameState.GameActive) _gm.AddScore(_score);
+		
 		EmitSignalOnPawnDied(_score);
 	}
 

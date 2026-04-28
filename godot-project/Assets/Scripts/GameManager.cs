@@ -14,6 +14,7 @@ public enum GameState
 	GamePaused,
 	GamePausedSettings,
 	GameOver,
+	MainMenuScore,
 }
 
 public partial class GameManager : Node
@@ -37,7 +38,7 @@ public partial class GameManager : Node
 			_pool._PoolPhysicsProcess(delta);
 			_draw._DrawingPhysicsProcess(delta);
 			
-			SuriveScoreProcess(delta);
+			SurviveScoreProcess(delta);
 		}
 	}
 	
@@ -93,13 +94,15 @@ public partial class GameManager : Node
 
 	private int _score = 0;
 	public int Score => _score;
+	private int _highScore = -1;
+	public int HighScore => _highScore;
 
 	private int _timeBetweenSurviveScore = 1;
 	private float _timeSinceLastSurviveScore = 0f;
 
-	private void SuriveScoreProcess(double delta)
+	private void SurviveScoreProcess(double delta)
 	{
-		if (_timeSinceLastSurviveScore > _timeBetweenSurviveScore)
+		if (GameState == GameState.GameActive && _timeSinceLastSurviveScore > _timeBetweenSurviveScore)
 		{
 			_score += (int)_timeSinceLastSurviveScore * 10;
 			_timeSinceLastSurviveScore = 0f;
@@ -110,6 +113,11 @@ public partial class GameManager : Node
 	public void AddScore(int add)
 	{
 		_score += add;
+
+		if (_score > _highScore)
+		{
+			_highScore = _score;
+		}
 	}
 
 	#endregion
@@ -133,7 +141,7 @@ public partial class GameManager : Node
 	{
 		if (_cameraInPosition) return;
 		
-		if (_gameState == GameState.MainMenu)
+		if (_gameState is GameState.MainMenu or GameState.MainMenuSettings or GameState.MainMenuAbout or GameState.MainMenuScore)
 		{
 			if (Math.Abs(_camera.Position.Y - _cameraMenuHeight) > 0.5f)
 			{

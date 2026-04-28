@@ -43,7 +43,6 @@ public partial class HeartsManager: Control
     {
         int diff = _hp - _player.Health.Health;
         _hp -= diff;
-        GD.Print(diff);
         LoseHearts(diff);
     }
 

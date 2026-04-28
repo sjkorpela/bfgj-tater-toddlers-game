@@ -11,7 +11,9 @@ public partial class ScoreLabel : Label
     public override void _EnterTree()
     {
         _gm = Global.Instance.GameManager;
+        _score = _gm.Score;
         _displayScore = _gm.Score;
+        this.Text = "S c o r e : " + _displayScore;
     }
 
     public override void _Process(double delta)

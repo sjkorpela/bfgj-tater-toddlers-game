@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="3_i36q5"]
 [ext_resource type="Texture2D" uid="uid://uuswoej1b27j" path="res://UI/Assets/EXIT_BUTTON.png" id="4_p1ebw"]
 [ext_resource type="FontFile" uid="uid://brlyxxj8wao0r" path="res://Assets/Resources/Font/MoreSugar-Regular.ttf" id="5_i36q5"]
-[ext_resource type="Script" uid="uid://cdu4ee2lvm2kh" path="res://Assets/Scripts/UI/ScoreLabel.cs" id="5_pak6t"]
+[ext_resource type="Script" uid="uid://cwc17cqhqaa4m" path="res://Assets/Scripts/UI/GameOverScoreLabel.cs" id="6_i36q5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p1ebw"]
 font = ExtResource("5_i36q5")
@@ -62,4 +62,4 @@ offset_bottom = 253.0
 text = "s c o r e : ###"
 label_settings = SubResource("LabelSettings_p1ebw")
 vertical_alignment = 1
-script = ExtResource("5_pak6t")
+script = ExtResource("6_i36q5")
