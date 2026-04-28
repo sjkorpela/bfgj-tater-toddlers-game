@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://c1kq8q11qo3xh"]
 
-[ext_resource type="Texture2D" uid="uid://dxt0p877up7w1" path="res://UI/Assets/START_BACKGROUND.png" id="1_d7feq"]
 [ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="2_17jc5"]
 [ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="3_xefwl"]
-[ext_resource type="Texture2D" uid="uid://c50dyk0i1i7eg" path="res://UI/Assets/START_BUTTON.png" id="4_dltdq"]
-[ext_resource type="Texture2D" uid="uid://bdncf4b5mfpwp" path="res://UI/Assets/SETTINGS_BUTTON.png" id="5_bed4r"]
+[ext_resource type="Texture2D" uid="uid://fl41efo1aavh" path="res://UI/Assets/START.png" id="4_17jc5"]
 
 [node name="StartMenuNew" type="TextureRect" unique_id=1899266879]
 custom_minimum_size = Vector2(500, 0)
@@ -13,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_d7feq")
 expand_mode = 1
 stretch_mode = 5
 
@@ -22,26 +19,26 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 398.0
-offset_top = 188.0
-offset_right = -391.0
-offset_bottom = -369.0
+offset_left = 405.0
+offset_top = 220.0
+offset_right = -424.0
+offset_bottom = -339.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_17jc5")
 text = "START"
 script = ExtResource("3_xefwl")
-_targetState = 3
+_targetState = 4
 
 [node name="SettingsButton" type="Button" parent="." unique_id=1422407254]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 398.0
-offset_top = 327.15
-offset_right = -391.0
-offset_bottom = -229.85007
+offset_left = 410.0
+offset_top = 342.0
+offset_right = -425.0
+offset_bottom = -225.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_17jc5")
@@ -49,28 +46,34 @@ text = "SETTINGS"
 script = ExtResource("3_xefwl")
 _targetState = 2
 
-[node name="StartButtonTex" type="TextureRect" parent="." unique_id=349061348]
+[node name="AboutButton" type="Button" parent="." unique_id=1776248212]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 414.0
+offset_top = 455.0
+offset_right = -422.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_dltdq")
-expand_mode = 1
-stretch_mode = 5
+theme = ExtResource("2_17jc5")
+text = "SETTINGS"
+script = ExtResource("3_xefwl")
+_targetState = 3
 
-[node name="SettingsButtonTex" type="TextureRect" parent="." unique_id=956712610]
+[node name="SettingsButtonTex2" type="TextureRect" parent="." unique_id=271123352]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -7.0
-offset_bottom = -7.0
+offset_left = 292.0
+offset_top = 55.0
+offset_right = -291.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("5_bed4r")
+texture = ExtResource("4_17jc5")
 expand_mode = 1
 stretch_mode = 5

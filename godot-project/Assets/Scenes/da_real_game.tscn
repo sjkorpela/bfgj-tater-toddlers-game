@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://23nujqft5xps" path="res://Assets/Scenes/UiNew/start_menu_settings_new.tscn" id="14_m53as"]
 [ext_resource type="PackedScene" uid="uid://bvxdbp1s5aaox" path="res://Assets/Scenes/UiNew/game_ui_new.tscn" id="15_akbbg"]
 [ext_resource type="PackedScene" uid="uid://d3cfiepsd5tt7" path="res://Assets/Scenes/UiNew/pause_menu_new.tscn" id="16_am2m2"]
+[ext_resource type="PackedScene" uid="uid://b1ogyxb80yqdm" path="res://Assets/Scenes/UiNew/start_menu_about_new.tscn" id="16_d6xti"]
 [ext_resource type="PackedScene" uid="uid://byoewteet8top" path="res://Assets/Scenes/UiNew/pause_menu_settings_new.tscn" id="17_aw15j"]
 [ext_resource type="PackedScene" uid="uid://wsa15rfgvlos" path="res://Assets/Scenes/UiNew/game_over_new.tscn" id="18_25t0a"]
 
@@ -108,6 +109,7 @@ grow_vertical = 2
 script = ExtResource("12_w4pps")
 _startMenuScene = ExtResource("13_vo6bw")
 _startMenuSettingsScene = ExtResource("14_m53as")
+_startMenuAboutScene = ExtResource("16_d6xti")
 _gameUiScene = ExtResource("15_akbbg")
 _pauseMenuScene = ExtResource("16_am2m2")
 _pauseMenuSettingsScene = ExtResource("17_aw15j")

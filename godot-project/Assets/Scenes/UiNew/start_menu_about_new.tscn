@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b1ogyxb80yqdm"]
+
+[ext_resource type="Theme" uid="uid://c16vt73tvryel" path="res://Assets/Resources/menu_button_new.tres" id="2_t6bcd"]
+[ext_resource type="Script" uid="uid://bmyl2kjggneyk" path="res://Assets/Scripts/UI/GameStateButton.cs" id="3_25m1d"]
+[ext_resource type="Texture2D" uid="uid://ci5b6uur7t3uw" path="res://UI/Assets/about_screen.png" id="3_bepxa"]
+
+[node name="StartMenuSettingsNew" type="TextureRect" unique_id=329676491]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="." unique_id=1300675010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 832.0
+offset_top = 42.0
+offset_right = -252.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_t6bcd")
+script = ExtResource("3_25m1d")
+_targetState = 1
+
+[node name="Tex" type="TextureRect" parent="." unique_id=912283699]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 31.0
+offset_right = -48.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bepxa")
+expand_mode = 1
+stretch_mode = 5

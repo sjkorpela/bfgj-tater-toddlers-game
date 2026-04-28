@@ -7,6 +7,7 @@ public partial class UiManager : Control
     [ExportCategory("Node References")]
     [Export] private PackedScene _startMenuScene;
     [Export] private PackedScene _startMenuSettingsScene;
+    [Export] private PackedScene _startMenuAboutScene;
     [Export] private PackedScene _gameUiScene;
     [Export] private PackedScene _pauseMenuScene;
     [Export] private PackedScene _pauseMenuSettingsScene;
@@ -16,6 +17,7 @@ public partial class UiManager : Control
 
     private Control _startMenu;
     private Control _startMenuSettings;
+    private Control _startMenuAbout;
     private Control _gameUi;
     private Control _pauseMenu;
     private Control _pauseMenuSettings;
@@ -42,6 +44,9 @@ public partial class UiManager : Control
             case GameState.MainMenuSettings:
                 _startMenuSettings.QueueFree();
                 break;
+            case GameState.MainMenuAbout:
+                _startMenuAbout.QueueFree();
+                break;
             case GameState.GameActive:
                 _gameUi.QueueFree();
                 break;
@@ -65,6 +70,10 @@ public partial class UiManager : Control
             case GameState.MainMenuSettings:
                 _startMenuSettings = _startMenuSettingsScene.Instantiate<Control>();
                 this.AddChild(_startMenuSettings);
+                break;
+            case GameState.MainMenuAbout:
+                _startMenuAbout = _startMenuAboutScene.Instantiate<Control>();
+                this.AddChild(_startMenuAbout);
                 break;
             case GameState.GameActive:
                 _gameUi = _gameUiScene.Instantiate<Control>();

@@ -9,6 +9,7 @@ public enum GameState
 	Initializing,
 	MainMenu,
 	MainMenuSettings,
+	MainMenuAbout,
 	GameActive,
 	GamePaused,
 	GamePausedSettings,
