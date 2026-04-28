@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://d2tf24066uxc4" path="res://Enemies/square_enemy/walk/Square_walk_0013.png" id="32_yd2as"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7l5g3"]
-radius = 0.7
+radius = 0.4
 height = 2.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_egmdq"]

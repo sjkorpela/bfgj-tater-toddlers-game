@@ -45,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://c2lq5vw3cfh0" path="res://Enemies/Triangle_enemy/Triangle_walk/Triangle_walk_0011.png" id="44_qf8ca"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7l5g3"]
-radius = 0.7
+radius = 0.4
 height = 2.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6t24g"]
