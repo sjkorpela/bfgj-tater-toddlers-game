@@ -28,6 +28,7 @@ project/assembly_name="bfgj tater game"
 [global_group]
 
 enemy=""
+spawn_blocker="Blocks enemies from spawning in world geometry"
 
 [input]
 

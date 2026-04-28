@@ -11,6 +11,7 @@ public partial class EnemyPool : Node
 	[Export] private PackedScene[] _enemyTypes;
 	[Export] private Node3D _target;
 	[Export] private Node3D _spawnLocation;
+	[Export] private RayCast3D _spawnRayCast;
 	[Export] private Node3D _hideLocation;
 	
 	[ExportCategory("Attributes")]
@@ -135,10 +136,20 @@ public partial class EnemyPool : Node
 				_spawnLocation.GlobalPosition.Y,
 				_random.Next(_minZ, _maxZ)
 			);
+			
+			_spawnLocation.GlobalPosition = temp;
 
-			if (_target.GlobalPosition.DistanceTo(temp) > _playerSafeDistance)
+			GodotObject check = _spawnRayCast.GetCollider();
+
+			if (check != null && check.GetType().IsSubclassOf(typeof(Node3D)))
 			{
-				_spawnLocation.GlobalPosition = temp;
+				Node3D node = (Node3D)check;
+				if (!node.IsInGroup("spawn_blocker") && _target.GlobalPosition.DistanceTo(temp) > _playerSafeDistance)
+				{
+					break;
+				}
+			} else if (_target.GlobalPosition.DistanceTo(temp) > _playerSafeDistance)
+			{
 				break;
 			}
 		}

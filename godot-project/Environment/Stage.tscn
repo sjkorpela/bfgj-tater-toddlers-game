@@ -137,110 +137,110 @@ mesh = ExtResource("5_4auth")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
 shape = SubResource("ConcavePolygonShape3D_743rk")
 
-[node name="TowerBase" type="MeshInstance3D" parent="." unique_id=71086980]
+[node name="TowerBase" type="MeshInstance3D" parent="." unique_id=71086980 groups=["spawn_blocker"]]
 mesh = ExtResource("6_5kyig")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TowerBase" unique_id=2024985654]
+[node name="StaticBody3D" type="StaticBody3D" parent="TowerBase" unique_id=2024985654 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerBase/StaticBody3D" unique_id=43143624]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerBase/StaticBody3D" unique_id=43143624 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_jghag")
 
-[node name="TowerTop" type="MeshInstance3D" parent="." unique_id=772947417]
+[node name="TowerTop" type="MeshInstance3D" parent="." unique_id=772947417 groups=["spawn_blocker"]]
 mesh = ExtResource("7_dwgut")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TowerTop" unique_id=41548851]
+[node name="StaticBody3D" type="StaticBody3D" parent="TowerTop" unique_id=41548851 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerTop/StaticBody3D" unique_id=1628107725]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerTop/StaticBody3D" unique_id=1628107725 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_s0s63")
 
-[node name="TowerRoof" type="MeshInstance3D" parent="." unique_id=660152637]
+[node name="TowerRoof" type="MeshInstance3D" parent="." unique_id=660152637 groups=["spawn_blocker"]]
 mesh = ExtResource("8_xfd2u")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TowerRoof" unique_id=1755230624]
+[node name="StaticBody3D" type="StaticBody3D" parent="TowerRoof" unique_id=1755230624 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerRoof/StaticBody3D" unique_id=769148460]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerRoof/StaticBody3D" unique_id=769148460 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_nsi8n")
 
-[node name="Tree1" type="MeshInstance3D" parent="." unique_id=1447084704]
+[node name="Tree1" type="MeshInstance3D" parent="." unique_id=1447084704 groups=["spawn_blocker"]]
 mesh = ExtResource("9_2ntol")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree1" unique_id=237078514]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree1" unique_id=237078514 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree1/StaticBody3D" unique_id=1782640245]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree1/StaticBody3D" unique_id=1782640245 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_7wskf")
 
-[node name="Tree2" type="MeshInstance3D" parent="." unique_id=1805292367]
+[node name="Tree2" type="MeshInstance3D" parent="." unique_id=1805292367 groups=["spawn_blocker"]]
 mesh = ExtResource("10_auy4n")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree2" unique_id=2067657360]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree2" unique_id=2067657360 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree2/StaticBody3D" unique_id=153612982]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree2/StaticBody3D" unique_id=153612982 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_6aojo")
 
-[node name="Tree3" type="MeshInstance3D" parent="." unique_id=1242947088]
+[node name="Tree3" type="MeshInstance3D" parent="." unique_id=1242947088 groups=["spawn_blocker"]]
 mesh = ExtResource("11_1uphn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree3" unique_id=632983031]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree3" unique_id=632983031 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree3/StaticBody3D" unique_id=1772482681]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree3/StaticBody3D" unique_id=1772482681 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_jdt1y")
 
-[node name="Tree4" type="MeshInstance3D" parent="." unique_id=1660534218]
+[node name="Tree4" type="MeshInstance3D" parent="." unique_id=1660534218 groups=["spawn_blocker"]]
 mesh = ExtResource("12_ybtdq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree4" unique_id=1482985500]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree4" unique_id=1482985500 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree4/StaticBody3D" unique_id=147011600]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree4/StaticBody3D" unique_id=147011600 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_rmrww")
 
-[node name="Tree5" type="MeshInstance3D" parent="." unique_id=1918784205]
+[node name="Tree5" type="MeshInstance3D" parent="." unique_id=1918784205 groups=["spawn_blocker"]]
 mesh = ExtResource("13_0ncpa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree5" unique_id=308646112]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree5" unique_id=308646112 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree5/StaticBody3D" unique_id=2096200188]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree5/StaticBody3D" unique_id=2096200188 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_xb2oc")
 
-[node name="Tree6" type="MeshInstance3D" parent="." unique_id=306022162]
+[node name="Tree6" type="MeshInstance3D" parent="." unique_id=306022162 groups=["spawn_blocker"]]
 mesh = ExtResource("14_pv7ad")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree6" unique_id=1409389655]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree6" unique_id=1409389655 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree6/StaticBody3D" unique_id=815049497]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree6/StaticBody3D" unique_id=815049497 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_ovxyj")
 
-[node name="Tree7" type="MeshInstance3D" parent="." unique_id=439480577]
+[node name="Tree7" type="MeshInstance3D" parent="." unique_id=439480577 groups=["spawn_blocker"]]
 mesh = ExtResource("15_s5lkp")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree7" unique_id=1523785503]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree7" unique_id=1523785503 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree7/StaticBody3D" unique_id=849715413]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree7/StaticBody3D" unique_id=849715413 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_ec3e7")
 
-[node name="Tree8" type="MeshInstance3D" parent="." unique_id=1294794414]
+[node name="Tree8" type="MeshInstance3D" parent="." unique_id=1294794414 groups=["spawn_blocker"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.035925)
 mesh = ExtResource("16_6h5sw")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree8" unique_id=992109470]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree8" unique_id=992109470 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree8/StaticBody3D" unique_id=1717366854]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree8/StaticBody3D" unique_id=1717366854 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_o3n3f")
 
-[node name="Tree9" type="MeshInstance3D" parent="." unique_id=772672905]
+[node name="Tree9" type="MeshInstance3D" parent="." unique_id=772672905 groups=["spawn_blocker"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.0445967)
 mesh = ExtResource("17_71e72")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree9" unique_id=625701631]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree9" unique_id=625701631 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree9/StaticBody3D" unique_id=469115392]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree9/StaticBody3D" unique_id=469115392 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_f8rb3")
 
-[node name="Tree10" type="MeshInstance3D" parent="." unique_id=763243564]
+[node name="Tree10" type="MeshInstance3D" parent="." unique_id=763243564 groups=["spawn_blocker"]]
 mesh = ExtResource("18_tfpt1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tree10" unique_id=726553042]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree10" unique_id=726553042 groups=["spawn_blocker"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree10/StaticBody3D" unique_id=1098612578]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree10/StaticBody3D" unique_id=1098612578 groups=["spawn_blocker"]]
 shape = SubResource("ConcavePolygonShape3D_jv111")
 
 [node name="ExtraColliders" type="StaticBody3D" parent="." unique_id=1149186923]
